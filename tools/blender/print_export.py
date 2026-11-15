@@ -48,9 +48,13 @@ def reset():
 def load_glb(name):
     reset()
     bpy.ops.import_scene.gltf(filepath=os.path.join(MODELS, name + '.glb'))
+    # NOTE: keep the pose the glTF importer builds from the node transforms (the as-authored idle pose); forcing
+    # the armature REST pose explodes some rigs (boss), because their bind data is not the authored pose.
     for o in bpy.data.objects:
         if o.type == 'ARMATURE':
-            o.data.pose_position = 'REST'
+            o.data.pose_position = 'POSE'
+            for a in list(bpy.data.actions):
+                pass
     bpy.context.view_layer.update()
 
 def mat_color(m):
@@ -97,6 +101,42 @@ def collect_bm(keep=lambda o: True):
                 pass
         eo.to_mesh_clear()
     return bm, mats, colors
+
+def thicken_open(bm, t=1.0):
+    """Zero-thickness sheets (capes, decals, flat plates) are open surfaces and vanish/ragged in a voxel remesh.
+    Split every component with boundary edges into its own mesh, run the Solidify modifier (even thickness) on it,
+    and merge back with the closed components. Returns a new bmesh (the input is freed)."""
+    open_faces = set()
+    for comp in components(bm):
+        if any(e.is_boundary for v in comp for e in v.link_edges):
+            open_faces.update(f for v in comp for f in v.link_faces)
+    if not open_faces:
+        return bm
+    bm.faces.index_update()
+    bm_open = bm.copy()
+    bm_open.faces.ensure_lookup_table()
+    # in the copy keep only the open faces; in the original delete them
+    idx = {f.index for f in open_faces}
+    bmesh.ops.delete(bm_open, geom=[f for f in bm_open.faces if f.index not in idx], context='FACES_ONLY')
+    bm_open.verts.ensure_lookup_table()
+    bmesh.ops.delete(bm_open, geom=[v for v in bm_open.verts if not v.link_faces], context='VERTS')
+    bmesh.ops.delete(bm, geom=list(open_faces), context='FACES_ONLY')
+    bmesh.ops.delete(bm, geom=[v for v in bm.verts if not v.link_faces], context='VERTS')
+    o_open = to_object(bm_open, 'open_sheets')
+    m = o_open.modifiers.new('sol', 'SOLIDIFY')
+    m.thickness = t; m.offset = 0.0; m.use_even_offset = False; m.nonmanifold_thickness_mode = 'FIXED'
+    apply_mod(o_open, m)
+    o_closed = to_object(bm, 'closed')
+    for o in bpy.context.selected_objects:
+        o.select_set(False)
+    o_open.select_set(True); o_closed.select_set(True)
+    bpy.context.view_layer.objects.active = o_closed
+    bpy.ops.object.join()
+    out = bmesh.new(); out.from_mesh(o_closed.data)
+    bpy.data.objects.remove(o_closed, do_unlink=True)
+    bm_open.free(); bm.free()
+    log('  solidified %d open faces' % len(open_faces))
+    return out
 
 def make_plinth_mesh(bm, cx, cy, rx, ry, ztop, h, shape='ellipse', seg=48):
     if shape == 'rect':
@@ -289,6 +329,7 @@ def finish(bm, mats, colors, folder, base, plinth=True, shape='ellipse', pad=3.0
     for v in bm.verts:
         v.co.x *= sc; v.co.y *= sc; v.co.z *= sc
     src = bm.copy()  # colour source (without plinth)
+    bm = thicken_open(bm, 1.0)
     zmin = min(v.co.z for v in bm.verts)
     ztop = 0.6
     if plinth:
@@ -549,7 +590,13 @@ def contact():
             o.location.y = -r * cell - cy + (rowsn - 1) * cell / 2
             # object colour mode: show per-material colour
             for ms in o.material_slots:
-                pass
+                m = ms.material
+                if m and m.use_nodes:
+                    for nd in m.node_tree.nodes:
+                        if nd.type == 'BSDF_PRINCIPLED':
+                            m.diffuse_color = nd.inputs['Base Color'].default_value
+            if g in ('characters', 'squad'):
+                o.rotation_euler.z = math.pi   # figures face -Y in the print files; turn them to the camera
         sc = bpy.context.scene
         sc.render.engine = 'BLENDER_WORKBENCH'
         sh = sc.display.shading; sh.light = 'STUDIO'; sh.color_type = 'MATERIAL'; sh.show_cavity = True
@@ -562,7 +609,7 @@ def contact():
         co = bpy.data.objects.new('c', cam); sc.collection.objects.link(co); sc.camera = co
         W = cols * cell; H = rowsn * cell
         cam.ortho_scale = max(W, H * sc.render.resolution_x / sc.render.resolution_y) * 1.03
-        tilt = math.radians(58)
+        tilt = math.radians(62 if g not in ('levels',) else 40)
         co.rotation_euler = (tilt, 0, 0)
         dist = 2000
         co.location = (0, -dist * math.cos(math.radians(90) - tilt) * 1, dist * math.sin(math.radians(90) - tilt) * 1 + 0)
