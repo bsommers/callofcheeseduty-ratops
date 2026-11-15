@@ -5,7 +5,7 @@
 Host: `MAC_HOST` (default `bill@bigmac.local`; `user@macbuild.local` did not resolve on 2026-11-14). Scratch: `~/build/ratops-scratch` on the Mac (removed afterwards).
 `tools/mac/remote_test.sh` runs on the Mac: unzip, `xattr -cr`, `codesign --force --deep -s -`, launch `--rendering-driver metal --quit-after 600 --verbose`, screenshot attempt, `hdiutil create ... -format UDZO`.
 
-Outputs: `build/macos/KasekriegRatOps.zip` (~696 MB), `dist/KasekriegRatOps-macos.dmg` (~706 MB; PCK is not embedded), log in `out/mac/run.log`.
+Outputs: `build/macos/KasekriegRatOps.zip` (~208 MB), `dist/KasekriegRatOps-macos.dmg` (~221 MB; PCK is not embedded), log in `out/mac/run.log`.
 
 ## Opening an unsigned app (Gatekeeper)
 Not notarised. Users either: run `xattr -dr com.apple.quarantine "KÄSEKRIEG- RAT OPS.app"` then open; or right-click > Open > Open;

@@ -1,7 +1,7 @@
 # Windows build and installer
 
-    tools/build.sh windows            # ~30 s -> build/windows/KasekriegRatOps.exe (758 MB, PCK embedded, no console wrapper produced)
-    tools/package_windows.sh [--no-build]   # ~32 s -> dist/KasekriegRatOps-windows-x64-setup.zip (675 MB) + .sha256
+    tools/build.sh windows            # ~30 s -> build/windows/KasekriegRatOps.exe (305 MB, PCK embedded, no console wrapper produced)
+    tools/package_windows.sh [--no-build]   # ~32 s -> dist/KasekriegRatOps-windows-x64-setup.zip (189 MB) + .sha256
 
 No NSIS/wine on the host, so the installer is a zip with `install.cmd` / `install.ps1` / `uninstall.ps1`.
 Install (per user, no admin): unzip, run `install.cmd` (or `install.ps1`). `-AllUsers` installs to Program Files (admin).
