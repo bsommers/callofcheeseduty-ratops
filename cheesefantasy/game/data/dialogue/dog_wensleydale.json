@@ -1,0 +1,30 @@
+{
+ "id": "dog_wensleydale",
+ "speaker": "Captain Wensleydale",
+ "model": "animal_dog",
+ "accent": "#d8a860",
+ "start": [
+  {
+   "if": "talked_dog_wensleydale",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "WOOF! (Translation: Fennel! Good kitten! Good! I have not chased a single rat today. Okay, I chased twelve. Okay, twenty.)",
+   "next": "n1",
+   "set": "talked_dog_wensleydale"
+  },
+  "n1": {
+   "text": "Woof. (Translation: the rats went north, into the cave. I can smell them. They smell like betrayal and cheese rind.)",
+   "end": true
+  },
+  "r0": {
+   "text": "Woof! (Translation: go get 'em! I'll guard the farm!)",
+   "end": true
+  }
+ }
+}

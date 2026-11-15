@@ -1,0 +1,33 @@
+{
+ "id": "tinker",
+ "speaker": "Tinker Tilsit",
+ "model": "npc_tinker",
+ "accent": "#7ab6d8",
+ "start": "n0",
+ "nodes": {
+  "n0": {
+   "text": "Hold still, I'm measuring the squeak of your boots. Ah, this is the Mark IV Cheese-O-Matic. It slices, it dices, it occasionally explodes.",
+   "next": "n1"
+  },
+  "n1": {
+   "text": "I wired the windmill to the churn. Now it makes butter AND a pleasant humming noise. Mostly the humming.",
+   "next": "gift"
+  },
+  "gift": {
+   "text": "Oh! Take this spare gear. I made forty of them. Do not ask why.",
+   "if": "!tinker_gift",
+   "set": "tinker_gift",
+   "item": [
+    "spare_gear",
+    1
+   ],
+   "toast": "Received Spare Gear",
+   "end": true,
+   "else": "no"
+  },
+  "no": {
+   "text": "Come back if your gadgets break. Or if they explode. Either is fine.",
+   "end": true
+  }
+ }
+}

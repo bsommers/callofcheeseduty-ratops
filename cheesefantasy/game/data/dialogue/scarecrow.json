@@ -1,0 +1,30 @@
+{
+ "id": "scarecrow",
+ "speaker": "Sir Strawsworth",
+ "model": "npc_scarecrow",
+ "accent": "#d8b84a",
+ "start": [
+  {
+   "if": "talked_scarecrow",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Hail, traveller! I am Sir Strawsworth, Knight of the Corn! I have guarded these fields since... a long time ago. Birds respect me. Mostly from a distance.",
+   "next": "n1",
+   "set": "talked_scarecrow"
+  },
+  "n1": {
+   "text": "(He doesn't move. Is he... talking? Surely it's the wind.)",
+   "end": true
+  },
+  "r0": {
+   "text": "I would love to chase the crows, but, you see, I am stuck on a pole. Tragic, really.",
+   "end": true
+  }
+ }
+}

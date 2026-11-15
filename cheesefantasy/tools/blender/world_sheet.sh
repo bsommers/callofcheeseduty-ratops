@@ -1,0 +1,3 @@
+#!/bin/sh
+# usage: tools/blender/world_sheet.sh <sheetname> ids...
+cd "$(dirname "$0")/../.." && blender -b -P tools/blender/world_sheet.py -- "$@" 2>&1 | grep -iE "error|Trace"

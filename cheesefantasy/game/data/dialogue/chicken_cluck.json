@@ -1,0 +1,26 @@
+{
+ "id": "chicken_cluck",
+ "speaker": "Cluck Norris",
+ "model": "animal_chicken",
+ "accent": "#f5f5f0",
+ "start": [
+  {
+   "if": "talked_chicken_cluck",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "BAWK! (Translation: Cluck Norris does not cross the road. The road crosses Cluck Norris.)",
+   "end": true,
+   "set": "talked_chicken_cluck"
+  },
+  "r0": {
+   "text": "Bawk. (Translation: I laid an egg yesterday. It was legendary. It's still rolling.)",
+   "end": true
+  }
+ }
+}

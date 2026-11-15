@@ -1,0 +1,30 @@
+{
+ "id": "kid_pip",
+ "speaker": "Pip",
+ "model": "npc_kid",
+ "accent": "#9ad06a",
+ "start": [
+  {
+   "if": "talked_kid_pip",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Shh! I'm playing hide-and-seek with the chickens. They're really good at it. I haven't found one in three days.",
+   "next": "n1",
+   "set": "talked_kid_pip"
+  },
+  "n1": {
+   "text": "If you see Cluck Norris, don't tell him I'm here. He roundhouse-pecks.",
+   "end": true
+  },
+  "r0": {
+   "text": "Still hiding. Still not found. This is the best game ever.",
+   "end": true
+  }
+ }
+}

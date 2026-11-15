@@ -1,0 +1,26 @@
+{
+ "id": "goat_feta",
+ "speaker": "Nanny Feta",
+ "model": "animal_goat",
+ "accent": "#d8d0c0",
+ "start": [
+  {
+   "if": "talked_goat_feta",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Meeeh! (Translation: I eat tin cans. And occasionally cheese wrappers. Sometimes the label is the best part.)",
+   "end": true,
+   "set": "talked_goat_feta"
+  },
+  "r0": {
+   "text": "Meh. (Translation: I tried to eat the fence. The fence won.)",
+   "end": true
+  }
+ }
+}

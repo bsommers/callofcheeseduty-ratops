@@ -1,0 +1,155 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="GDScript" id="GDScript_title"]
+script/source = "extends Control
+## Title screen (owner rpg-core). Built in code. Emits new_game_pressed / continue_pressed(slot) / quit_pressed;
+## main.tscn decides what to load. Works standalone (shot.sh title) too.
+
+signal new_game_pressed
+signal continue_pressed(slot: int)
+signal quit_pressed
+
+const SLOTS: int = 3
+
+var _buttons: VBoxContainer
+var _wheel: Control
+var _t: float = 0.0
+
+
+func _ready() -> void:
+	set_anchors_preset(Control.PRESET_FULL_RECT)
+	var bg: TextureRect = TextureRect.new()
+	var grad: Gradient = Gradient.new()
+	grad.set_color(0, Color(0.98, 0.78, 0.35))
+	grad.set_color(1, Color(0.55, 0.25, 0.12))
+	var gt: GradientTexture2D = GradientTexture2D.new()
+	gt.gradient = grad
+	gt.fill = GradientTexture2D.FILL_RADIAL
+	gt.fill_from = Vector2(0.5, 0.35)
+	gt.fill_to = Vector2(1.1, 1.1)
+	bg.texture = gt
+	bg.stretch_mode = TextureRect.STRETCH_SCALE
+	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(bg)
+	_wheel = Control.new()
+	_wheel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_wheel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_wheel.draw.connect(_draw_wheel)
+	add_child(_wheel)
+	var col: VBoxContainer = VBoxContainer.new()
+	col.set_anchors_preset(Control.PRESET_CENTER)
+	col.alignment = BoxContainer.ALIGNMENT_CENTER
+	col.add_theme_constant_override('separation', 18)
+	col.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	col.grow_vertical = Control.GROW_DIRECTION_BOTH
+	add_child(col)
+	var title: Label = _label('CHEESE FANTASY', 132, Color(1.0, 0.93, 0.55), 28)
+	col.add_child(title)
+	col.add_child(_label('~ The Last Wheel ~', 54, Color(1, 1, 1), 14))
+	var gap: Control = Control.new()
+	gap.custom_minimum_size = Vector2(0, 40)
+	col.add_child(gap)
+	_buttons = VBoxContainer.new()
+	_buttons.alignment = BoxContainer.ALIGNMENT_CENTER
+	_buttons.add_theme_constant_override('separation', 10)
+	col.add_child(_buttons)
+	var b_new: Button = _button('New Game')
+	b_new.pressed.connect(func() -> void: new_game_pressed.emit())
+	var slot: int = _latest_slot()
+	var b_cont: Button = _button('Continue')
+	b_cont.disabled = slot < 0
+	b_cont.pressed.connect(func() -> void: continue_pressed.emit(slot))
+	var b_quit: Button = _button('Quit')
+	b_quit.pressed.connect(func() -> void:
+		quit_pressed.emit()
+		get_tree().quit())
+	var hint: Label = _label('Curdlewick Farm needs you.   [Enter] confirm   [Esc] back', 24, Color(1, 0.95, 0.85, 0.8), 6)
+	hint.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	hint.position.y -= 60
+	hint.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	add_child(hint)
+	(b_cont if slot >= 0 else b_new).call_deferred('grab_focus')
+	var au: Node = get_node_or_null('/root/Audio')
+	if au != null:
+		au.call('play_music', 'title')
+
+
+func _latest_slot() -> int:
+	var gs: Node = get_node_or_null('/root/GameState')
+	if gs == null:
+		return -1
+	var best: int = -1
+	var best_time: String = ''
+	for s: int in SLOTS:
+		var info: Dictionary = gs.call('save_info', s)
+		if info.get('exists', false) and str(info.get('saved_at', '')) >= best_time:
+			best = s
+			best_time = str(info.get('saved_at', ''))
+	return best
+
+
+func _label(text: String, size: int, color: Color, outline: int) -> Label:
+	var l: Label = Label.new()
+	l.text = text
+	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	l.add_theme_font_size_override('font_size', size)
+	l.add_theme_color_override('font_color', color)
+	l.add_theme_color_override('font_outline_color', Color(0.35, 0.15, 0.05))
+	l.add_theme_constant_override('outline_size', outline)
+	l.add_theme_color_override('font_shadow_color', Color(0, 0, 0, 0.35))
+	l.add_theme_constant_override('shadow_offset_y', 6)
+	return l
+
+
+func _button(text: String) -> Button:
+	var b: Button = Button.new()
+	b.text = text
+	b.custom_minimum_size = Vector2(380, 64)
+	b.add_theme_font_size_override('font_size', 34)
+	var sb: StyleBoxFlat = StyleBoxFlat.new()
+	sb.bg_color = Color(0.35, 0.18, 0.08, 0.85)
+	sb.border_color = Color(1.0, 0.85, 0.4)
+	sb.set_border_width_all(3)
+	sb.set_corner_radius_all(18)
+	var sf: StyleBoxFlat = sb.duplicate() as StyleBoxFlat
+	sf.bg_color = Color(0.85, 0.5, 0.12, 0.95)
+	sf.set_border_width_all(5)
+	b.add_theme_stylebox_override('normal', sb)
+	b.add_theme_stylebox_override('hover', sf)
+	b.add_theme_stylebox_override('focus', sf)
+	b.add_theme_stylebox_override('pressed', sf)
+	b.add_theme_stylebox_override('disabled', sb)
+	b.add_theme_color_override('font_disabled_color', Color(1, 1, 1, 0.3))
+	_buttons.add_child(b)
+	return b
+
+
+func _process(dt: float) -> void:
+	_t += dt
+	_wheel.queue_redraw()
+
+
+## A big slowly turning cheese wheel (with holes) behind the logo.
+func _draw_wheel() -> void:
+	var sz: Vector2 = _wheel.size
+	var c: Vector2 = Vector2(sz.x * 0.5, sz.y * 0.42)
+	var r: float = minf(sz.x, sz.y) * 0.42
+	_wheel.draw_circle(c, r * 1.04, Color(0.85, 0.55, 0.15, 0.55))
+	_wheel.draw_circle(c, r, Color(1.0, 0.82, 0.35, 0.5))
+	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+	rng.seed = 7
+	for i: int in 16:
+		var a: float = rng.randf() * TAU + _t * 0.08
+		var d: float = sqrt(rng.randf()) * r * 0.85
+		var hr: float = rng.randf_range(0.04, 0.11) * r
+		_wheel.draw_circle(c + Vector2(cos(a), sin(a)) * d, hr, Color(0.85, 0.6, 0.2, 0.55))
+"
+
+[node name="Title" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_title")

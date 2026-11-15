@@ -1,0 +1,20 @@
+{
+ "id": "shrine_whisper",
+ "speaker": "The Shrine",
+ "model": "",
+ "accent": "#c8a8f0",
+ "start": "n0",
+ "nodes": {
+  "n0": {
+   "text": "The Rainbow Orchard shrine glows in seven soft colours. A faint purring hums through the apple blossoms.",
+   "next": "n1"
+  },
+  "n1": {
+   "text": "Nine tiny paw prints are carved into the old stone. The Nine Lives Spirits, the farm's cats of ages past, sleep here.",
+   "end": true,
+   "set": {
+    "shrine_seen": true
+   }
+  }
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "id": "cheesemonger",
+ "speaker": "Monger Havarti",
+ "model": "npc_cheesemonger",
+ "accent": "#f2d56a",
+ "start": "n0",
+ "nodes": {
+  "n0": {
+   "text": "Fennel, my dear. Smell that? That's a nineteen-month Alpine, still cave-sweating.",
+   "next": "n1"
+  },
+  "n1": {
+   "text": "A wise cheesemonger knows: young cheeses are mild and hasty, aged cheeses are sharp and patient. Same as cats, really.",
+   "next": "q"
+  },
+  "q": {
+   "text": "What would you like to know about?",
+   "choices": [
+    {
+     "text": "Tell me about the Last Wheel.",
+     "next": "wheel"
+    },
+    {
+     "text": "What makes a good cheese?",
+     "next": "good"
+    },
+    {
+     "text": "Never mind.",
+     "next": "bye"
+    }
+   ]
+  },
+  "wheel": {
+   "text": "A hundred years old. They say one slice can heal a village, and one whiff can wake a sleeping giant. Gorgonzolo wants it to feed the Rot.",
+   "next": "q"
+  },
+  "good": {
+   "text": "Patience, a little mould, and love. Also not leaving it near rats, evidently.",
+   "next": "q"
+  },
+  "bye": {
+   "text": "Stay sharp, Fennel. Like a good cheddar.",
+   "end": true
+  }
+ }
+}

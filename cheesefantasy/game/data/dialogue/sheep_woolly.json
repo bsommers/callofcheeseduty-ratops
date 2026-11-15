@@ -1,0 +1,30 @@
+{
+ "id": "sheep_woolly",
+ "speaker": "Woolly Nelson",
+ "model": "animal_sheep",
+ "accent": "#f0ece0",
+ "start": [
+  {
+   "if": "talked_sheep_woolly",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Baaah. (Translation: I am a fluffy cloud of destiny.)",
+   "next": "n1",
+   "set": "talked_sheep_woolly"
+  },
+  "n1": {
+   "text": "Baa? (Translation: if you count us to fall asleep, you will lose count. We keep moving.)",
+   "end": true
+  },
+  "r0": {
+   "text": "Baaa. (Translation: so fluffy. So very fluffy.)",
+   "end": true
+  }
+ }
+}

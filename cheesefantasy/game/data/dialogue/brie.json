@@ -1,0 +1,20 @@
+{
+ "id": "brie",
+ "speaker": "Madame Brie",
+ "model": "hero_brie",
+ "accent": "#f5f0d8",
+ "start": "n0",
+ "nodes": {
+  "n0": {
+   "text": "Darling, do mind the mud. I am Madame Brie, speckled and stately, and the finest egg-wizard in the Whey Valley.",
+   "next": "n1"
+  },
+  "n1": {
+   "text": "I felt a disturbance in the wind. A blue, rotten sort of draft. Yes, I shall accompany you. Do try to keep up!",
+   "end": true,
+   "set": {
+    "met_brie": true
+   }
+  }
+ }
+}

@@ -1,0 +1,14 @@
+# machine-local symlinks and regenerable output
+/.tools
+/build
+/dist
+/assets-cache
+/out/
+.tracker/
+.godot/
+*.log
+__pycache__/
+# local orchestration state
+/docs/CHECKPOINT.md
+/docs/swarm/prompts/
+/docs/swarm/progress/

@@ -1,0 +1,26 @@
+{
+ "id": "duck_quackers",
+ "speaker": "Quackers",
+ "model": "animal_duck",
+ "accent": "#a8d8e8",
+ "start": [
+  {
+   "if": "talked_duck_quackers",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Quack. (Translation: I am a duck. Duck pond. Duck rules. Do not ask about the ducks in the other pond. We do not speak of them.)",
+   "end": true,
+   "set": "talked_duck_quackers"
+  },
+  "r0": {
+   "text": "Quack. (Translation: ... bread?)",
+   "end": true
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "cook",
+ "speaker": "Chef Camembert",
+ "model": "npc_cook",
+ "accent": "#e86a5a",
+ "start": "n0",
+ "nodes": {
+  "n0": {
+   "text": "Ah, Fennel! Welcome to my kitchen. Mind the cauldron, it is bubbling with opinions today.",
+   "next": "n1"
+  },
+  "n1": {
+   "text": "Listen, cooking is the soul of fighting. A Smoked Gouda glaze makes your fire hotter. A sprig of thyme in your whey makes it gust. Mix and match at the cauldron!",
+   "next": "n2"
+  },
+  "n2": {
+   "text": "Bring me a rare cheese and I'll make you something that would make a rat weep with joy. Or just weep. They weep easily.",
+   "next": "q"
+  },
+  "q": {
+   "text": "Shall I tell you a kitchen secret?",
+   "choices": [
+    {
+     "text": "Yes, please!",
+     "next": "s",
+     "set": "cook_secret"
+    },
+    {
+     "text": "No, I'll find out the hard way.",
+     "next": "no"
+    }
+   ]
+  },
+  "s": {
+   "text": "Never cook angry. Angry cheese gets grainy. Also: butter. When in doubt, more butter.",
+   "end": true
+  },
+  "no": {
+   "text": "Ha! A true chef. Splash first, ask questions later.",
+   "end": true
+  }
+ }
+}

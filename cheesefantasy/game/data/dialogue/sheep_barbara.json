@@ -1,0 +1,26 @@
+{
+ "id": "sheep_barbara",
+ "speaker": "Baa-rbara",
+ "model": "animal_sheep",
+ "accent": "#f0ece0",
+ "start": [
+  {
+   "if": "talked_sheep_barbara",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Baaa! (Translation: the wolf cried 'boy' once, and now nobody trusts a sheep's word. Typical.)",
+   "end": true,
+   "set": "talked_sheep_barbara"
+  },
+  "r0": {
+   "text": "Baaa. (Translation: I would like to speak to the shepherd's manager.)",
+   "end": true
+  }
+ }
+}

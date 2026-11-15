@@ -1,0 +1,24 @@
+{
+ "id": "granny",
+ "speaker": "Granny Edam",
+ "model": "npc_granny",
+ "accent": "#c89adb",
+ "start": "n0",
+ "nodes": {
+  "n0": {
+   "text": "Come closer, dearie. Granny Edam has seen a hundred harvests and sniffed ninety-nine cheeses.",
+   "next": "n1"
+  },
+  "n1": {
+   "text": "The Cheese Cave runs deeper than the hill. The Last Wheel was kept in the Aging Hall, behind a door that only opens for those who know the Three Cuts.",
+   "next": "n2"
+  },
+  "n2": {
+   "text": "Take Madame Brie, that grand hen in the orchard, she hears the winds. Take Clover, the goat in the pasture, she is a wall of iron. And Maple, my granddaughter, she keeps the cellar. Go. Find them!",
+   "end": true,
+   "set": {
+    "granny_hint": true
+   }
+  }
+ }
+}

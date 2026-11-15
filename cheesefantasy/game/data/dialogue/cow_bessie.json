@@ -1,0 +1,30 @@
+{
+ "id": "cow_bessie",
+ "speaker": "Bessie",
+ "model": "animal_cow",
+ "accent": "#e8e0d0",
+ "start": [
+  {
+   "if": "talked_cow_bessie",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Moooo. Mooo moo. (Translation: the grass is delicious today.)",
+   "next": "n1",
+   "set": "talked_cow_bessie"
+  },
+  "n1": {
+   "text": "Moo. (Translation: I make the milk that makes the cheese. I am practically royalty.)",
+   "end": true
+  },
+  "r0": {
+   "text": "Moooo. (Translation: you are standing in my sunbeam.)",
+   "end": true
+  }
+ }
+}

@@ -1,0 +1,147 @@
+{
+ "sfx/ui_select": {
+  "peak_db": -16.0,
+  "rms_db": -30.1,
+  "sec": 0.55
+ },
+ "sfx/ui_confirm": {
+  "peak_db": -10.8,
+  "rms_db": -22.8,
+  "sec": 0.62
+ },
+ "sfx/ui_cancel": {
+  "peak_db": -3.0,
+  "rms_db": -19.2,
+  "sec": 0.62
+ },
+ "sfx/ui_open": {
+  "peak_db": -2.9,
+  "rms_db": -18.5,
+  "sec": 0.62
+ },
+ "sfx/ui_buy": {
+  "peak_db": -11.0,
+  "rms_db": -22.5,
+  "sec": 0.7
+ },
+ "sfx/ui_error": {
+  "peak_db": -10.6,
+  "rms_db": -25.9,
+  "sec": 0.68
+ },
+ "sfx/ui_save": {
+  "peak_db": -2.2,
+  "rms_db": -15.3,
+  "sec": 0.85
+ },
+ "sfx/heal": {
+  "peak_db": -1.9,
+  "rms_db": -15.9,
+  "sec": 0.8
+ },
+ "sfx/dialogue_blip": {
+  "peak_db": -17.1,
+  "rms_db": -21.9,
+  "sec": 0.04
+ },
+ "sfx/dialogue_blip_low": {
+  "peak_db": -17.0,
+  "rms_db": -21.6,
+  "sec": 0.05
+ },
+ "sfx/cooking_sizzle": {
+  "peak_db": -1.9,
+  "rms_db": -25.3,
+  "sec": 1.6
+ },
+ "sfx/summon_sting": {
+  "peak_db": -1.9,
+  "rms_db": -15.7,
+  "sec": 2.4
+ },
+ "sfx/coin": {
+  "peak_db": -12.9,
+  "rms_db": -24.2,
+  "sec": 0.64
+ },
+ "sfx/equip": {
+  "peak_db": -8.5,
+  "rms_db": -24.6,
+  "sec": 0.6
+ },
+ "music/title": {
+  "peak_db": -3.1,
+  "rms_db": -15.7,
+  "sec": 22.86
+ },
+ "music/farm_day": {
+  "peak_db": -1.9,
+  "rms_db": -18.7,
+  "sec": 18.46
+ },
+ "music/fields": {
+  "peak_db": -1.9,
+  "rms_db": -17.6,
+  "sec": 17.14
+ },
+ "music/pond": {
+  "peak_db": -2.9,
+  "rms_db": -15.2,
+  "sec": 25.26
+ },
+ "music/orchard": {
+  "peak_db": -2.1,
+  "rms_db": -14.7,
+  "sec": 20.87
+ },
+ "music/silo": {
+  "peak_db": -1.9,
+  "rms_db": -17.9,
+  "sec": 16.27
+ },
+ "music/cave": {
+  "peak_db": -3.3,
+  "rms_db": -16.5,
+  "sec": 27.43
+ },
+ "music/rot": {
+  "peak_db": -1.9,
+  "rms_db": -18.7,
+  "sec": 20.0
+ },
+ "music/shrine": {
+  "peak_db": -2.2,
+  "rms_db": -16.0,
+  "sec": 29.09
+ },
+ "music/throne": {
+  "peak_db": -1.9,
+  "rms_db": -18.0,
+  "sec": 17.14
+ },
+ "music/battle": {
+  "peak_db": -1.9,
+  "rms_db": -17.7,
+  "sec": 12.8
+ },
+ "music/boss": {
+  "peak_db": -1.9,
+  "rms_db": -18.3,
+  "sec": 12.0
+ },
+ "music/final_boss": {
+  "peak_db": -1.9,
+  "rms_db": -16.9,
+  "sec": 11.16
+ },
+ "music/victory": {
+  "peak_db": -1.9,
+  "rms_db": -18.4,
+  "sec": 4.5
+ },
+ "music/game_over": {
+  "peak_db": -3.7,
+  "rms_db": -16.6,
+  "sec": 4.0
+ }
+}

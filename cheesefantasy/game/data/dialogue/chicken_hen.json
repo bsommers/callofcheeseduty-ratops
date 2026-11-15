@@ -1,0 +1,30 @@
+{
+ "id": "chicken_hen",
+ "speaker": "Hen Solo",
+ "model": "animal_chicken",
+ "accent": "#e8d0b0",
+ "start": [
+  {
+   "if": "talked_chicken_hen",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Cluck cluck. (Translation: I have a bad feeling about this coop.)",
+   "next": "n1",
+   "set": "talked_chicken_hen"
+  },
+  "n1": {
+   "text": "Cluck? (Translation: Never tell me the odds of getting a good egg. The odds are scrambled.)",
+   "end": true
+  },
+  "r0": {
+   "text": "Cluck. (Translation: may the Fork be with you.)",
+   "end": true
+  }
+ }
+}

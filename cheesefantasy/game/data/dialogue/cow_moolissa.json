@@ -1,0 +1,26 @@
+{
+ "id": "cow_moolissa",
+ "speaker": "Moolissa",
+ "model": "animal_cow",
+ "accent": "#e8e0d0",
+ "start": [
+  {
+   "if": "talked_cow_moolissa",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Mooo? (Translation: have you seen my calf? Oh, there she is, eating the fence. Again.)",
+   "end": true,
+   "set": "talked_cow_moolissa"
+  },
+  "r0": {
+   "text": "Moo-ve along, dear. (She's very proud of that one.)",
+   "end": true
+  }
+ }
+}

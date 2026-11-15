@@ -1,0 +1,30 @@
+{
+ "id": "kid_colby",
+ "speaker": "Little Colby",
+ "model": "npc_kid",
+ "accent": "#f09a5a",
+ "start": [
+  {
+   "if": "talked_kid_colby",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "I'm Colby! Like the cheese! Well, Colby-Jack. Jack is my brother. He's a rind of a different colour.",
+   "next": "n1",
+   "set": "talked_kid_colby"
+  },
+  "n1": {
+   "text": "I saw a rat in the corn yesterday. It was THIS big. Okay, maybe THIS big. Okay, normal rat-size. But scary!",
+   "end": true
+  },
+  "r0": {
+   "text": "Did you know cows have four stomachs? I only have one. I am at a disadvantage.",
+   "end": true
+  }
+ }
+}

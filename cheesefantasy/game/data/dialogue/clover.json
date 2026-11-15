@@ -1,0 +1,24 @@
+{
+ "id": "clover",
+ "speaker": "Clover",
+ "model": "hero_clover",
+ "accent": "#9a8a6a",
+ "start": "n0",
+ "nodes": {
+  "n0": {
+   "text": "*clang* Oh. A kitten. Did you want something?",
+   "next": "n1"
+  },
+  "n1": {
+   "text": "Name's Clover. I protect this pasture with my skillet. Rats took the lunch cheese. I hold a grudge. A large, iron one.",
+   "next": "n2"
+  },
+  "n2": {
+   "text": "If you're heading for the cave, I'm with you. Nobody steals my cheese and lives to... not give it back.",
+   "end": true,
+   "set": {
+    "met_clover": true
+   }
+  }
+ }
+}

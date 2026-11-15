@@ -1,0 +1,20 @@
+{
+ "id": "maple",
+ "speaker": "Maple",
+ "model": "hero_maple",
+ "accent": "#7fd0ee",
+ "start": "n0",
+ "nodes": {
+  "n0": {
+   "text": "Fennel! Grandpa told me about the Last Wheel. I keep the cellar, I know every shelf in the cave.",
+   "next": "n1"
+  },
+  "n1": {
+   "text": "I'm coming with you. Don't argue, I've already packed. Three jars of pickles, a warm scarf, and a very sharp ladle.",
+   "end": true,
+   "set": {
+    "met_maple": true
+   }
+  }
+ }
+}

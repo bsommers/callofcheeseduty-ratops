@@ -1,0 +1,30 @@
+{
+ "id": "pig_oinks",
+ "speaker": "Sir Oinks-a-Lot",
+ "model": "animal_pig",
+ "accent": "#f2a8b0",
+ "start": [
+  {
+   "if": "talked_pig_oinks",
+   "goto": "r0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Oink! Oink oink. (Translation: I am a truffle expert. I can smell Roquefort from three counties away.)",
+   "next": "n1",
+   "set": "talked_pig_oinks"
+  },
+  "n1": {
+   "text": "Oink... (Translation: the rats smell like old socks and bad decisions.)",
+   "end": true
+  },
+  "r0": {
+   "text": "Oink. (Mud. Mud is happiness.)",
+   "end": true
+  }
+ }
+}

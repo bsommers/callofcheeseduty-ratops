@@ -1,0 +1,75 @@
+{
+ "id": "farmer_gouda",
+ "speaker": "Farmer Gouda",
+ "model": "npc_farmer",
+ "accent": "#e8b04a",
+ "start": [
+  {
+   "if": "quest_started",
+   "goto": "rem0"
+  },
+  {
+   "goto": "n0"
+  }
+ ],
+ "nodes": {
+  "n0": {
+   "text": "Fennel! Thank goodness you're up. Something terrible has happened. Something... un-brie-lievable.",
+   "next": "n1"
+  },
+  "n1": {
+   "text": "Last night, a gang of rats crept into the Cheese Cave and stole the LAST WHEEL. A hundred years of rind, mould and patience, gone.",
+   "next": "n2"
+  },
+  "n2": {
+   "text": "Their leader is that rotten scoundrel, King Gorgonzolo. Wherever his gang walks, the Blue Rot creeps over my fields. Look at my poor corn!",
+   "next": "ask"
+  },
+  "ask": {
+   "text": "You're the best apprentice cheesemonger-chef this farm has ever had. (You're also the only one. But still!) Will you find the Last Wheel?",
+   "choices": [
+    {
+     "text": "I'll bring it home, Farmer Gouda!",
+     "next": "yes",
+     "set": {
+      "quest_started": true
+     },
+     "quest": [
+      "last_wheel",
+      "active"
+     ],
+     "gold": 50
+    },
+    {
+     "text": "Rat King? Is that a real job?",
+     "next": "lore"
+    },
+    {
+     "text": "Can I have a snack first?",
+     "next": "snack"
+    }
+   ]
+  },
+  "lore": {
+   "text": "Oh, it's real. He wears a crown of bottle caps and smells faintly of old blue cheese. And he is VERY good at squeaking dramatically.",
+   "next": "ask"
+  },
+  "snack": {
+   "text": "A growing kitten needs her curds, I know. Visit Chef Camembert in the farmhouse. But hurry, the Rot won't wait!",
+   "next": "ask"
+  },
+  "yes": {
+   "text": "That's my girl! Here, 50 gold for supplies. Talk to the folks around the farm: Granny Edam knows the cave's secrets, and Chef Camembert can teach you to cook with what you find. Cook it right and it'll melt the toughest rat!",
+   "toast": "Quest started: The Last Wheel",
+   "end": true
+  },
+  "rem0": {
+   "text": "Any luck with the Last Wheel, Fennel? The cave is north, up the hill past the big oak. Be careful of rats, crows, and... I'm told, mould with opinions.",
+   "next": "rem1"
+  },
+  "rem1": {
+   "text": "Rest at a campfire if you get tired. Nothing like a toasty fire and a cheese toastie. Go on, I believe in you!",
+   "end": true
+  }
+ }
+}
