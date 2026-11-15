@@ -1,6 +1,6 @@
 #!/bin/sh
 # usage: tools/build.sh linux|windows|macos|all [--debug]
-# Exports to build/<platform>/ (build -> /datanapps/ratops/build). Templates: ~/.local/share/godot/export_templates/4.7.2.stable
+# Exports to build/<platform>/ (build -> a large disk). Templates: ~/.local/share/godot/export_templates/4.7.2.stable
 set -eu
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 MODE=--export-release; [ "${2:-}" = "--debug" ] && MODE=--export-debug

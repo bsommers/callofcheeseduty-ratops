@@ -7,7 +7,7 @@
 On the Mac: ad-hoc signed, launched with `--rendering-driver metal --quit-after 600 --verbose`, exit 0: "Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 Pro", main.tscn, main.gdc, ui_root, look_rig, audio_manager loaded, 0 lines containing "error". Log: `out/mac/run.log`. Not verified: visual title screen (no screenshot possible), x86_64 slice, dmg mount/open on a clean user.
 
 ## Deviations from the contract
-Host `user@macbuild.local` no longer resolves; used `bill@bigmac.local` (192.168.1.251, per shell history and duum docs). Scratch dir `~/build/ratops-scratch`. No screenshot.
+Host `user@old-mac.local` no longer resolves; used another reachable Mac on the LAN. Scratch dir `~/build/ratops-scratch`. No screenshot.
 
 ## Mistakes I made and how I fixed them
 1. `set -e` aborted the pipeline when the optional `ls shot.png` failed; added `exit 0` to the remote script.

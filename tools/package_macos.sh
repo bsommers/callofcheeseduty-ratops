@@ -1,10 +1,10 @@
 #!/bin/sh
 # usage: tools/package_macos.sh [--no-build]
 # Exports the macOS zip, tests it on the Mac (ad-hoc sign, short launch, log, screenshot), builds a .dmg there,
-# pulls it to dist/. Env: MAC_HOST (default bill@bigmac.local; user@macbuild.local also was valid earlier).
+# pulls it to dist/. Env: MAC_HOST (required, e.g. user@your-mac.local).
 set -eu
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-MAC_HOST="${MAC_HOST:-bill@bigmac.local}"
+MAC_HOST="${MAC_HOST:?set MAC_HOST=user@your-mac.local}"
 [ "${1:-}" = "--no-build" ] || "$ROOT/tools/build.sh" macos
 ZIP="$ROOT/build/macos/KasekriegRatOps.zip"
 [ -f "$ZIP" ] || { echo "missing $ZIP" >&2; exit 1; }

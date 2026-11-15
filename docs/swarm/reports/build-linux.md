@@ -1,7 +1,7 @@
 # build-linux report
 
 ## What I built
-- Export templates 4.7.2.stable in /datanapps/ratops/godot-export-templates (SHA512 verified; ~/.local/share/godot/export_templates already symlinked there).
+- Export templates 4.7.2.stable in <big-disk>/godot-export-templates (SHA512 verified; ~/.local/share/godot/export_templates already symlinked there).
 - `game/export_presets.cfg` (Linux x86_64, Windows x86_64 embed-PCK, macOS universal unsigned), `tools/build.sh`, `tools/package_linux.sh`, `docs/BUILD.md`.
 - Artifacts (dist/): tar.gz 664.4 MB, .deb 664.6 MB, self-extracting -install.sh 664.4 MB. build/linux: binary 73.5 MB + pck 649.3 MB.
 

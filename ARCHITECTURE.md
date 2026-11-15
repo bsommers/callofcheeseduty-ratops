@@ -18,7 +18,7 @@ Title text in-game: `KÄSEKRIEG: RAT OPS`. Do not use third-party trademarks in 
 - **Blender 5.3** (snap, headless: `blender -b -P script.py`) authors meshes/rigs/animations as **glTF (.glb)** into `game/assets/models/`.
   Source scripts live in `tools/blender/` so every model is reproducible from text.
 - **Textures/HDRIs**: only CC0 sources (Poly Haven, ambientCG), fetched by `tools/fetch_assets.mjs` from a manifest into `assets-cache/`
-  then copied (resized) into `game/assets/`; every file recorded in `docs/ASSETS.md` with source URL and license. Disk: `/` is nearly full, so heavy/regenerable data lives on `/datanapps/ratops/` via symlinks in the repo (`assets-cache`, `out`, `build`, `dist`, and `~/.local/share/godot/export_templates`). Put any new large output (previews, exports, caches, downloads) there; budget 6 GB for committed-path assets (`game/assets/`), 2K textures max.
+  then copied (resized) into `game/assets/`; every file recorded in `docs/ASSETS.md` with source URL and license. Disk: `/` is nearly full, so heavy/regenerable data lives on `<big-disk>/` via symlinks in the repo (`assets-cache`, `out`, `build`, `dist`, and `~/.local/share/godot/export_templates`). Put any new large output (previews, exports, caches, downloads) there; budget 6 GB for committed-path assets (`game/assets/`), 2K textures max.
 - **No other dependencies.** Node 26 for tooling (zero npm deps). Blender and Godot only.
 - Real-time hardware ray tracing is not available in Godot; "ray-traced look" = SDFGI/VoxelGI + SSR + SSAO + SSIL + volumetric fog + reflection probes + contact shadows.
 

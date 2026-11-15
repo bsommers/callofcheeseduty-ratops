@@ -788,7 +788,7 @@ def sheet(names, outpng, W=360, Hw=48, Hs=64):
 
 if __name__ == "__main__":
     if "--sheet" in sys.argv:
-        pv = "/home/bill/src/fun/callofcheeseduty-ratops/out/previews/audio-v2"
+        pv = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "out", "previews", "audio-v2")
         sheet([f"music/music_{m}{x}" for m in ("cellar", "sewer", "hall") for x in ("", "_combat")] + ["music/music_boss", "music/music_title", "music/music_victory"], pv + "/music.png")
         sheet([f"sfx/{a}_{k}" for k in KINDS for a in ("bark", "hurt", "death", "taunt")][:12], pv + "/voices_a.png", 240, 36, 48)
         sheet([f"sfx/{a}_{k}" for k in KINDS for a in ("bark", "hurt", "death", "taunt")][12:], pv + "/voices_b.png", 240, 36, 48)

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KÄSEKRIEG: RAT OPS</title>
+<meta name="description" content="KÄSEKRIEG: RAT OPS is a third-person, Counter-Strike-style cat-versus-rat shooter built in Godot 4 with photoreal PBR materials, fur shells and a techno-metal soundtrack. Free download for Linux, Windows and macOS.">
+<meta name="theme-color" content="#0d0e11">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="canonical" href="https://bsommers.github.io/callofcheeseduty-ratops/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KÄSEKRIEG: RAT OPS">
+<meta property="og:description" content="A cat, a gatling gun and a cellar full of armed rats. Third-person tactical shooter made with an AI swarm, Godot 4 and procedural Blender.">
+<meta property="og:url" content="https://bsommers.github.io/callofcheeseduty-ratops/">
+<meta property="og:image" content="https://bsommers.github.io/callofcheeseduty-ratops/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bsommers.github.io/callofcheeseduty-ratops/img/og.jpg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <a class="brand" href="#top"><img src="img/icon-256.png" alt="" width="28" height="28"> <span>RAT OPS</span></a>
+  <nav aria-label="Main">
+    <a href="#features">Features</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#arsenal">Arsenal</a>
+    <a href="#making">Making of</a>
+    <a href="#print">3D print</a>
+    <a class="btn small" href="#download">Download</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="hero" style="--hero:url('img/lvl-fondue.jpg')">
+  <div class="hero-inner">
+    <img class="hero-icon" src="img/icon-256.png" alt="Cheese wedge emblem" width="120" height="120">
+    <h1><span class="gold">KÄSEKRIEG</span><span class="sub">RAT OPS</span></h1>
+    <p class="tagline">One cat. One purr-forator. A cellar full of armed rats and a very big cheese.</p>
+    <p class="cta">
+      <a class="btn" id="hero-dl" href="#download">Download</a>
+      <a class="btn ghost" href="#gallery">See the game</a>
+    </p>
+    <p class="meta">Free &middot; Linux, Windows, macOS &middot; Godot 4 &middot; <span id="hero-os"></span></p>
+  </div>
+</section>
+
+<section id="features" class="wrap">
+  <h2>What you get</h2>
+  <div class="grid features">
+    <article class="card"><h3>Photoreal PBR</h3><p>Brick, parquet, marble, mould and molten cheese rendered with full PBR materials, SDFGI, SSR and volumetric fog. Every surface is lit like it matters.</p></article>
+    <article class="card"><h3>Fur shells</h3><p>Real-time shell-rendered fur on the cat and the rats, with lighting and silhouette fuzz. Plus subsurface cheese that glows.</p></article>
+    <article class="card"><h3>6 levels</h3><p>From The Cheese Cellar to the Throne of the Big Cheese: cellar, barracks, fondue works, moonlit mirror hall, blue vault and the boss arena.</p></article>
+    <article class="card"><h3>6 rat types</h3><p>Mouse gunners, storm troopers, officers, sewer biters, cheese-lobbing panzer rats and a multi-phase boss, each with its own AI, cover and voice.</p></article>
+    <article class="card"><h3>Techno-metal audio</h3><p>Layered industrial techno-metal that ramps with combat, plus aggressive character voices and positional gunfire, all generated.</p></article>
+    <article class="card"><h3>CS-style gunplay</h3><p>Third-person over-the-shoulder aiming with recoil, spread, ADS, reloads, headshots (x2.5) and distance falloff. Hitscan, projectile and beam weapons.</p></article>
+  </div>
+</section>
+
+<section id="gallery" class="wrap">
+  <h2>Gallery</h2>
+  <p class="lead">Straight out of the engine. Click to enlarge, arrow keys to browse.</p>
+  <div class="gallery" id="gallery-grid">
+    <a href="img/lvl-cellar.jpg" data-cap="E1M1 The Cheese Cellar"><img src="img/lvl-cellar.jpg" alt="Dim brick cellar lit by warm candlelight" loading="lazy"></a>
+    <a href="img/lvl-fondue.jpg" data-cap="E1M3 The Fondue Works"><img src="img/lvl-fondue.jpg" alt="Orange industrial hall with pipes and molten cheese glow" loading="lazy"></a>
+    <a href="img/lvl-vault.jpg" data-cap="E1M5 The Blue Vault"><img src="img/lvl-vault.jpg" alt="Blue-lit stone vault with wet cobbles" loading="lazy"></a>
+    <a href="img/gameplay-hud.jpg" data-cap="Third-person view with HUD"><img src="img/gameplay-hud.jpg" alt="The cat hero seen from behind with health and ammo HUD" loading="lazy"></a>
+    <a href="img/lvl-barracks.jpg" data-cap="E1M2 Rat Barracks"><img src="img/lvl-barracks.jpg" alt="Checkerboard-floored barracks hall in low light" loading="lazy"></a>
+    <a href="img/lvl-mirrors.jpg" data-cap="E1M4 Moonlit Hall of Mirrors"><img src="img/lvl-mirrors.jpg" alt="Moonlit courtyard under a starry sky" loading="lazy"></a>
+    <a href="img/lvl-throne.jpg" data-cap="E1M6 Throne of the Big Cheese"><img src="img/lvl-throne.jpg" alt="Red-lit throne room floor" loading="lazy"></a>
+    <a href="img/enemy-mouse.jpg" data-cap="A mouse gunner closes in"><img src="img/enemy-mouse.jpg" alt="A rat soldier aiming a rifle between green glowing pillars" loading="lazy"></a>
+    <a href="img/boss-arena.jpg" data-cap="The Big Cheese's arena"><img src="img/boss-arena.jpg" alt="Gold boss arena with the cat facing the boss" loading="lazy"></a>
+    <a href="img/shader-fur.jpg" data-cap="Fur shell shader test"><img src="img/shader-fur.jpg" alt="Material test scene with furry spheres and a cheese wedge" loading="lazy"></a>
+    <a href="img/shader-cheese.jpg" data-cap="Cheese material test"><img src="img/shader-cheese.jpg" alt="Cheese materials: cheddar, brie and blue" loading="lazy"></a>
+    <a href="img/ui-title.jpg" data-cap="Title screen"><img src="img/ui-title.jpg" alt="Title screen with cheese emblem and menu" loading="lazy"></a>
+  </div>
+</section>
+
+<section id="levels" class="wrap">
+  <h2>Six levels</h2>
+  <ol class="levels">
+    <li><b>E1M1 The Cheese Cellar</b><span>Something smells delicious. Something also smells like rats.</span><i>par 4:00</i></li>
+    <li><b>E1M2 Rat Barracks</b><span>Boots, bunks and bad attitudes.</span><i>par 5:00</i></li>
+    <li><b>E1M3 The Fondue Works</b><span>Pipes, pumps and molten cheese. Stay on the grating, kitty.</span><i>par 7:00</i></li>
+    <li><b>E1M4 Moonlit Hall of Mirrors</b><span>Even the rats hang mirrors. Vanity is a weakness.</span><i>par 5:00</i></li>
+    <li><b>E1M5 The Blue Vault</b><span>The richest rats keep their gold where the mould is thickest.</span><i>par 6:00</i></li>
+    <li><b>E1M6 Throne of the Big Cheese</b><span>The Big Cheese does not rise for visitors. Make him.</span><i>par 6:00</i></li>
+  </ol>
+</section>
+
+<section id="arsenal" class="wrap">
+  <h2>Know your enemy</h2>
+  <p class="lead">Stats come straight from <code>game/data/enemies.json</code>.</p>
+  <figure class="wide"><img src="img/lineup_34.jpg" alt="Line-up of the rat types from the Big Cheese to the small mouse" loading="lazy" width="1400" height="623"><figcaption>The rat roster, boss to mouse.</figcaption></figure>
+  <div class="grid enemies">
+    <article class="card"><h3>Maus Schütze</h3><p class="tag">Mouse gunner</p><dl><dt>HP</dt><dd>25</dd><dt>Attack</dt><dd>Single shot, 3-9</dd><dt>Score</dt><dd>100</dd></dl></article>
+    <article class="card"><h3>Sturmratte</h3><p class="tag">Trooper</p><dl><dt>HP</dt><dd>50</dd><dt>Attack</dt><dd>3-round burst, 3-8</dd><dt>Score</dt><dd>300</dd></dl></article>
+    <article class="card"><h3>Ratten-Offizier</h3><p class="tag">Officer</p><dl><dt>HP</dt><dd>40</dd><dt>Attack</dt><dd>Fast pistol, 4-11</dd><dt>Score</dt><dd>400</dd></dl></article>
+    <article class="card"><h3>Kanalratte</h3><p class="tag">Sewer rat</p><dl><dt>HP</dt><dd>14</dd><dt>Attack</dt><dd>Fast melee, 3-8</dd><dt>Score</dt><dd>150</dd></dl></article>
+    <article class="card"><h3>Panzerratte</h3><p class="tag">Panzer</p><dl><dt>HP</dt><dd>120</dd><dt>Attack</dt><dd>Cheeseball, 14-28 splash</dd><dt>Score</dt><dd>700</dd></dl></article>
+    <article class="card boss"><h3>Der Große Käse</h3><p class="tag">Boss, two phases</p><dl><dt>HP</dt><dd>1100</dd><dt>Attack</dt><dd>8-round volleys, 3-7</dd><dt>Score</dt><dd>10000</dd></dl></article>
+  </div>
+
+  <h3 class="sub-h">Your arsenal</h3>
+  <div class="grid weapons">
+    <article class="card"><h3>Claws</h3><p class="tag">Melee</p><p>10-26 damage, 2 m reach, a swipe every 0.34 s. Free and silent.</p></article>
+    <article class="card"><h3>Hairball Pistol</h3><p class="tag">Hitscan</p><p>9-24 damage, 12-round magazine, accurate and quick to reload.</p></article>
+    <article class="card"><h3>Purr-forator</h3><p class="tag">Gatling</p><p>8-19 damage at ~10 rounds a second, 60-round drum. Hold the trigger.</p></article>
+    <article class="card"><h3>Yarn Bomber</h3><p class="tag">Projectile</p><p>Lobs yarn bombs: a projectile weapon with splash damage.</p></article>
+    <article class="card"><h3>Der Rote Punkt</h3><p class="tag">Beam</p><p>The red dot. Beam weapon with 64 m reach. No cat can resist it.</p></article>
+  </div>
+</section>
+
+<section id="making" class="wrap">
+  <h2>How it was made</h2>
+  <div class="split">
+    <div>
+      <p>KÄSEKRIEG: RAT OPS was built by a <b>swarm of AI agents</b>, each owning one slice of the game: engine core, player controller, enemy AI, level builder, shaders and materials, Blender character models, audio, QA bot play-testing and packaging. A lead agent integrated their work, and every agent left a report behind.</p>
+      <p>The game runs on <b>Godot 4</b> (GDScript, Vulkan/Metal). Models, rigs, animation clips and even the 3D-print exports are generated <b>procedurally in Blender</b> by scripts, textures are PBR sets fetched and trimmed for size, and the music and voices are generated in code.</p>
+      <ul class="links">
+        <li><a href="https://github.com/bsommers/callofcheeseduty-ratops">Source repository</a></li>
+        <li><a href="https://github.com/bsommers/callofcheeseduty-ratops/blob/main/docs/swarm/SWARM.md">How the swarm worked</a></li>
+        <li><a href="https://github.com/bsommers/callofcheeseduty-ratops/tree/main/docs/swarm/reports">Per-agent reports</a></li>
+        <li><a href="https://github.com/bsommers/callofcheeseduty-ratops/blob/main/docs/swarm/LEARNINGS.md">Learnings</a></li>
+        <li><a href="https://github.com/bsommers/callofcheeseduty-ratops/blob/main/ARCHITECTURE.md">Architecture</a></li>
+        <li><a href="https://github.com/bsommers/callofcheeseduty-ratops/blob/main/docs/BUILD.md">Build it yourself</a></li>
+      </ul>
+    </div>
+    <figure><img src="img/poses.jpg" alt="Contact sheet of the cat hero animation poses" loading="lazy" width="1400" height="441"><figcaption>Hero animation clips, procedurally rigged in Blender.</figcaption></figure>
+  </div>
+  <figure class="wide"><img src="img/contact.jpg" alt="Contact sheet of weapons and props" loading="lazy" width="1400" height="650"><figcaption>Weapons and props, generated by script.</figcaption></figure>
+</section>
+
+<section id="print" class="wrap">
+  <h2>3D-print the rats</h2>
+  <p class="lead">The characters, weapons, props and whole level dioramas export as printable OBJ and STL models. Contact sheets below; files and settings are in the repo.</p>
+  <div class="gallery print" id="print-grid">
+    <a href="img/print-characters.jpg" data-cap="Printable characters"><img src="img/print-characters.jpg" alt="Contact sheet of printable character models" loading="lazy"></a>
+    <a href="img/print-squad.jpg" data-cap="Squad diorama"><img src="img/print-squad.jpg" alt="Squad of cat and rat figures on a base" loading="lazy"></a>
+    <a href="img/print-levels.jpg" data-cap="Level dioramas"><img src="img/print-levels.jpg" alt="Top-down level dioramas for printing" loading="lazy"></a>
+    <a href="img/print-weapons_props.jpg" data-cap="Weapons and props"><img src="img/print-weapons_props.jpg" alt="Printable weapons and props arranged on a plate" loading="lazy"></a>
+  </div>
+  <p><a class="btn ghost" href="https://github.com/bsommers/callofcheeseduty-ratops/blob/main/docs/PRINTING.md">Printing guide</a></p>
+</section>
+
+<section id="download" class="wrap">
+  <h2>Download</h2>
+  <p class="lead" id="dl-lead">Pick your platform. Builds are unsigned (see the install notes), roughly 180-220 MB each. Version 0.1.0.</p>
+  <div class="grid dl" id="dl-grid">
+    <article class="card os" data-os="linux">
+      <h3>Linux <small>x86_64</small></h3>
+      <p><a class="btn" href="https://github.com/bsommers/callofcheeseduty-ratops/releases/latest/download/kasekrieg-ratops-0.1.0-linux-x86_64-install.sh">Self-extracting installer (176 MB)</a></p>
+      <ul class="alt">
+        <li><a href="https://github.com/bsommers/callofcheeseduty-ratops/releases/latest/download/kasekrieg-ratops-0.1.0-linux-x86_64.tar.gz">.tar.gz</a> (176 MB)</li>
+        <li><a href="https://github.com/bsommers/callofcheeseduty-ratops/releases/latest/download/kasekrieg-ratops_0.1.0_amd64.deb">.deb</a> (176 MB)</li>
+      </ul>
+    </article>
+    <article class="card os" data-os="windows">
+      <h3>Windows <small>x64</small></h3>
+      <p><a class="btn" href="https://github.com/bsommers/callofcheeseduty-ratops/releases/latest/download/KasekriegRatOps-windows-x64-setup.zip">Setup .zip (189 MB)</a></p>
+      <p class="note">Unzip and run <code>install.cmd</code>.</p>
+    </article>
+    <article class="card os" data-os="macos">
+      <h3>macOS</h3>
+      <p><a class="btn" href="https://github.com/bsommers/callofcheeseduty-ratops/releases/latest/download/KasekriegRatOps-macos.dmg">.dmg (221 MB)</a></p>
+      <p class="note">Copy the app to Applications first.</p>
+    </article>
+  </div>
+  <p class="note">All files are on the <a href="https://github.com/bsommers/callofcheeseduty-ratops/releases/latest">latest release page</a>. Checksums are in <a href="https://github.com/bsommers/callofcheeseduty-ratops/releases/latest/download/SHA256SUMS">SHA256SUMS</a>.</p>
+
+  <h3 class="sub-h">One-line install</h3>
+  <p>Detects your system, downloads from the latest release, verifies the SHA-256 and installs per user. No sudo, no admin. Add <code>--dry-run</code> to preview.</p>
+  <div class="tabs" role="tablist" aria-label="Install script">
+    <button role="tab" aria-selected="true" aria-controls="p-sh" id="t-sh">Linux / macOS</button>
+    <button role="tab" aria-selected="false" aria-controls="p-ps" id="t-ps" tabindex="-1">Windows PowerShell</button>
+  </div>
+  <div class="panel" id="p-sh" role="tabpanel" aria-labelledby="t-sh">
+    <div class="code"><code>curl -fsSL https://bsommers.github.io/callofcheeseduty-ratops/install.sh | sh</code><button class="copy" type="button">Copy</button></div>
+    <p class="note">Uninstall: <code>... | sh -s -- --uninstall</code>. Prefer to read it first? <a href="install.sh">install.sh</a></p>
+  </div>
+  <div class="panel" id="p-ps" role="tabpanel" aria-labelledby="t-ps" hidden>
+    <div class="code"><code>irm https://bsommers.github.io/callofcheeseduty-ratops/install.ps1 | iex</code><button class="copy" type="button">Copy</button></div>
+    <p class="note">Read it first: <a href="install.ps1">install.ps1</a>. The bundled installer is per user; no admin needed.</p>
+  </div>
+
+  <h3 class="sub-h">Install notes</h3>
+  <div class="grid notes">
+    <details class="card" data-os="linux" open><summary>Linux</summary>
+      <p>Run the installer script (<code>sh kasekrieg-ratops-0.1.0-linux-x86_64-install.sh</code>), or unpack the tarball and run <code>kasekrieg-ratops.sh</code>, or <code>sudo apt install ./kasekrieg-ratops_0.1.0_amd64.deb</code> (sudo is only needed for the .deb, which installs system-wide). Needs a Vulkan-capable GPU and driver. Remove with <code>--uninstall</code>.</p></details>
+    <details class="card" data-os="windows"><summary>Windows</summary>
+      <p>Unzip and run <code>install.cmd</code> (per user, no admin; <code>install.ps1 -AllUsers</code> for Program Files). <b>SmartScreen warns</b> because the exe is unsigned: click <b>More info</b>, then <b>Run anyway</b>. Uninstall from Apps &amp; Features or <code>uninstall.ps1</code>; saves are kept.</p></details>
+    <details class="card" data-os="macos"><summary>macOS</summary>
+      <p>Open the dmg and copy the app to Applications (do not run it from the dmg). <b>Gatekeeper blocks unsigned apps.</b> Either run <code>xattr -dr com.apple.quarantine "/Applications/KÄSEKRIEG- RAT OPS.app"</code>, or right-click the app, Open, Open. On macOS 15+: open once, then System Settings, Privacy &amp; Security, Open Anyway.</p></details>
+  </div>
+
+  <h3 class="sub-h">Verify your download</h3>
+  <div class="code"><code>sha256sum -c SHA256SUMS</code><button class="copy" type="button">Copy</button></div>
+  <p class="note">On macOS use <code>shasum -a 256 -c SHA256SUMS</code>. Expected for 0.1.0:</p>
+  <table class="sums">
+    <tbody>
+      <tr><th scope="row">kasekrieg-ratops-0.1.0-linux-x86_64.tar.gz</th><td>6ce79d356aa07f522381e953b6f33dcf6b7b163be884bec4452cbe1519edbb20</td></tr>
+      <tr><th scope="row">kasekrieg-ratops_0.1.0_amd64.deb</th><td>ccc2b042f7c5e2c57ee6faaf47669fdb19ab2e464fdd2cc65be776080419bd7d</td></tr>
+      <tr><th scope="row">kasekrieg-ratops-0.1.0-linux-x86_64-install.sh</th><td>02c08dd3ad708fa156774df1fe6f555fc14799a83ecca76530167927c5406107</td></tr>
+      <tr><th scope="row">KasekriegRatOps-windows-x64-setup.zip</th><td>1e25f40b1092b358941b4bd25d6b8a556b93e57f03ed75b446b9e4015523b7ae</td></tr>
+      <tr><th scope="row">KasekriegRatOps-macos.dmg</th><td>265a9e16e632a7495d8114aab86132c785d5ef6d265fa9820584bb440561ea7b</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Known issues and release notes: <a href="https://github.com/bsommers/callofcheeseduty-ratops/blob/main/docs/RELEASE-NOTES.md">RELEASE-NOTES.md</a>. Expect a hard game.</p>
+</section>
+</main>
+
+<footer>
+  <p><img src="img/icon-256.png" alt="" width="24" height="24"> KÄSEKRIEG: RAT OPS &middot; <a href="https://github.com/bsommers/callofcheeseduty-ratops">GitHub</a> &middot; <a href="https://github.com/bsommers/callofcheeseduty-ratops/blob/main/LICENSE">License</a></p>
+  <p class="note">Made by an AI swarm, a lot of cheese and one very patient human.</p>
+</footer>
+
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+  <button class="lb-close" type="button" aria-label="Close">&times;</button>
+  <button class="lb-prev" type="button" aria-label="Previous image">&#8249;</button>
+  <figure><img alt="" id="lb-img"><figcaption id="lb-cap"></figcaption></figure>
+  <button class="lb-next" type="button" aria-label="Next image">&#8250;</button>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

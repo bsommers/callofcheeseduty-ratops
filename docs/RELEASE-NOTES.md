@@ -4,7 +4,7 @@ Photoreal third-person rat-versus-rat shooter (Godot 4.7, Forward+). Unsigned, u
 
 ## What is in the game
 - 6 levels (e1m1 to e1m6), 4 difficulty skills (0 Kitten to 3), keys and locked doors, secrets (pushwalls), treasure, exit switch.
-- Hero rat with over-the-shoulder camera (shoulder swap), 5 weapon slots plus claws, reload, aim, sprint, crouch, jump.
+- Hero cat (Major Marmalade) with over-the-shoulder camera (shoulder swap), 5 weapon slots plus claws, reload, aim, sprint, crouch, jump.
 - Enemy rats with patrol, cover and perception AI, boss with stun; techno-metal music layers, character voices, HUD, menus, minimap/map.
 
 ## Controls (defaults)

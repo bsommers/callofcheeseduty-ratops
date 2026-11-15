@@ -8,7 +8,7 @@ Install (per user, no admin): unzip, run `install.cmd` (or `install.ps1`). `-All
 Creates the Start Menu shortcut "KASEKRIEG RAT OPS" and an Apps & Features entry; uninstall via that entry or
 `<install dir>\uninstall.ps1` (keeps user saves in %APPDATA%\Godot).
 
-## VM test (~/src/infra/win-devvm, Windows 11)
+## VM test (a Windows 11 VM)
     ./vm.sh push <zip> ratops/    # 3.5 s for 675 MB (SLIRP)
     ./vm.sh ssh '...'             # tar -xf zip (2.3 s), install.ps1 (3.3 s), launch, uninstall.ps1 -Quiet
 `--headless --quit-after 120` exits 0 in ~3 s. Windowed runs (d3d12/vulkan) exit 0 immediately with no log because

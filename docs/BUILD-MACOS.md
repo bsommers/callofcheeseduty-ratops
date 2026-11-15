@@ -2,7 +2,7 @@
 
     tools/package_macos.sh [--no-build]    # export zip -> test on the Mac over ssh -> dist/KasekriegRatOps-macos.dmg
 
-Host: `MAC_HOST` (default `bill@bigmac.local`; `user@macbuild.local` did not resolve on 2026-11-14). Scratch: `~/build/ratops-scratch` on the Mac (removed afterwards).
+Host: `MAC_HOST` (required; e.g. `user@your-mac.local`). Scratch: `~/build/ratops-scratch` on the Mac (removed afterwards).
 `tools/mac/remote_test.sh` runs on the Mac: unzip, `xattr -cr`, `codesign --force --deep -s -`, launch `--rendering-driver metal --quit-after 600 --verbose`, screenshot attempt, `hdiutil create ... -format UDZO`.
 
 Outputs: `build/macos/KasekriegRatOps.zip` (~208 MB), `dist/KasekriegRatOps-macos.dmg` (~221 MB; PCK is not embedded), log in `out/mac/run.log`.

@@ -1,20 +1,16 @@
 # print-models report
-
 ## What I built
-`tools/blender/print_export.py` (build|verify|contact), `tools/print_levels.mjs`, `game/tests/test_print_models.py`, `docs/PRINTING.md`.
-Output in `dist/print/`: hero + 6 rats, squad plate (200x200), 5 weapons, ~20 props, castle (e1m6) full + 4 peg tiles, 2 rooms (e1m1, e1m5). OBJ+MTL+STL.
-
+- tools/blender/print_export.py: GLB -> watertight OBJ/MTL/STL (mm). Hero + 6 rats (75 mm hero scale, boss at 3.2 m spec), 5 weapons, 27 props (1:35, min 25 mm), squad plate 200x200. Modes build/verify/contact.
+- tools/print_levels.mjs: voxel-based cutaway dioramas: e1m6 castle (full plate 1:640 + 4 peg/slot tiles 1:320) and 2 rooms (e1m1, e1m5), OBJ+MTL+STL.
+- docs/PRINTING.md (scales, regenerate, table), game/tests/test_print_models.py.
 ## Verification evidence
-Blender headless re-import of every OBJ: 47 models, all single-shell manifold, volume>0 (`dist/print/verify_table.md`, copied into docs/PRINTING.md). Test script: 0 failures. Contact sheets in `out/previews/print-models/` (characters, levels, squad, weapons_props, boss_front).
-
+- verify re-imports all 47 OBJ in Blender: all single-shell, 0 non-manifold, volume > 0; test script passes. Contact sheets in out/previews/print-models/ (characters, squad, weapons_props, levels) viewed.
 ## Deviations from the contract
-Boss uses spec height 3.2 m scaling (rest pose is hunched). Levels use 2x wall-height exaggeration. Some thin features (rat estimates 1.0-1.2 mm min wall) remain near the limit.
-
+- Squad plate figures at 80% so 7 fit 200 mm. Props/weapons under 25 mm scaled up (ratio in name). Wall height 2x exaggerated on dioramas. No name embossing (plain plinth). No 28 mm heroic variants. Whiskers dropped. Weapons: rat-held weapons are fused into rat figures; hero's gear fused.
+- Min wall estimate (1st percentile inward ray) is low (0.8-1.2 mm) on a few models (claws, chair, pillar, catnip) at tapered tips; dilation targets 1.2 mm.
 ## Mistakes I made and how I fixed them
-Voxel remesh dropped thin disjoint parts (pillar etc.): added closing-radius fuse(). Zero-thickness sheets (capes) vanished: added thicken_open().
-
+- Forcing armature REST pose exploded the boss rig: use importer's authored pose. Disjoint-part props (pillar) were silently cut to the largest piece: added closing-radius loop and stray-component logging. Open sheets (cape) ragged: split + Solidify modifier (even offset gave huge spikes; fixed thickness works). bmesh dissolve+beauty triangulate on 400k-vert plate hung for 10+ min: removed. Two concurrent builds clobbered build_records.json: never run two.
 ## Learnings for a future agent
-Builds take >2 min; use `--only` and `--skip-existing`. Another session was rebuilding the boss concurrently while I verified (files vanished briefly): check pgrep before verifying.
-
+- Voxel Remesh does not fuse separated parts; bridge with grow/shrink. Run long Blender jobs with nohup + log file, not through a pipe.
 ## Requests for other modules
-Boss rig rest pose is exploded/hunched; boss print shows thin blade artefacts (see boss_front.png). A cleaner rest-pose export would help.
+- None. Source models made of many loose boxes (pillar, crate, boss) would print better as fused meshes in hero.py/props.py.

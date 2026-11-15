@@ -1,6 +1,7 @@
 """print_export.py - build watertight, 3D-printable OBJ(+MTL)/STL models from the game GLBs.
 
-Run:  blender -b -P tools/blender/print_export.py -- [build|verify|contact|all] [--only a,b] [--skip-existing]
+Run:  blender -b -P tools/blender/print_export.py -- [build|verify|contact|all] [--only a,b] [--skip-existing] [--thick]
+  (build --thick --only rat_officer,rat_trooper,rat_boss: 2 mm min-wall variants, files *_thick.*)
   build    characters, weapons, props, squad plate  -> dist/print/{characters,weapons,props}/
   verify   re-import every dist/print/**/*.obj (incl. levels from tools/print_levels.mjs), measure, write
            dist/print/manifest.json (+ docs/PRINTING.md table)
@@ -23,6 +24,9 @@ VOXEL = 0.5          # mm, remesh resolution
 DILATE = 0.60        # mm per side added to guarantee >= ~1.2 mm features
 PLINTH_H = 3.0       # mm
 HERO_MM = 75.0       # hero height at print scale
+THICK = False        # --thick: 2 mm min-wall variant (dilate THICK_DILATE/side, then morphological opening)
+THICK_DILATE = 1.05  # mm per side in thick mode
+THICK_OPEN = 1.0     # mm opening radius: erode then dilate; removes any feature thinner than 2 mm (spikes, blades)
 CHAR_K = None        # mm per metre for characters (set from hero mesh height)
 PROP_RATIO = 35.0    # 1:35
 MIN_PROP_MM = 25.0   # props/weapons smaller than this are scaled up (documented)
@@ -325,11 +329,12 @@ def finish(bm, mats, colors, folder, base, plinth=True, shape='ellipse', pad=3.0
            plinth_h=PLINTH_H, center=True):
     """bm already in mm with feet at z=0. Adds plinth, fuses, dilates, colours, exports; returns record."""
     ext = max(max(v.co[i] for v in bm.verts) - min(v.co[i] for v in bm.verts) for i in range(3))
-    sc = max(0.5, (ext - 2 * DILATE) / ext)       # compensate the dilation so final size matches the target
+    DIL = THICK_DILATE if THICK else DILATE
+    sc = max(0.5, (ext - 2 * DIL) / ext)       # compensate the dilation so final size matches the target
     for v in bm.verts:
         v.co.x *= sc; v.co.y *= sc; v.co.z *= sc
     src = bm.copy()  # colour source (without plinth)
-    bm = thicken_open(bm, 1.0)
+    bm = thicken_open(bm, 2.2 if THICK else 1.0)
     zmin = min(v.co.z for v in bm.verts)
     ztop = 0.6
     if plinth:
@@ -338,7 +343,11 @@ def finish(bm, mats, colors, folder, base, plinth=True, shape='ellipse', pad=3.0
         cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
         rx = max((max(xs) - min(xs)) / 2 + pad, min_r); ry = max((max(ys) - min(ys)) / 2 + pad, min_r)
         pv = make_plinth_mesh(bm, cx, cy, rx, ry, zmin + 0.6, plinth_h, shape)
-    ob = fuse(bm, base, DILATE)
+    ob = fuse(bm, base, DIL, gs=((0.0, 0.8, 1.6, 2.6, 4.0, 6.0) if not THICK else (1.0, 1.6, 2.6, 4.0, 6.0)))
+    if THICK:
+        # opening: erode then dilate; anything thinner than 2*THICK_OPEN (blade-like spikes, thin fins) disappears
+        voxel_remesh(ob, VOXEL); dilate(ob, -THICK_OPEN); voxel_remesh(ob, VOXEL)
+        dilate(ob, THICK_OPEN); voxel_remesh(ob, VOXEL); clean(ob)
     # shift so the underside sits at z=0
     bb = [v.co.z for v in ob.data.vertices]
     ob.data.transform(Matrix.Translation((0, 0, -min(bb))))
@@ -375,9 +384,9 @@ def build_character(cid, results, keep_weapon=True):
     k = CHAR_K * (SPEC_H[cid] / h if cid in SPEC_H else 1.0)   # boss: rest pose is hunched, scale to its 3.2 m spec
     place_feet(bm, k)
     hmm = h * k
-    base = f'{cid}_h{hmm:.0f}mm_1to{1000/k:.0f}'
+    base = f'{cid}_h{hmm:.0f}mm_1to{1000/k:.0f}' + ('_thick' if THICK else '')
     rec, ob = finish(bm, mats, colors, 'characters', base, plinth=True, shape='ellipse')
-    rec.update(kind='character', id=cid, scale=f'1:{1000/k:.1f}', height_mm=round(hmm, 1))
+    rec.update(kind='character', id=cid + ('_thick' if THICK else ''), scale=f'1:{1000/k:.1f}', height_mm=round(hmm, 1))
     results.append(rec)
     return rec
 
@@ -471,13 +480,23 @@ def build_squad(results):
 def parse_args():
     argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
     mode = argv[0] if argv and not argv[0].startswith('--') else 'all'
-    opts = {'only': None, 'skip': '--skip-existing' in argv}
+    opts = {'only': None, 'skip': '--skip-existing' in argv, 'thick': '--thick' in argv}
     if '--only' in argv:
         opts['only'] = set(argv[argv.index('--only') + 1].split(','))
     return mode, opts
 
 def build(opts):
+    global THICK
     only = opts['only']
+    if opts.get('thick'):
+        # thick variants: characters only, ids are <name>_thick in build_records.json; originals untouched
+        THICK = True
+        rp = os.path.join(DIST, 'build_records.json')
+        recs = json.load(open(rp)) if os.path.exists(rp) else []
+        for cid in [c for c in CHARS if only and c in only]:
+            recs[:] = [r for r in recs if r['id'] != cid + '_thick']
+            build_character(cid, recs); json.dump(recs, open(rp, 'w'), indent=1)
+        return
     os.makedirs(os.path.join(DIST, 'characters'), exist_ok=True)
     res_path = os.path.join(DIST, 'build_records.json')
     results = []
