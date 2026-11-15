@@ -10,7 +10,7 @@ signal finished(result: Dictionary)
 const MASK_LOS: int = 1 | 64            # world + doors (same as the enemy LOS mask)
 const EYE_HEIGHT: float = 1.5
 const SHOOT_RANGE: float = 28.0
-const HOLD_RANGE: float = 9.0           # stop advancing when a visible enemy is this close
+const HOLD_RANGE: float = 24.0          # stop advancing when a visible enemy is this close
 const WAYPOINT_REACH: float = 0.7
 const STUCK_WINDOW: float = 1.0
 const STUCK_MIN_MOVE: float = 0.35
@@ -91,6 +91,21 @@ var _fight_t: float = 0.0
 var _disengage_t: float = 0.0
 var _game: Node = null
 
+# cover state
+const COVER_RADIUS: float = 13.0        # metres around the player searched for a cell hidden from threats
+const COVER_MAX_HOLD: float = 9.0       # seconds spent behind cover per episode
+const COVER_COOLDOWN: float = 3.0       # advance for at least this long between episodes
+const HEAL_SEEK_HP: int = 55
+var _cover_cell: Vector3 = Vector3.INF
+var _cover_t: float = 0.0               # time in current cover episode (0 = not in cover mode)
+var _cover_cd: float = 0.0
+var _cover_path: PackedVector3Array = PackedVector3Array()
+var _cover_idx: int = 0
+var _cover_quiet: float = 0.0           # seconds since last visible enemy / damage while in cover
+var _hurt_t: float = -99.0
+var _heal_check_t: float = 0.0
+var _cover_episodes: int = 0
+
 const ST_INTERMISSION: int = 3  # Game.State enum values (autoloads are not compile-time names under --script)
 const ST_GAME_OVER: int = 4
 const ST_VICTORY: int = 5
@@ -118,7 +133,9 @@ func _connect_events() -> void:
 	_ev.enemy_killed.connect(func(_k: String, _p: Vector3) -> void: _kills += 1)
 	_ev.player_died.connect(_on_died)
 	_ev.pickup_taken.connect(_on_pickup)
-	_ev.player_hurt.connect(func(d: int) -> void: _damage_taken += d)
+	_ev.player_hurt.connect(func(d: int) -> void:
+		_damage_taken += d
+		_hurt_t = _t)
 	_ev.key_taken.connect(func(c: String) -> void: _keys.append(c))
 	_ev.door_opened.connect(func(_i: String) -> void: _doors_opened += 1)
 	_ev.secret_found.connect(func() -> void: _secrets += 1)
@@ -214,6 +231,9 @@ func _physics_process(delta: float) -> void:
 		_goal_blacklist.clear()
 		_path = PackedVector3Array()
 	_pick_goal_if_needed()
+	if _cover_logic(delta, enemy):
+		_track_stuck(delta, true)
+		return
 	var hold: bool = false
 	if _disengage_t > 0.0:
 		_disengage_t -= delta
@@ -352,6 +372,172 @@ func _combat(e: Node3D) -> bool:
 	if w != null and str(w.def().get("kind", "")) == "melee":
 		return false  # claws: close in instead of standing off
 	return dist < HOLD_RANGE and _goal.get("kind", "") != "exit"
+
+
+# ───────────────────────────── cover ─────────────────────────────
+## Living enemies within range that are awake (not idle/patrol) or visible; these are the threats cover hides from.
+func _threats() -> Array[Node3D]:
+	var out: Array[Node3D] = []
+	for n: Node in get_tree().get_nodes_in_group("enemy"):
+		var e: Node3D = n as Node3D
+		if e == null or not is_instance_valid(e) or not e.is_inside_tree():
+			continue
+		var st: int = int(e.get("state")) if "state" in e else 0
+		if st == RatEnemy.State.DEAD or st == RatEnemy.State.IDLE or st == RatEnemy.State.PATROL:
+			continue
+		if e.global_position.distance_to(_player.global_position) < 32.0:
+			out.append(e)
+	return out
+
+
+func _hidden_from(cell_pos: Vector3, threats: Array[Node3D], space: PhysicsDirectSpaceState3D) -> bool:
+	var eye: Vector3 = cell_pos + Vector3.UP * EYE_HEIGHT
+	for e: Node3D in threats:
+		var q: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(eye, _aim_point(e), MASK_LOS, [_player.get_rid()])
+		if space.intersect_ray(q).is_empty():
+			return false
+	return true
+
+
+## Nearest walkable cell (by path length) that no current threat can see. Vector3.INF when none.
+func _find_cover_cell(threats: Array[Node3D]) -> Vector3:
+	if threats.is_empty():
+		return Vector3.INF
+	var cs: float = float(_level.get("cell"))
+	var pos: Vector3 = _player.global_position
+	var space: PhysicsDirectSpaceState3D = _player.get_world_3d().direct_space_state
+	var r: int = int(COVER_RADIUS / cs) + 1
+	var pcx: int = int(pos.x / cs)
+	var pcy: int = int(pos.z / cs)
+	var cands: Array = []
+	for dy: int in range(-r, r + 1):
+		for dx: int in range(-r, r + 1):
+			var cx: int = pcx + dx
+			var cy: int = pcy + dy
+			if cx < 0 or cy < 0 or not bool(_level.call("_is_walkable", cx, cy)):
+				continue
+			var cp: Vector3 = Vector3((cx + 0.5) * cs, 0.0, (cy + 0.5) * cs)
+			var d: float = cp.distance_to(Vector3(pos.x, 0.0, pos.z))
+			if d > COVER_RADIUS or d < 0.8:
+				continue
+			# prefer cells that are not nearer to the threats than we are
+			var pen: float = 0.0
+			for e: Node3D in threats:
+				if e.global_position.distance_to(cp) < e.global_position.distance_to(pos) - 1.0:
+					pen += 3.0
+			cands.append([d + pen, cp])
+	cands.sort_custom(func(a: Array, b: Array) -> bool: return a[0] < b[0])
+	var tested: int = 0
+	for c: Array in cands:
+		tested += 1
+		if tested > 70:
+			break
+		var cp: Vector3 = c[1]
+		if _hidden_from(cp, threats, space):
+			var path: PackedVector3Array = _reachable(cp)
+			if not path.is_empty() and _path_len(path) < COVER_RADIUS * 1.6:
+				return cp
+	return Vector3.INF
+
+
+## Take cover when hurt or under fire, peek-and-shoot from it, retreat to heal when low. Returns true when it
+## drove movement this tick (the normal goal navigation is then skipped).
+func _cover_logic(delta: float, enemy: Node3D) -> bool:
+	_cover_cd -= delta
+	_heal_check_t -= delta
+	var hurt_recent: bool = _t - _hurt_t < 1.5
+	var hp: int = _player.health
+	# low health and calm: walk to a known health pickup instead of continuing to the exit
+	if hp < HEAL_SEEK_HP and enemy == null and _heal_check_t <= 0.0 and _cover_t <= 0.0:
+		_heal_check_t = 1.5
+		_seek_heal()
+	if _cover_t <= 0.0:
+		# enter cover: under fire, or a visible enemy while not healthy, and not sprinting for the exit
+		var near_exit: bool = str(_goal.get("kind", "")) == "exit" and Vector2(_player.global_position.x - _exit_pos.x, _player.global_position.z - _exit_pos.z).length() < 12.0
+		if _cover_cd > 0.0 or near_exit or not (hurt_recent or (enemy != null and hp < 101)):
+			return false
+		var cell: Vector3 = _find_cover_cell(_threats())
+		if not cell.is_finite():
+			_cover_cd = 1.0
+			return false
+		_cover_cell = cell
+		_cover_t = 0.001
+		_cover_quiet = 0.0
+		_cover_episodes += 1
+		_cover_path = PackedVector3Array()
+		_cover_idx = 1
+	_cover_t += delta
+	if enemy != null or hurt_recent:
+		_cover_quiet = 0.0
+	else:
+		_cover_quiet += delta
+	var pos: Vector3 = _player.global_position
+	var at_cover: bool = Vector2(pos.x - _cover_cell.x, pos.z - _cover_cell.z).length() < 0.9
+	# leave: held long enough, or things are quiet (peeked, killed whatever came) and we are healthy / healing
+	var done: bool = _cover_t > COVER_MAX_HOLD or (at_cover and _cover_quiet > (4.0 if hp < 70 else 2.0))
+	if done:
+		_cover_t = 0.0
+		_cover_cd = COVER_COOLDOWN
+		_path = PackedVector3Array()
+		return false
+	if enemy != null:
+		# peek-and-shoot: aim + fire (combat sets rig); strafe a little when already in the open
+		_combat(enemy)
+	if at_cover:
+		_player.cmd_move = Vector2.ZERO
+		if enemy == null:
+			var th: Array[Node3D] = _threats()
+			if not th.is_empty():
+				var tn: Node3D = th[0]
+				_look_at_flat(tn.global_position)
+		return true
+	if _cover_path.size() < 2 or _cover_idx >= _cover_path.size() or int(_t * 2.0) % 2 == 0 and _physics_frame % 30 == 0:
+		_cover_path = _nav_path(pos, _cover_cell)
+		_cover_idx = 1
+		if _cover_path.size() < 2:
+			_cover_t = 0.0
+			_cover_cd = 2.0
+			return false
+	while _cover_idx < _cover_path.size() - 1 and Vector2(pos.x - _cover_path[_cover_idx].x, pos.z - _cover_path[_cover_idx].z).length() < WAYPOINT_REACH:
+		_cover_idx += 1
+	var wp: Vector3 = _cover_path[mini(_cover_idx, _cover_path.size() - 1)]
+	var wish: Vector3 = Vector3(wp.x - pos.x, 0.0, wp.z - pos.z)
+	if wish.length() < 0.05:
+		_player.cmd_move = Vector2.ZERO
+		return true
+	wish = wish.normalized()
+	var rig: RatPlayerCamera = _player.rig
+	if enemy == null:
+		rig.yaw = atan2(-wish.x, -wish.z)
+		rig.sync_rotation()
+	_player.cmd_move = Vector2(rig.flat_right().dot(wish), rig.flat_forward().dot(wish))
+	_player.cmd_sprint = enemy == null
+	return true
+
+
+## Redirect the goal to the nearest reachable health pickup (any distance up to 50 m) when hurt.
+func _seek_heal() -> void:
+	if str(_goal.get("kind", "")) == "pickup" and _goal.has("node") and is_instance_valid(_goal["node"]) and (_goal["node"] as Node).get("item") is Dictionary and ((_goal["node"] as Node).get("item") as Dictionary).has("heal"):
+		return
+	var pos: Vector3 = _player.global_position
+	var best: Dictionary = {}
+	var best_len: float = INF
+	for n: Node in _pickup_nodes():
+		var it: Dictionary = n.get("item") as Dictionary
+		if it == null or not it.has("heal") or _goal_blacklist.has(str(n.name)):
+			continue
+		var n3: Node3D = n as Node3D
+		if n3.global_position.distance_to(pos) > 50.0:
+			continue
+		var p: PackedVector3Array = _reachable(n3.global_position)
+		if p.is_empty():
+			continue
+		var l: float = _path_len(p)
+		if l < best_len:
+			best_len = l
+			best = {"kind": "pickup", "pos": n3.global_position, "node": n3, "name": str(n.name)}
+	if not best.is_empty():
+		_set_goal(best)
 
 
 # ───────────────────────────── goals ─────────────────────────────
@@ -706,7 +892,7 @@ func _finish(reached: bool, reason: String) -> void:
 		"kills": _kills, "kills_total": _level_total("enemies", int(st.get("kills_total", 0))), "deaths": _deaths, "death_points": _death_points,
 		"lives_left": int(_game.get("lives")), "health": _player.health if _player != null and is_instance_valid(_player) else 0,
 		"pickups": _pickups, "pickup_kinds": _pickup_kinds, "keys": _keys, "doors_opened": _doors_opened,
-		"secrets": _secrets, "blacklist": _goal_blacklist, "game_stats": st.duplicate(), "god": god, "god_heals": _god_heals, "damage_taken": _damage_taken, "shots": _shots, "hits": _hits, "weapon": int(_player.weapons.current) if _player != null and is_instance_valid(_player) and _player.weapons != null else -1, "stuck_events": _stuck_events, "stuck_points": _stuck_points,
+		"secrets": _secrets, "blacklist": _goal_blacklist, "game_stats": st.duplicate(), "god": god, "god_heals": _god_heals, "damage_taken": _damage_taken, "shots": _shots, "hits": _hits, "weapon": int(_player.weapons.current) if _player != null and is_instance_valid(_player) and _player.weapons != null else -1, "cover_episodes": _cover_episodes, "stuck_events": _stuck_events, "stuck_points": _stuck_points,
 		"errors": int(cap.get("errors", 0)), "warnings": int(cap.get("warnings", 0)), "log": cap.get("messages", []),
 		"frame_ms_avg": snappedf(_frame_ms_sum / maxf(1.0, float(_frame_n)), 0.01), "frame_ms_max": snappedf(_frame_ms_max, 0.1),
 		"physics_frames": _physics_frame,

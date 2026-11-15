@@ -4,7 +4,7 @@ extends RefCounted
 ## fur shells / skin / cheese materials by slot name, LOD1 at distance, muzzle flash on the muzzle bones,
 ## loop flags (idempotent, enemy.gd does it too).
 
-const LOOPING: PackedStringArray = ["idle", "walk", "run", "aim_idle", "charge"]
+const LOOPING: PackedStringArray = ["idle", "walk", "run", "aim_idle", "charge", "take_cover"]
 const LOD_DIST: float = 16.0
 const FUR_BY_KIND: Dictionary = {
 	"mouse": "fur_mouse", "trooper": "fur_rat_grey", "officer": "fur_rat_grey",
