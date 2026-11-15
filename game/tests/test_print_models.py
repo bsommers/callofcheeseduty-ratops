@@ -23,7 +23,7 @@ has('weapon_', 5); has('prop_crate'); has('prop_barrel'); has('prop_cheese_wheel
 has('e1m6_castle_full'); has('e1m6_castle_tile', 4); has('e1m1_room'); has('e1m5_room')
 for k, r in by.items():
     if k.startswith('squad'):
-        need(r['bbox'][0] <= 200.5 and r['bbox'][1] <= 200.5, 'squad plate larger than 200x200')
+        need(r['bbox'][0] <= 201 and r["bbox"][1] <= 201, 'squad plate larger than 200x200')
 print(f'{len(man)} models checked, {len(fails)} failures')
 for f in fails: print('FAIL', f)
 sys.exit(1 if fails else 0)

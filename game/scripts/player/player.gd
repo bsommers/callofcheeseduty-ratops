@@ -161,7 +161,7 @@ func _load_default_model() -> void:
 		if ps != null:
 			set_model(ps)
 			if model != null:
-				model.rotation.y = PI   # glTF faces +Z; the body faces -Z
+				model.rotation.y = 0.0   # hero.glb already faces -Z
 				return
 	set_model(_placeholder())
 

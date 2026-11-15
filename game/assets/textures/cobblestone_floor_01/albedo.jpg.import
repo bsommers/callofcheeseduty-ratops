@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4nb7god3oocr"
-path="res://.godot/imported/albedo.jpg-dde4d217c2b6ee88f3600cda0a9a7880.ctex"
+path.s3tc="res://.godot/imported/albedo.jpg-dde4d217c2b6ee88f3600cda0a9a7880.s3tc.ctex"
+path.etc2="res://.godot/imported/albedo.jpg-dde4d217c2b6ee88f3600cda0a9a7880.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/cobblestone_floor_01/albedo.jpg"
-dest_files=["res://.godot/imported/albedo.jpg-dde4d217c2b6ee88f3600cda0a9a7880.ctex"]
+dest_files=["res://.godot/imported/albedo.jpg-dde4d217c2b6ee88f3600cda0a9a7880.s3tc.ctex", "res://.godot/imported/albedo.jpg-dde4d217c2b6ee88f3600cda0a9a7880.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

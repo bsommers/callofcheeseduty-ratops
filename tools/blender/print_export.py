@@ -193,6 +193,7 @@ def fuse(bm, name, grow, vox=VOXEL, gs=(0.0, 0.8, 1.6, 2.6, 4.0, 6.0)):
         if extra > 0:
             dilate(ob, -extra)
             voxel_remesh(ob, vox)
+        log('  fuse pass g=%.1f: %d verts' % (g, len(ob.data.vertices)))
         n = ncomp_big(ob)
         if n <= 1:
             clean(ob)
@@ -413,12 +414,7 @@ def build_squad(results):
     ret = bmesh.ops.create_cube(allbm, size=1.0)
     for v in ret['verts']:
         v.co = Vector((v.co.x * PLATE, v.co.y * PLATE, 0.6 - 3.0 / 2 + v.co.z * 3.0))
-    ob = fuse(allbm, 'squad', 0.25, vox=0.6, gs=(0.0, 0.8))
-    # flatten big flat areas to cut triangle count
-    bm = bmesh.new(); bm.from_mesh(ob.data)
-    bmesh.ops.dissolve_limit(bm, angle_limit=math.radians(0.5), verts=bm.verts, edges=bm.edges, delimit={'MATERIAL'} if False else set())
-    bmesh.ops.triangulate(bm, faces=bm.faces, quad_method='BEAUTY', ngon_method='BEAUTY')
-    bm.to_mesh(ob.data); bm.free()
+    ob = fuse(allbm, 'squad', 0.35, vox=0.8, gs=(0.0, 0.8))
     bb = [v.co.z for v in ob.data.vertices]
     ob.data.transform(Matrix.Translation((0, 0, -min(bb))))
     assign_colors(ob, src, allmats, allcols, plinth_z=2.0)

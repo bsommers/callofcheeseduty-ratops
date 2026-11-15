@@ -84,6 +84,8 @@ func set_state(to: State) -> bool:
 		tree.paused = (to == State.PAUSED)
 	if old != to:
 		Events.state_changed.emit(int(to), int(old))
+		if to == State.TITLE:
+			Events.music.emit("title")
 		if to == State.PAUSED or old == State.PAUSED:
 			Events.paused_changed.emit(to == State.PAUSED)
 	return true
@@ -155,7 +157,7 @@ func on_player_died() -> void:
 func complete_level(extra: Dictionary = {}) -> void:
 	if state != State.PLAYING:
 		return
-	stats.merge(extra, true)
+	_merge_level_totals(extra)
 	stats["time"] = _level_time
 	stats["par"] = Defs.level_par(level_id)
 	var bonus: int = Defs.intermission_bonus(stats)
@@ -261,6 +263,22 @@ func _reset_run() -> void:
 		"weapon": int(Defs.START["weapon"]),
 	}
 	_reset_stats()
+
+
+## Merge the builder's static totals (enemies/secrets/treasure) into *_total keys; never let
+## `extra` overwrite the live counters (kills/secrets/treasure/time).
+func _merge_level_totals(extra: Dictionary) -> void:
+	var tmap: Dictionary = {"enemies": "kills_total", "secrets": "secrets_total", "treasure": "treasure_total"}
+	for k: Variant in extra.keys():
+		var key: String = str(k)
+		if tmap.has(key):
+			stats[tmap[key]] = int(extra[k])
+		elif key in ["kills_total", "secrets_total", "treasure_total"]:
+			stats[key] = int(extra[k])
+		elif key in ["kills", "secrets", "treasure", "time", "par", "bonus"]:
+			continue
+		else:
+			stats[key] = extra[k]
 
 
 func _reset_stats() -> void:

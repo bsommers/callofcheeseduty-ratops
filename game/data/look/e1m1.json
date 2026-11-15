@@ -70,7 +70,17 @@
  },
  "practicals": {
   "flicker_scale": 1.5,
-  "emission_mul": 5.0
+  "emission_mul": 1.5,
+  "decor": {
+   "glow_cheese": {
+    "color": [
+     1.0,
+     0.78,
+     0.3
+    ],
+    "energy_mul": 0.5
+   }
+  }
  },
  "grade": {
   "contrast": 1.1,

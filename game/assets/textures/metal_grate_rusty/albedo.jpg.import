@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://slfv27w3dyh7"
-path="res://.godot/imported/albedo.jpg-b8e3cde9d09f71a5fa51ad39ae997275.ctex"
+path.s3tc="res://.godot/imported/albedo.jpg-b8e3cde9d09f71a5fa51ad39ae997275.s3tc.ctex"
+path.etc2="res://.godot/imported/albedo.jpg-b8e3cde9d09f71a5fa51ad39ae997275.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/metal_grate_rusty/albedo.jpg"
-dest_files=["res://.godot/imported/albedo.jpg-b8e3cde9d09f71a5fa51ad39ae997275.ctex"]
+dest_files=["res://.godot/imported/albedo.jpg-b8e3cde9d09f71a5fa51ad39ae997275.s3tc.ctex", "res://.godot/imported/albedo.jpg-b8e3cde9d09f71a5fa51ad39ae997275.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

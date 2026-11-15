@@ -222,9 +222,10 @@ func _build_surfaces() -> void:
 				# floor, normal +Y
 				_batch(batches, fm).quad(Vector3(x0, 0, z1), Vector3(x1, 0, z1), Vector3(x1, 0, z0), Vector3(x0, 0, z0), Vector3.UP,
 					Vector2(x0, z1), Vector2(x1, z1), Vector2(x1, z0), Vector2(x0, z0))
-				# ceiling, normal -Y
-				_batch(batches, cm).quad(Vector3(x0, ch, z0), Vector3(x1, ch, z0), Vector3(x1, ch, z1), Vector3(x0, ch, z1), Vector3.DOWN,
-					Vector2(x0, z0), Vector2(x1, z0), Vector2(x1, z1), Vector2(x0, z1))
+				# ceiling, normal -Y (open sky: no ceiling)
+				if cm != "ceil.sky":
+					_batch(batches, cm).quad(Vector3(x0, ch, z0), Vector3(x1, ch, z0), Vector3(x1, ch, z1), Vector3(x0, ch, z1), Vector3.DOWN,
+						Vector2(x0, z0), Vector2(x1, z0), Vector2(x1, z1), Vector2(x0, z1))
 			if _is_walkable(cx, cy) or _push_cells.has(Vector2i(cx, cy)):
 				continue
 			if not _is_solid(cx, cy):
@@ -417,6 +418,7 @@ func _make_decor(d: Dictionary) -> void:
 	var id := str(d.get("id", "decor"))
 	var hang := bool(d.get("hang", false))
 	var node := Node3D.new()
+	node.set_meta("decor_id", id)
 	node.name = "Decor_%s_%d_%d" % [id, cx, cy]
 	node.position = cell_center(cx, cy)
 	var mi := MeshInstance3D.new()
@@ -453,11 +455,16 @@ func _make_decor(d: Dictionary) -> void:
 		var l2: Array = d["light"]
 		var fl := float(l2[5]) if l2.size() > 5 else 0.0
 		var hy := (_ceil_h(cx, cy) - 1.0) if hang else (float(l2[4]) + 1.0 if l2.size() > 4 else 2.0)
-		_add_light(Vector3(node.position.x, hy, node.position.z), Color(l2[0], l2[1], l2[2]) / maxf(maxf(l2[0], l2[1]), maxf(l2[2], 1.0)), 1.2, float(l2[3]) if l2.size() > 3 else 5.0, fl)
+		_add_light(Vector3(node.position.x, hy, node.position.z), Color(l2[0], l2[1], l2[2]) / maxf(maxf(l2[0], l2[1]), maxf(l2[2], 1.0)), 1.2, float(l2[3]) if l2.size() > 3 else 5.0, fl, "practical", "", id)
 
 # ---------------------------------------------------------------- lights
-func _add_light(pos: Vector3, color: Color, energy: float, range_m: float, flicker: float) -> OmniLight3D:
+func _add_light(pos: Vector3, color: Color, energy: float, range_m: float, flicker: float, kind: String = "practical", zone: String = "", decor_id: String = "") -> OmniLight3D:
 	var l := OmniLight3D.new()
+	l.set_meta("look_kind", kind)
+	if zone != "":
+		l.set_meta("zone", zone)
+	if decor_id != "":
+		l.set_meta("decor_id", decor_id)
 	l.position = pos
 	l.light_color = color
 	l.light_energy = energy
@@ -469,6 +476,12 @@ func _add_light(pos: Vector3, color: Color, energy: float, range_m: float, flick
 	_lights.append(l)
 	return l
 
+func _ch_zone(cx: int, cy: int) -> String:
+	var zg: Array = data.get("zoneGrid", []) as Array
+	if cy >= 0 and cy < zg.size() and cx >= 0 and cx < str(zg[cy]).length():
+		return str(zg[cy])[cx]
+	return ""
+
 func _build_zone_lights() -> void:
 	var sp := maxi(2, zone_light_spacing)
 	for cy in _h:
@@ -478,7 +491,7 @@ func _build_zone_lights() -> void:
 			var lz := (_zone(cx, cy).get("light", {}) as Dictionary)
 			var col: Array = lz.get("color", [1, 0.85, 0.6])
 			_add_light(Vector3((cx + 0.5) * cell, _ceil_h(cx, cy) - 0.6, (cy + 0.5) * cell), Color(col[0], col[1], col[2]),
-				float(lz.get("energy", 0.7)), float(lz.get("range", 8.0)), 0.0)
+				float(lz.get("energy", 0.7)), float(lz.get("range", 8.0)), 0.0, "zone", _ch_zone(cx, cy))
 
 func _process(delta: float) -> void:
 	_light_timer -= delta
@@ -546,9 +559,49 @@ func _build_exit() -> void:
 		"w": dv = Vector3(-1, 0, 0)
 	exit_area.position = cell_center(exit_cell.x, exit_cell.y) + dv * cell * 0.75
 	_things_root.add_child(exit_area)
+	_build_switch_prop(dv)
 	exit_area.body_entered.connect(func(b: Node3D) -> void:
 		if LevelEvents.is_player(b):
 			LevelEvents.emit(self, &"message", ["Press USE at the exit switch"]))
+
+## Physical wall switch: dark metal plate, rod lever and a small emissive status lamp (not a lit wall).
+func _build_switch_prop(dv: Vector3) -> void:
+	var root := Node3D.new()
+	root.name = "ExitSwitchProp"
+	root.set_meta("no_em_mul", true)
+	var face := cell_center(exit_cell.x, exit_cell.y) + dv * cell * 0.5
+	root.position = Vector3(face.x, 1.3, face.z)
+	root.rotation.y = atan2(-dv.x, -dv.z)  # local -Z points into the room (along dv)
+	var plate_m := StandardMaterial3D.new()
+	plate_m.albedo_color = Color(0.55, 0.58, 0.56)
+	plate_m.metallic = 0.15
+	plate_m.roughness = 0.45
+	var lamp_m := StandardMaterial3D.new()
+	lamp_m.albedo_color = Color(0.05, 0.2, 0.08)
+	lamp_m.emission_enabled = true
+	lamp_m.emission = Color(0.1, 1.0, 0.25)
+	lamp_m.emission_energy_multiplier = 0.25
+	var lever_m := StandardMaterial3D.new()
+	lever_m.albedo_color = Color(0.75, 0.1, 0.08)
+	lever_m.roughness = 0.4
+	lever_m.metallic = 0.3
+	var parts: Array = [
+		[Vector3(0.7, 1.0, 0.08), Vector3(0, 0, -0.04), plate_m],
+		[Vector3(0.12, 0.12, 0.05), Vector3(0, 0.34, -0.1), lamp_m],
+		[Vector3(0.08, 0.4, 0.08), Vector3(0, -0.05, -0.14), lever_m],
+		[Vector3(0.2, 0.2, 0.2), Vector3(0, -0.22, -0.12), plate_m],
+	]
+	for pr: Array in parts:
+		var mi := MeshInstance3D.new()
+		var bm := BoxMesh.new()
+		bm.size = pr[0]
+		mi.mesh = bm
+		mi.position = pr[1]
+		mi.material_override = pr[2]
+		root.add_child(mi)
+	var l := _add_light(root.position + root.transform.basis * Vector3(0, 0.3, -0.7), Color(0.5, 1.0, 0.6), 1.5, 5.0, 0.0, "practical", "", "exit_switch")
+	l.reparent(root)
+	_things_root.add_child(root)
 
 ## Call from the player's "use" ray / exit trigger to finish the level.
 func complete_level(extra: Dictionary = {}) -> void:

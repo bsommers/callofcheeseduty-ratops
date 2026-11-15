@@ -613,9 +613,17 @@ func alert(pos: Vector3 = Vector3.INF, loud: bool = true) -> void:
 		last_seen = pos
 	if first:
 		var r: Array = def.get("reaction", [0.4, 0.8])
-		_react_t = rng.randf_range(float(r[0]), float(r[1])) * float(_skill_def().get("reaction", 1.0))
+		var skm: float = float(_skill_def().get("reaction", 1.0))
+		# Grace on first sight (loud) or staggered wake-up when shouted awake by a friend,
+		# so ambush clusters do not open fire in one volley. Scaled by skill (skill 3 stays tight).
+		var grace: float = rng.randf_range(0.35, 0.7) if loud else rng.randf_range(0.5, 1.6)
+		_react_t = (rng.randf_range(float(r[0]), float(r[1])) + grace) * skm
 		_sfx("alert")
 		_emit("enemy_alerted", [kind, global_position])
+		if kind == "boss":
+			var evb: Node = _autoload("Events")
+			if evb != null and evb.has_signal("music"):
+				evb.emit_signal("music", "boss")
 		if loud:
 			_alert_friends(float(tuning("perception").get("shout_range", 24.0)))
 	if state == State.IDLE or state == State.PATROL:

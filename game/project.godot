@@ -5,6 +5,7 @@ config_version=5
 
 config/name="KÄSEKRIEG: RAT OPS"
 config/description="Third-person tactical shooter. Cats vs. Das Rattenreich."
+config/icon="res://assets/icon/icon.png"
 config/version="0.1.0"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")

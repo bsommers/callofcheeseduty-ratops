@@ -18,7 +18,7 @@ Equivalent raw export: `tools/godot.sh --headless --path game --export-release "
 (preset names: `Linux x86_64`, `Windows x86_64`, `macOS universal`).
 
 ## Linux (done)
-Output `build/linux/kasekrieg-ratops.x86_64` + `.pck` (PCK is NOT embedded: ~650 MB). Package outputs go to `dist/`.
+Output `build/linux/kasekrieg-ratops.x86_64` + `.pck` (PCK is NOT embedded: ~196 MB after trim). Package outputs go to `dist/`.
 Smoke test: `build/linux/kasekrieg-ratops.x86_64 --headless --quit-after 120`; windowed check inside a private Xvfb
 (`Xvfb -displayfd`, never `:0`) with `MESA_VK_WSI_DEBUG=sw ... --display-driver x11 --rendering-driver vulkan`, wait ~30 s
 for the 650 MB PCK, then `import -window root out.png`.
@@ -35,3 +35,7 @@ Unsigned: SmartScreen will warn.
 export it; signing/notarization is off: `codesign/codesign=0`). On a Mac: `xattr -dr com.apple.quarantine KasekriegRatOps.app`
 before first launch, or right-click > Open. For a dmg: `hdiutil create -volname "RAT OPS" -srcfolder KasekriegRatOps.app -ov -format UDZO RatOps.dmg`.
 Real distribution needs an Apple Developer ID: set `codesign/identity`, `notarization/*` in the preset.
+
+## Icon and size trim
+- Icon: `game/assets/icon/icon.svg` (source), `icon.png` (512, used as `config/icon` and all presets), `icon.ico` (multi-size, for rcedit later; not applied to the Windows exe since wine/rcedit are absent). macOS: Godot builds the .icns from icon.png at export; no standalone .icns tool installed.
+- Pack trim (650 MB -> 196 MB PCK, Linux total ~269 MB): texture imports VRAM-compressed (mode 2), 1K for ao/normal/roughness, albedo stays 2K; export filters drop `displacement.jpg`, unused HDRI `bloem_hill_01_2k.hdr` (only material_studio.gd), and unreferenced `models/*.png` duplicates (GLBs embed them). Audio WAVs left as is (15 MB).

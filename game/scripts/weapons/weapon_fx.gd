@@ -106,7 +106,11 @@ static func decal(parent: Node, pos: Vector3, normal: Vector3, size: float = 0.1
 	var x: Vector3 = ref.cross(n).normalized()
 	var z: Vector3 = x.cross(n).normalized()
 	d.global_transform = Transform3D(Basis(x, n, z), pos)
-	_decals = _decals.filter(func(o: Node) -> bool: return is_instance_valid(o))
+	var kept: Array[Node] = []
+	for o: Variant in _decals:
+		if is_instance_valid(o):
+			kept.append(o as Node)
+	_decals = kept
 	_decals.append(d)
 	while _decals.size() > MAX_DECALS:
 		var old: Node = _decals.pop_front()

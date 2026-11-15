@@ -11,9 +11,13 @@ var player: RatPlayer = null
 func _ready() -> void:
 	Game.set_level_parent(_level_root)
 	Events.level_loaded.connect(_on_level_loaded)
+	var direct: bool = false
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--level="):
+			direct = true
 			Game.new_game(arg.trim_prefix("--level="))
+	if not direct:
+		Events.music.emit("title")
 
 
 func _on_level_loaded(_id: String) -> void:

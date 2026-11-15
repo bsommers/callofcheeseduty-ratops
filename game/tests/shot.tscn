@@ -35,7 +35,15 @@ func _ready() -> void:
 			_fail(\"unknown level id \" + target)
 			return
 		Game.set_level_parent(self)
+		var rig_ps: PackedScene = load(\"res://scenes/look_rig.tscn\") as PackedScene
+		if rig_ps != null:
+			add_child(rig_ps.instantiate())
 		Game.new_game(target)
+		for k: int in 6:
+			await RenderingServer.frame_post_draw
+		var lvl: Node = Game.current_level()
+		if lvl != null:
+			PropSetup.apply(lvl)
 	if _args.has(\"cam\"):
 		_place_camera(String(_args[\"cam\"]))
 	var frames: int = int(_args.get(\"frames\", \"90\"))

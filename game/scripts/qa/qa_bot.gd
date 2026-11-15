@@ -706,7 +706,7 @@ func _finish(reached: bool, reason: String) -> void:
 		"kills": _kills, "kills_total": _level_total("enemies", int(st.get("kills_total", 0))), "deaths": _deaths, "death_points": _death_points,
 		"lives_left": int(_game.get("lives")), "health": _player.health if _player != null and is_instance_valid(_player) else 0,
 		"pickups": _pickups, "pickup_kinds": _pickup_kinds, "keys": _keys, "doors_opened": _doors_opened,
-		"secrets": _secrets, "blacklist": _goal_blacklist, "god": god, "god_heals": _god_heals, "damage_taken": _damage_taken, "shots": _shots, "hits": _hits, "weapon": int(_player.weapons.current) if _player != null and is_instance_valid(_player) and _player.weapons != null else -1, "stuck_events": _stuck_events, "stuck_points": _stuck_points,
+		"secrets": _secrets, "blacklist": _goal_blacklist, "game_stats": st.duplicate(), "god": god, "god_heals": _god_heals, "damage_taken": _damage_taken, "shots": _shots, "hits": _hits, "weapon": int(_player.weapons.current) if _player != null and is_instance_valid(_player) and _player.weapons != null else -1, "stuck_events": _stuck_events, "stuck_points": _stuck_points,
 		"errors": int(cap.get("errors", 0)), "warnings": int(cap.get("warnings", 0)), "log": cap.get("messages", []),
 		"frame_ms_avg": snappedf(_frame_ms_sum / maxf(1.0, float(_frame_n)), 0.01), "frame_ms_max": snappedf(_frame_ms_max, 0.1),
 		"physics_frames": _physics_frame,

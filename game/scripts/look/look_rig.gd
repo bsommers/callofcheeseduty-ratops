@@ -414,6 +414,10 @@ func _tune_level_lights() -> void:
 		var ceil_h: float = float(zone.get("ceilH", defaults.get("ceilH", 3.6)))
 		var is_zone_light: bool = absf(l.position.y - (ceil_h - 0.6)) < 0.05 and not l.has_meta("flicker")
 		var cfg: Dictionary = L if is_zone_light else P
+		if not is_zone_light and l.has_meta("decor_id"):
+			var dov: Dictionary = (P.get("decor", {}) as Dictionary).get(str(l.get_meta("decor_id")), {}) as Dictionary
+			if not dov.is_empty():
+				cfg = deep_merge(P, dov)
 		if is_zone_light and zones_over.has(zch):
 			cfg = deep_merge(L, zones_over[zch] as Dictionary)
 		if not l.has_meta("look_base_energy"):
@@ -431,6 +435,10 @@ func _tune_level_lights() -> void:
 		l.omni_attenuation = float(cfg.get("attenuation", 1.0))
 		l.light_size = float(cfg.get("size", 0.15))
 		l.light_specular = float(cfg.get("specular", 0.6))
+		# Low floor-level level lights (no decor owner) blow out nearby floors; cap and de-spec them.
+		if not is_zone_light and not l.has_meta("decor_id") and l.position.y < 1.5:
+			l.light_energy = minf(l.light_energy, float(cfg.get("low_cap", 0.8)))
+			l.light_specular = minf(l.light_specular, 0.1)
 		l.light_indirect_energy = float(cfg.get("indirect", 1.0))
 		l.light_volumetric_fog_energy = float(cfg.get("fog_energy", 1.0))
 		l.shadow_bias = 0.08
@@ -451,7 +459,7 @@ func _tune_level_lights() -> void:
 			for mi_n: Node in things.find_children("*", "MeshInstance3D", true, false):
 				var mi: MeshInstance3D = mi_n as MeshInstance3D
 				var sm: StandardMaterial3D = mi.material_override as StandardMaterial3D
-				if sm != null and sm.emission_enabled:
+				if sm != null and sm.emission_enabled and not mi.get_parent().has_meta("no_em_mul"):
 					if not sm.has_meta("look_base_em"):
 						sm.set_meta("look_base_em", sm.emission_energy_multiplier)
 					sm.emission_energy_multiplier = float(sm.get_meta("look_base_em")) * em_mul
