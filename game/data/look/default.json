@@ -1,0 +1,386 @@
+{
+ "_doc": "Baseline look, deep-merged under data/look/<levelid>.json by LookRig (game/scripts/look/look_rig.gd). Colours linear 0..1.",
+ "sky": {
+  "hdri": "res://assets/hdri/dikhololo_night_2k.hdr",
+  "energy": 0.25,
+  "rotation_deg": 0,
+  "background": "color",
+  "bg_color": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "bg_energy": 1.0
+ },
+ "ambient": {
+  "source": "color",
+  "color": [
+   0.05,
+   0.045,
+   0.05
+  ],
+  "energy": 1.0,
+  "sky_contribution": 0.5
+ },
+ "tonemap": {
+  "mode": "aces",
+  "exposure": 1.0,
+  "white": 6.0
+ },
+ "auto_exposure": {
+  "enabled": true,
+  "scale": 0.35,
+  "speed": 1.0,
+  "min_sensitivity": 80.0,
+  "max_sensitivity": 420.0,
+  "multiplier": 1.0
+ },
+ "sdfgi": {
+  "occlusion": true,
+  "read_sky": false,
+  "bounce": 0.6,
+  "min_cell": 0.25,
+  "energy": 1.0,
+  "normal_bias": 1.1,
+  "probe_bias": 1.1
+ },
+ "ssao": {
+  "radius": 1.4,
+  "intensity": 2.2,
+  "power": 1.6,
+  "detail": 0.6,
+  "light_affect": 0.15,
+  "channel_affect": 0.4
+ },
+ "ssil": {
+  "radius": 5.0,
+  "intensity": 1.0,
+  "normal_rejection": 1.0
+ },
+ "ssr": {
+  "fade_in": 0.15,
+  "fade_out": 2.0,
+  "depth_tolerance": 0.25
+ },
+ "fog": {
+  "density": 0.014,
+  "albedo": [
+   0.8,
+   0.75,
+   0.7
+  ],
+  "emission": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "emission_energy": 1.0,
+  "anisotropy": 0.5,
+  "length": 64.0,
+  "detail_spread": 2.0,
+  "gi_inject": 0.8,
+  "ambient_inject": 0.2,
+  "sky_affect": 0.2,
+  "fallback_light": 0.12,
+  "fallback_density_mul": 0.5
+ },
+ "depth_fog": {
+  "enabled": false
+ },
+ "glow": {
+  "intensity": 0.5,
+  "strength": 1.0,
+  "bloom": 0.03,
+  "hdr_threshold": 1.2,
+  "hdr_scale": 2.0,
+  "blend": "softlight",
+  "levels": [
+   0.0,
+   0.0,
+   1.0,
+   0.8,
+   0.6,
+   0.3,
+   0.0
+  ]
+ },
+ "grade": {
+  "brightness": 1.0,
+  "contrast": 1.05,
+  "saturation": 0.95,
+  "lift": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "gamma": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "gain": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "shadow_tint": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "highlight_tint": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "tint": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "post": {
+  "grain": 0.03,
+  "grain_size": 1.4,
+  "vignette": 0.35,
+  "vignette_softness": 0.7,
+  "vignette_color": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "ca": 0.6
+ },
+ "sun": {
+  "enabled": false
+ },
+ "fill": {
+  "enabled": true,
+  "dir": [
+   -0.3,
+   0.7,
+   -0.5
+  ],
+  "color": [
+   0.6,
+   0.7,
+   1.0
+  ],
+  "energy": 0.04,
+  "specular": 0.05
+ },
+ "lights": {
+  "energy_mul": 2.2,
+  "range_mul": 1.4,
+  "attenuation": 1.0,
+  "size": 0.15,
+  "specular": 0.5,
+  "indirect": 1.2,
+  "fog_energy": 0.7,
+  "flicker": 0.0
+ },
+ "practicals": {
+  "energy_mul": 1.5,
+  "range_mul": 1.4,
+  "emission_mul": 1.2,
+  "size": 0.08,
+  "flicker_scale": 1.0,
+  "fog_energy": 0.5
+ },
+ "hide_meshes": [
+  "Mesh_ceil_sky"
+ ],
+ "probes": {
+  "enabled": true,
+  "spacing": 6,
+  "max": 48,
+  "intensity": 1.0
+ },
+ "quality": {
+  "low": {
+   "probes": false,
+   "post": true,
+   "shadow_lights": 2,
+   "ssao_mul": 1.0,
+   "no_gi_ambient_mul": 1.8,
+   "depth_fog_fallback": true
+  },
+  "medium": {
+   "probes": false,
+   "post": true,
+   "shadow_lights": 4,
+   "no_gi_ambient_mul": 1.6
+  },
+  "high": {
+   "probes": true,
+   "post": true,
+   "shadow_lights": 6
+  },
+  "ultra": {
+   "probes": true,
+   "post": true,
+   "shadow_lights": 10
+  }
+ },
+ "materials": {
+  "wall.cheddar_brick": {
+   "lib": "tri_brick_wall_001",
+   "tint": [
+    1.0,
+    0.72,
+    0.42
+   ]
+  },
+  "wall.swiss_block": {
+   "lib": "tri_painted_plaster_wall",
+   "tint": [
+    1.0,
+    0.88,
+    0.5
+   ]
+  },
+  "wall.blue_stone": {
+   "lib": "tri_mossy_stone_wall",
+   "tint": [
+    0.62,
+    0.78,
+    0.92
+   ]
+  },
+  "wall.parmesan_block": {
+   "lib": "tri_damaged_plaster",
+   "tint": [
+    1.0,
+    0.93,
+    0.75
+   ]
+  },
+  "wall.wax_rind": {
+   "lib": "tri_painted_plaster_wall",
+   "tint": [
+    0.78,
+    0.14,
+    0.1
+   ]
+  },
+  "wall.gold_foil": {
+   "lib": "gold_foil"
+  },
+  "wall.moldy_brick": {
+   "lib": "tri_brick_moss_001"
+  },
+  "wall.crate_stack": {
+   "lib": "tri_dark_wooden_planks",
+   "tint": [
+    1.0,
+    0.85,
+    0.7
+   ]
+  },
+  "wall.fort_stone": {
+   "lib": "tri_mossy_stone_wall",
+   "tint": [
+    0.85,
+    0.85,
+    0.85
+   ]
+  },
+  "wall.fort_banner": {
+   "lib": "tri_rug_fabric",
+   "tint": [
+    0.75,
+    0.15,
+    0.12
+   ]
+  },
+  "wall.wood_panel": {
+   "lib": "tri_dark_wooden_planks"
+  },
+  "wall.wood_portrait": {
+   "lib": "tri_dark_wooden_planks"
+  },
+  "wall.bookshelf": {
+   "lib": "tri_dark_wooden_planks",
+   "tint": [
+    0.9,
+    0.75,
+    0.6
+   ]
+  },
+  "wall.steel_plate": {
+   "lib": "tri_metal_plate"
+  },
+  "wall.pipes": {
+   "lib": "wet_metal_pipe"
+  },
+  "floor.dirt": {
+   "lib": "tri_dirt_floor"
+  },
+  "floor.stone": {
+   "lib": "tri_cobblestone_floor_01"
+  },
+  "floor.checker": {
+   "lib": "tri_checkered_pavement_tiles"
+  },
+  "floor.cheese_tile": {
+   "lib": "tri_floor_tiles_02",
+   "tint": [
+    1.0,
+    0.85,
+    0.45
+   ]
+  },
+  "floor.wood": {
+   "lib": "tri_old_wooden_floor_01"
+  },
+  "floor.carpet": {
+   "lib": "tri_rug_fabric",
+   "tint": [
+    0.65,
+    0.12,
+    0.1
+   ]
+  },
+  "floor.grate": {
+   "lib": "tri_metal_grate_rusty"
+  },
+  "floor.gold": {
+   "lib": "tri_gold"
+  },
+  "floor.blue": {
+   "lib": "tri_marble_01",
+   "tint": [
+    0.55,
+    0.7,
+    0.85
+   ]
+  },
+  "ceil.stone": {
+   "lib": "tri_concrete_floor_01",
+   "tint": [
+    0.6,
+    0.58,
+    0.56
+   ]
+  },
+  "ceil.wood": {
+   "lib": "tri_dark_wooden_planks"
+  },
+  "ceil.panel": {
+   "lib": "tri_metal_plate",
+   "tint": [
+    0.7,
+    0.7,
+    0.7
+   ]
+  },
+  "ceil.cheese": {
+   "lib": "tri_painted_plaster_wall",
+   "tint": [
+    0.9,
+    0.75,
+    0.35
+   ]
+  }
+ }
+}

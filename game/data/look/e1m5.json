@@ -1,0 +1,128 @@
+{
+ "_mood": "The Blue Vault: cold blue-mould stone, damp teal haze, hoarded gold glowing warm",
+ "sky": {
+  "hdri": "res://assets/hdri/dikhololo_night_2k.hdr",
+  "energy": 0.25,
+  "bg_color": [
+   0.002,
+   0.006,
+   0.012
+  ]
+ },
+ "ambient": {
+  "color": [
+   0.02,
+   0.04,
+   0.06
+  ],
+  "energy": 1.0
+ },
+ "tonemap": {
+  "mode": "aces",
+  "exposure": 1.05,
+  "white": 5.0
+ },
+ "fog": {
+  "density": 0.02,
+  "albedo": [
+   0.5,
+   0.78,
+   0.95
+  ],
+  "emission": [
+   0.0,
+   0.01,
+   0.02
+  ],
+  "emission_energy": 0.3,
+  "anisotropy": 0.45
+ },
+ "lights": {
+  "color": [
+   0.45,
+   0.72,
+   1.0
+  ],
+  "energy_mul": 2.4,
+  "range_mul": 1.5,
+  "zones": {
+   "v": {
+    "color": [
+     1.0,
+     0.78,
+     0.38
+    ],
+    "energy_mul": 2.6
+   },
+   "o": {
+    "color": [
+     1.0,
+     0.7,
+     0.45
+    ],
+    "flicker": 0.08
+   },
+   "p": {
+    "color": [
+     1.0,
+     0.72,
+     0.45
+    ],
+    "flicker": 0.08
+   },
+   "e": {
+    "color": [
+     1.0,
+     0.8,
+     0.55
+    ]
+   },
+   "g": {
+    "color": [
+     1.0,
+     0.8,
+     0.45
+    ]
+   }
+  }
+ },
+ "grade": {
+  "contrast": 1.1,
+  "saturation": 0.95,
+  "shadow_tint": [
+   -0.015,
+   0.005,
+   0.03
+  ],
+  "highlight_tint": [
+   0.02,
+   0.01,
+   -0.01
+  ]
+ },
+ "post": {
+  "grain": 0.035,
+  "vignette": 0.42,
+  "vignette_color": [
+   0.0,
+   0.004,
+   0.01
+  ]
+ },
+ "materials": {
+  "floor.blue": {
+   "lib": "wet_stone_cobble_tex"
+  },
+  "wall.blue_stone": {
+   "lib": "tri_mossy_stone_wall",
+   "tint": [
+    0.55,
+    0.72,
+    0.9
+   ],
+   "params": {
+    "wetness": 0.6
+   }
+  }
+ }
+}

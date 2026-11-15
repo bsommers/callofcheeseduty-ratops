@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/emblem.gdshader" id="1_1oidx"]
+
+[resource]
+resource_name = "emblem_painted"
+render_priority = 0
+shader = ExtResource("1_1oidx")
+shader_parameter/field_color = null
+shader_parameter/disc_color = null
+shader_parameter/wedge_color = null
+shader_parameter/uv_scale = null
+shader_parameter/emblem_center = null
+shader_parameter/box_mesh_uv = null
+shader_parameter/disc_radius = null
+shader_parameter/wedge_size = null
+shader_parameter/fabric = 0.0
+shader_parameter/weave_scale = null
+shader_parameter/roughness = null
+shader_parameter/wear = 0.35
+shader_parameter/emission_strength = null

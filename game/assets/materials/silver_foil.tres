@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/gold_foil.gdshader" id="1_42xif"]
+
+[resource]
+resource_name = "silver_foil"
+render_priority = 0
+shader = ExtResource("1_42xif")
+shader_parameter/foil_color = Color(0.92, 0.92, 0.94, 1)
+shader_parameter/foil_color_2 = Color(0.8, 0.82, 0.86, 1)
+shader_parameter/roughness = null
+shader_parameter/crinkle = null
+shader_parameter/crinkle_scale = null
+shader_parameter/crease_darkening = null
+shader_parameter/tarnish = null
+shader_parameter/tarnish_color = null
+shader_parameter/sparkle_emission = null

@@ -1,0 +1,103 @@
+{
+ "_mood": "The Cheese Cellar: torchlit, warm amber pools, dusty air, deep brown shadows, a cold blue-cheese room for contrast",
+ "sky": {
+  "hdri": "res://assets/hdri/comfy_cafe_2k.hdr",
+  "energy": 0.15,
+  "bg_color": [
+   0.01,
+   0.006,
+   0.004
+  ]
+ },
+ "ambient": {
+  "color": [
+   0.06,
+   0.04,
+   0.028
+  ],
+  "energy": 1.0
+ },
+ "tonemap": {
+  "mode": "aces",
+  "exposure": 1.05,
+  "white": 5.0
+ },
+ "fog": {
+  "density": 0.012,
+  "albedo": [
+   0.95,
+   0.78,
+   0.55
+  ],
+  "anisotropy": 0.55
+ },
+ "lights": {
+  "color": [
+   1.0,
+   0.62,
+   0.3
+  ],
+  "energy_mul": 2.4,
+  "range_mul": 1.5,
+  "flicker": 0.1,
+  "flicker_speed": 1.4,
+  "zones": {
+   "b": {
+    "color": [
+     0.45,
+     0.65,
+     1.0
+    ],
+    "flicker": 0.0,
+    "energy_mul": 2.0
+   },
+   "g": {
+    "color": [
+     1.0,
+     0.78,
+     0.4
+    ]
+   },
+   "r": {
+    "color": [
+     1.0,
+     0.7,
+     0.45
+    ],
+    "energy_mul": 1.6
+   }
+  }
+ },
+ "practicals": {
+  "flicker_scale": 1.5,
+  "emission_mul": 5.0
+ },
+ "grade": {
+  "contrast": 1.1,
+  "saturation": 1.0,
+  "shadow_tint": [
+   -0.01,
+   0.0,
+   0.015
+  ],
+  "highlight_tint": [
+   0.04,
+   0.015,
+   -0.03
+  ],
+  "gamma": [
+   1.0,
+   1.0,
+   0.97
+  ]
+ },
+ "post": {
+  "grain": 0.035,
+  "vignette": 0.45,
+  "vignette_color": [
+   0.02,
+   0.008,
+   0.0
+  ]
+ }
+}

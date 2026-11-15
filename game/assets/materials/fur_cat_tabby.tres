@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/fur.gdshader" id="1_kgius"]
+
+[resource]
+resource_name = "fur_cat_tabby"
+render_priority = 0
+shader = ExtResource("1_kgius")
+shader_parameter/shell_index = null
+shader_parameter/shell_count = null
+shader_parameter/fur_length = 0.04
+shader_parameter/density = 260.0
+shader_parameter/thickness = null
+shader_parameter/length_variation = null
+shader_parameter/clump = 0.35
+shader_parameter/clump_scale = null
+shader_parameter/gravity = null
+shader_parameter/gravity_strength = null
+shader_parameter/wind_direction = null
+shader_parameter/wind_strength = null
+shader_parameter/wind_speed = null
+shader_parameter/root_color = Color(0.5, 0.2, 0.05, 1)
+shader_parameter/tip_color = Color(1, 0.62, 0.24, 1)
+shader_parameter/stripe_color = Color(0.42, 0.14, 0.03, 1)
+shader_parameter/stripe_amount = 0.75
+shader_parameter/stripe_frequency = 7.0
+shader_parameter/stripe_axis = Vector3(0, 1, 0)
+shader_parameter/color_variation = 0.25
+shader_parameter/self_shadow = null
+shader_parameter/roughness = null
+shader_parameter/rim_strength = null
+shader_parameter/rim_tint = null
+shader_parameter/backlight_amount = null
+shader_parameter/sss_strength = null

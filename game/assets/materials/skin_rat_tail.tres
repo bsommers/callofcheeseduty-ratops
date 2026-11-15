@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/skin_sss.gdshader" id="1_my5lj"]
+
+[resource]
+resource_name = "skin_rat_tail"
+render_priority = 0
+shader = ExtResource("1_my5lj")
+shader_parameter/skin_color = Color(0.8, 0.62, 0.6, 1)
+shader_parameter/blotch_color = Color(0.55, 0.42, 0.42, 1)
+shader_parameter/blotch_amount = 0.5
+shader_parameter/roughness = null
+shader_parameter/moistness = null
+shader_parameter/pore_scale = 160.0
+shader_parameter/pore_strength = 0.5
+shader_parameter/sss_strength = 0.6
+shader_parameter/transmission_color = null
+shader_parameter/backlight_amount = null

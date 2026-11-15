@@ -1,0 +1,403 @@
+{
+ "_doc": "material name -> {res?: 'res://...tres' (used if it exists), color:[r,g,b], rough, metal, emit:[r,g,b,energy]}. Convention: res://assets/materials/<name with '.' -> '_'>.tres is also tried. Placeholder StandardMaterial3D (triplanar) otherwise.",
+ "wall.cheddar_brick": {
+  "color": [
+   0.85,
+   0.5,
+   0.12
+  ],
+  "rough": 0.85
+ },
+ "wall.swiss_block": {
+  "color": [
+   0.9,
+   0.8,
+   0.4
+  ],
+  "rough": 0.85
+ },
+ "wall.blue_stone": {
+  "color": [
+   0.55,
+   0.65,
+   0.65
+  ],
+  "rough": 0.85
+ },
+ "wall.parmesan_block": {
+  "color": [
+   0.85,
+   0.8,
+   0.6
+  ],
+  "rough": 0.85
+ },
+ "wall.wax_rind": {
+  "color": [
+   0.65,
+   0.1,
+   0.08
+  ],
+  "rough": 0.3
+ },
+ "wall.gold_foil": {
+  "color": [
+   0.9,
+   0.7,
+   0.15
+  ],
+  "rough": 0.3,
+  "metal": 0.6
+ },
+ "wall.fondue_fall": {
+  "color": [
+   1,
+   0.6,
+   0.1
+  ],
+  "rough": 0.85,
+  "emit": [
+   1,
+   0.55,
+   0.1,
+   1.5
+  ]
+ },
+ "wall.cheese_glass": {
+  "color": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "rough": 0.85
+ },
+ "wall.moldy_brick": {
+  "color": [
+   0.55,
+   0.55,
+   0.2
+  ],
+  "rough": 0.85
+ },
+ "wall.crate_stack": {
+  "color": [
+   0.5,
+   0.35,
+   0.18
+  ],
+  "rough": 0.85
+ },
+ "wall.fort_stone": {
+  "color": [
+   0.45,
+   0.45,
+   0.47
+  ],
+  "rough": 0.85
+ },
+ "wall.fort_banner": {
+  "color": [
+   0.5,
+   0.15,
+   0.15
+  ],
+  "rough": 0.85
+ },
+ "wall.wood_panel": {
+  "color": [
+   0.3,
+   0.17,
+   0.08
+  ],
+  "rough": 0.85
+ },
+ "wall.wood_portrait": {
+  "color": [
+   0.35,
+   0.2,
+   0.1
+  ],
+  "rough": 0.85
+ },
+ "wall.steel_plate": {
+  "color": [
+   0.5,
+   0.52,
+   0.56
+  ],
+  "rough": 0.3,
+  "metal": 0.6
+ },
+ "wall.pipes": {
+  "color": [
+   0.4,
+   0.42,
+   0.45
+  ],
+  "rough": 0.85
+ },
+ "wall.bookshelf": {
+  "color": [
+   0.35,
+   0.2,
+   0.1
+  ],
+  "rough": 0.85
+ },
+ "wall.mouse_hole": {
+  "color": [
+   0.42,
+   0.42,
+   0.44
+  ],
+  "rough": 0.85
+ },
+ "wall.poster": {
+  "color": [
+   0.55,
+   0.45,
+   0.4
+  ],
+  "rough": 0.85
+ },
+ "wall.mirror": {
+  "color": [
+   0.6,
+   0.65,
+   0.7
+  ],
+  "rough": 0.3,
+  "metal": 0.9
+ },
+ "wall.cell_bars": {
+  "color": [
+   0.25,
+   0.25,
+   0.28
+  ],
+  "rough": 0.85
+ },
+ "wall.war_map": {
+  "color": [
+   0.6,
+   0.55,
+   0.4
+  ],
+  "rough": 0.85
+ },
+ "wall.trophy": {
+  "color": [
+   0.4,
+   0.3,
+   0.2
+  ],
+  "rough": 0.85
+ },
+ "wall.exit_switch": {
+  "color": [
+   0.5,
+   0.55,
+   0.5
+  ],
+  "rough": 0.85,
+  "emit": [
+   0.1,
+   1,
+   0.2,
+   0.6
+  ]
+ },
+ "floor.dirt": {
+  "color": [
+   0.3,
+   0.22,
+   0.14
+  ],
+  "rough": 0.8
+ },
+ "floor.stone": {
+  "color": [
+   0.38,
+   0.38,
+   0.4
+  ],
+  "rough": 0.8
+ },
+ "floor.checker": {
+  "color": [
+   0.7,
+   0.68,
+   0.62
+  ],
+  "rough": 0.35
+ },
+ "floor.cheese_tile": {
+  "color": [
+   0.85,
+   0.7,
+   0.25
+  ],
+  "rough": 0.8
+ },
+ "floor.wood": {
+  "color": [
+   0.4,
+   0.25,
+   0.12
+  ],
+  "rough": 0.8
+ },
+ "floor.carpet": {
+  "color": [
+   0.5,
+   0.08,
+   0.08
+  ],
+  "rough": 0.8
+ },
+ "floor.grate": {
+  "color": [
+   0.3,
+   0.32,
+   0.35
+  ],
+  "rough": 0.8
+ },
+ "floor.gold": {
+  "color": [
+   0.85,
+   0.65,
+   0.2
+  ],
+  "rough": 0.35
+ },
+ "floor.blue": {
+  "color": [
+   0.4,
+   0.55,
+   0.7
+  ],
+  "rough": 0.8
+ },
+ "floor.fondue": {
+  "color": [
+   1,
+   0.6,
+   0.1
+  ],
+  "rough": 0.8,
+  "emit": [
+   1,
+   0.5,
+   0.1,
+   1.2
+  ]
+ },
+ "ceil.stone": {
+  "color": [
+   0.2,
+   0.2,
+   0.22
+  ],
+  "rough": 0.9
+ },
+ "ceil.wood": {
+  "color": [
+   0.25,
+   0.15,
+   0.08
+  ],
+  "rough": 0.9
+ },
+ "ceil.cheese": {
+  "color": [
+   0.7,
+   0.6,
+   0.25
+  ],
+  "rough": 0.9
+ },
+ "ceil.panel": {
+  "color": [
+   0.4,
+   0.42,
+   0.46
+  ],
+  "rough": 0.9
+ },
+ "ceil.lamp_panel": {
+  "color": [
+   0.45,
+   0.45,
+   0.45
+  ],
+  "rough": 0.9,
+  "emit": [
+   1,
+   0.95,
+   0.8,
+   0.8
+  ]
+ },
+ "ceil.sky": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rough": 0.9
+ },
+ "door.wood": {
+  "color": [
+   0.4,
+   0.25,
+   0.12
+  ],
+  "rough": 0.5,
+  "metal": 0.0
+ },
+ "door.steel": {
+  "color": [
+   0.5,
+   0.55,
+   0.6
+  ],
+  "rough": 0.5,
+  "metal": 0.4
+ },
+ "door.gold": {
+  "color": [
+   0.8,
+   0.65,
+   0.2
+  ],
+  "rough": 0.5,
+  "metal": 0.4
+ },
+ "door.silver": {
+  "color": [
+   0.75,
+   0.78,
+   0.85
+  ],
+  "rough": 0.5,
+  "metal": 0.4
+ },
+ "door.jamb": {
+  "color": [
+   0.2,
+   0.22,
+   0.25
+  ],
+  "rough": 0.5,
+  "metal": 0.4
+ },
+ "_fallback": {
+  "color": [
+   0.6,
+   0.6,
+   0.6
+  ],
+  "rough": 0.9
+ }
+}

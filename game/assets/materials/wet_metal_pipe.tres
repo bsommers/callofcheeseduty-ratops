@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/wet_metal.gdshader" id="1_n1dks"]
+
+[resource]
+resource_name = "wet_metal_pipe"
+render_priority = 0
+shader = ExtResource("1_n1dks")
+shader_parameter/use_textures = null
+shader_parameter/texture_scale = null
+shader_parameter/metal_color = null
+shader_parameter/metal_roughness = null
+shader_parameter/brush_strength = null
+shader_parameter/rust_color = null
+shader_parameter/rust_amount = 0.4
+shader_parameter/rust_scale = null
+shader_parameter/paint_color = null
+shader_parameter/paint_amount = null
+shader_parameter/wetness = null
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/grease_amount = 0.25
+shader_parameter/grease_color = null

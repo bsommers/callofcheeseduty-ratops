@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_enemy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.4
+height = 1.7
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_head"]
+radius = 0.18
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 71
+script = ExtResource("1_enemy")
+
+[node name="Body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Head" type="Area3D" parent="." groups=["hitbox_head"]]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="HeadShape" type="CollisionShape3D" parent="Head"]
+shape = SubResource("SphereShape3D_head")
+
+[node name="Nav" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.6
+target_desired_distance = 0.8

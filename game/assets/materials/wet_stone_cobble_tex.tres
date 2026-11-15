@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/wet_stone.gdshader" id="1_y5oay"]
+[ext_resource type="Texture2D" path="res://assets/textures/cobblestone_floor_01/albedo.jpg" id="2_fc7we"]
+[ext_resource type="Texture2D" path="res://assets/textures/cobblestone_floor_01/normal.jpg" id="3_ome0y"]
+[ext_resource type="Texture2D" path="res://assets/textures/cobblestone_floor_01/roughness.jpg" id="4_i0q6k"]
+
+[resource]
+resource_name = "wet_stone_cobble_tex"
+render_priority = 0
+shader = ExtResource("1_y5oay")
+shader_parameter/use_textures = true
+shader_parameter/albedo_texture = ExtResource("2_fc7we")
+shader_parameter/normal_texture = ExtResource("3_ome0y")
+shader_parameter/roughness_texture = ExtResource("4_i0q6k")
+shader_parameter/texture_scale = null
+shader_parameter/stone_color = null
+shader_parameter/stone_color_2 = null
+shader_parameter/mortar_color = null
+shader_parameter/stone_scale = null
+shader_parameter/mortar_width = null
+shader_parameter/bump_strength = null
+shader_parameter/stone_roughness = null
+shader_parameter/wetness = 0.7
+shader_parameter/puddle_amount = 0.6
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = null
+shader_parameter/water_tint = null
+shader_parameter/slime_amount = null
+shader_parameter/slime_color = null

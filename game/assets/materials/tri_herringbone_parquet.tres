@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/triplanar_pbr.gdshader" id="1_hcvpn"]
+[ext_resource type="Texture2D" path="res://assets/textures/herringbone_parquet/albedo.jpg" id="2_to6hr"]
+[ext_resource type="Texture2D" path="res://assets/textures/herringbone_parquet/ao.jpg" id="3_jxdrn"]
+[ext_resource type="Texture2D" path="res://assets/textures/herringbone_parquet/normal.jpg" id="4_nbdey"]
+[ext_resource type="Texture2D" path="res://assets/textures/herringbone_parquet/roughness.jpg" id="5_ctp63"]
+
+[resource]
+resource_name = "tri_herringbone_parquet"
+render_priority = 0
+shader = ExtResource("1_hcvpn")
+shader_parameter/use_textures = true
+shader_parameter/albedo_texture = ExtResource("2_to6hr")
+shader_parameter/normal_texture = ExtResource("4_nbdey")
+shader_parameter/roughness_texture = ExtResource("5_ctp63")
+shader_parameter/ao_texture = ExtResource("3_jxdrn")
+shader_parameter/texture_scale = 0.4
+shader_parameter/blend_sharpness = null
+shader_parameter/normal_strength = null
+shader_parameter/tint = null
+shader_parameter/roughness_scale = null
+shader_parameter/metallic_scale = 0.0
+shader_parameter/ao_strength = null
+shader_parameter/macro_variation = null
+shader_parameter/grime_amount = null
+shader_parameter/placeholder_color = null
+shader_parameter/wetness = null
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = null
+shader_parameter/water_tint = null

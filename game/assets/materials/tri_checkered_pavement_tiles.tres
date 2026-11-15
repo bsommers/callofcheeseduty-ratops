@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/triplanar_pbr.gdshader" id="1_x0oa1"]
+[ext_resource type="Texture2D" path="res://assets/textures/checkered_pavement_tiles/albedo.jpg" id="2_hd02h"]
+[ext_resource type="Texture2D" path="res://assets/textures/checkered_pavement_tiles/ao.jpg" id="3_cf8ak"]
+[ext_resource type="Texture2D" path="res://assets/textures/checkered_pavement_tiles/normal.jpg" id="4_7kctq"]
+[ext_resource type="Texture2D" path="res://assets/textures/checkered_pavement_tiles/roughness.jpg" id="5_v7xdm"]
+
+[resource]
+resource_name = "tri_checkered_pavement_tiles"
+render_priority = 0
+shader = ExtResource("1_x0oa1")
+shader_parameter/use_textures = true
+shader_parameter/albedo_texture = ExtResource("2_hd02h")
+shader_parameter/normal_texture = ExtResource("4_7kctq")
+shader_parameter/roughness_texture = ExtResource("5_v7xdm")
+shader_parameter/ao_texture = ExtResource("3_cf8ak")
+shader_parameter/texture_scale = null
+shader_parameter/blend_sharpness = null
+shader_parameter/normal_strength = null
+shader_parameter/tint = null
+shader_parameter/roughness_scale = null
+shader_parameter/metallic_scale = 0.0
+shader_parameter/ao_strength = null
+shader_parameter/macro_variation = null
+shader_parameter/grime_amount = null
+shader_parameter/placeholder_color = null
+shader_parameter/wetness = null
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = null
+shader_parameter/water_tint = null

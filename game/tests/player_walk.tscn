@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="GDScript" id="GDScript_walk"]
+script/source = "extends Node3D
+## player-controller visual check: builds a level, spawns the hero at player_start and drives it with
+## scripted commands so tools/shot.sh can capture the over-the-shoulder view.
+## User args: --level=e1m1 --walk=frames --turn=deg --pitch=deg --aim=1 --fire=1 --weapon=N --left=1 --crouch=1
+
+var player: Node = null
+var _args: Dictionary = {}
+var _f: int = 0
+
+func _ready() -> void:
+	for a: String in OS.get_cmdline_user_args():
+		if a.begins_with(\"--\") and a.contains(\"=\"):
+			var kv: PackedStringArray = a.substr(2).split(\"=\", true, 1)
+			_args[kv[0]] = kv[1]
+	var ps: PackedScene = load(\"res://scenes/level_base.tscn\") as PackedScene
+	var lvl: Node = ps.instantiate()
+	add_child(lvl)
+	if not bool(lvl.call(\"build_level\", str(_args.get(\"level\", \"e1m1\")))):
+		push_error(\"player_walk: level build failed\")
+		return
+	var pc: GDScript = load(\"res://scripts/player/player.gd\") as GDScript
+	player = pc.call(\"spawn_in_level\", lvl, null)
+	player.set(\"use_device_input\", false)
+	player.set(\"capture_mouse\", false)
+	var rig: Node = player.get(\"rig\")
+	rig.set(\"accept_input\", false)
+	rig.set(\"yaw\", float(rig.get(\"yaw\")) + deg_to_rad(float(_args.get(\"turn\", \"0\"))))
+	rig.set(\"pitch\", deg_to_rad(float(_args.get(\"pitch\", \"0\"))))
+	if _args.get(\"left\", \"0\") == \"1\":
+		rig.call(\"swap_shoulder\")
+	if _args.has(\"weapon\"):
+		var w: Node = player.get(\"weapons\")
+		w.call(\"add_ammo\", str((w.call(\"def\", int(_args[\"weapon\"])) as Dictionary).get(\"ammo\", \"\")), 50)
+		w.call(\"give_weapon\", int(_args[\"weapon\"]))
+		w.call(\"select\", int(_args[\"weapon\"]), true)
+	print(\"player_walk: start \", player.get(\"global_position\"))
+
+func _physics_process(_d: float) -> void:
+	if player == null:
+		return
+	_f += 1
+	var walk: int = int(_args.get(\"walk\", \"0\"))
+	player.set(\"cmd_move\", Vector2(0, 1) if _f < walk else Vector2.ZERO)
+	player.set(\"cmd_aim\", _args.get(\"aim\", \"0\") == \"1\")
+	player.set(\"cmd_crouch\", _args.get(\"crouch\", \"0\") == \"1\")
+	var firing: bool = _args.get(\"fire\", \"0\") == \"1\" and _f > walk
+	player.set(\"cmd_fire\", firing)
+	player.set(\"cmd_fire_pressed\", firing)
+	if _f == walk + 1 or _f == 60 or _f == walk + 50:
+		var w: Node = player.get(\"weapons\")
+		print(\"player_walk: frame \", _f, \" pos \", player.get(\"global_position\"), \" ammo \", w.call(\"loaded\", -1), \"/\", w.call(\"reserve\", -1), \" last \", w.get(\"last_shot\").get(\"pos\", null))
+"
+
+[node name="PlayerWalk" type="Node3D"]
+script = SubResource("GDScript_walk")

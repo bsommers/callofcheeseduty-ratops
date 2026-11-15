@@ -1,0 +1,3 @@
+#!/bin/sh
+# Run the project-local Godot editor binary: tools/godot.sh --path game ...
+exec "$(dirname "$0")/../.tools/godot/Godot_v4.7.2-stable_linux.x86_64" "$@"

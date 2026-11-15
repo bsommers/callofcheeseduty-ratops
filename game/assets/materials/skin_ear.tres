@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/skin_sss.gdshader" id="1_osklv"]
+
+[resource]
+resource_name = "skin_ear"
+render_priority = 0
+shader = ExtResource("1_osklv")
+shader_parameter/skin_color = Color(0.9, 0.58, 0.56, 1)
+shader_parameter/blotch_color = null
+shader_parameter/blotch_amount = null
+shader_parameter/roughness = null
+shader_parameter/moistness = null
+shader_parameter/pore_scale = null
+shader_parameter/pore_strength = null
+shader_parameter/sss_strength = 0.9
+shader_parameter/transmission_color = null
+shader_parameter/backlight_amount = 0.8

@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/cloth.gdshader" id="1_jfotv"]
+
+[resource]
+resource_name = "cloth_burlap"
+render_priority = 0
+shader = ExtResource("1_jfotv")
+shader_parameter/cloth_color = Color(0.55, 0.44, 0.3, 1)
+shader_parameter/use_normal_texture = null
+shader_parameter/roughness = 0.95
+shader_parameter/weave_scale = 60.0
+shader_parameter/weave_pattern = 0
+shader_parameter/weave_strength = 0.9
+shader_parameter/sheen = null
+shader_parameter/sheen_tint = null
+shader_parameter/dirt_amount = 0.4
+shader_parameter/dirt_color = null
+shader_parameter/color_variation = null

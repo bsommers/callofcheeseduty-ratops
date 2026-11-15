@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/triplanar_pbr.gdshader" id="1_862j8"]
+
+[resource]
+resource_name = "tri_placeholder"
+render_priority = 0
+shader = ExtResource("1_862j8")
+shader_parameter/use_textures = false
+shader_parameter/texture_scale = null
+shader_parameter/blend_sharpness = null
+shader_parameter/normal_strength = null
+shader_parameter/tint = null
+shader_parameter/roughness_scale = null
+shader_parameter/metallic_scale = null
+shader_parameter/ao_strength = null
+shader_parameter/macro_variation = null
+shader_parameter/grime_amount = null
+shader_parameter/placeholder_color = null
+shader_parameter/wetness = null
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = null
+shader_parameter/water_tint = null

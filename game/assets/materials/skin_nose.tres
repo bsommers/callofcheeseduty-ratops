@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/skin_sss.gdshader" id="1_ablsj"]
+
+[resource]
+resource_name = "skin_nose"
+render_priority = 0
+shader = ExtResource("1_ablsj")
+shader_parameter/skin_color = Color(0.85, 0.45, 0.45, 1)
+shader_parameter/blotch_color = null
+shader_parameter/blotch_amount = null
+shader_parameter/roughness = null
+shader_parameter/moistness = 0.8
+shader_parameter/pore_scale = null
+shader_parameter/pore_strength = null
+shader_parameter/sss_strength = 0.7
+shader_parameter/transmission_color = null
+shader_parameter/backlight_amount = null

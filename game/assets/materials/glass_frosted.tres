@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/glass.gdshader" id="1_71dym"]
+
+[resource]
+resource_name = "glass_frosted"
+render_priority = 0
+shader = ExtResource("1_71dym")
+shader_parameter/glass_tint = null
+shader_parameter/base_opacity = 0.2
+shader_parameter/roughness = null
+shader_parameter/refraction = null
+shader_parameter/ior = null
+shader_parameter/dirt_amount = 0.0
+shader_parameter/dirt_color = null
+shader_parameter/crack_amount = null
+shader_parameter/frost = 0.8

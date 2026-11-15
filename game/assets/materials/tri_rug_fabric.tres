@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/triplanar_pbr.gdshader" id="1_buc1b"]
+[ext_resource type="Texture2D" path="res://assets/textures/rug_fabric/albedo.jpg" id="2_oy5sj"]
+[ext_resource type="Texture2D" path="res://assets/textures/rug_fabric/ao.jpg" id="3_oqdhh"]
+[ext_resource type="Texture2D" path="res://assets/textures/rug_fabric/normal.jpg" id="4_44exq"]
+[ext_resource type="Texture2D" path="res://assets/textures/rug_fabric/roughness.jpg" id="5_7cci2"]
+
+[resource]
+resource_name = "tri_rug_fabric"
+render_priority = 0
+shader = ExtResource("1_buc1b")
+shader_parameter/use_textures = true
+shader_parameter/albedo_texture = ExtResource("2_oy5sj")
+shader_parameter/normal_texture = ExtResource("4_44exq")
+shader_parameter/roughness_texture = ExtResource("5_7cci2")
+shader_parameter/ao_texture = ExtResource("3_oqdhh")
+shader_parameter/texture_scale = null
+shader_parameter/blend_sharpness = null
+shader_parameter/normal_strength = null
+shader_parameter/tint = null
+shader_parameter/roughness_scale = null
+shader_parameter/metallic_scale = 0.0
+shader_parameter/ao_strength = null
+shader_parameter/macro_variation = null
+shader_parameter/grime_amount = null
+shader_parameter/placeholder_color = null
+shader_parameter/wetness = null
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = null
+shader_parameter/water_tint = null

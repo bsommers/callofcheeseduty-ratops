@@ -1,0 +1,1725 @@
+{
+ "schema": 1,
+ "id": "e1m6",
+ "name": "Throne of the Big Cheese",
+ "intro": "The Big Cheese does not rise for visitors. Make him.",
+ "par": 360,
+ "music": "boss",
+ "cellSize": 4,
+ "width": 32,
+ "height": 32,
+ "defaults": {
+  "wall": "wall.fort_stone",
+  "floor": "floor.stone",
+  "ceil": "ceil.stone"
+ },
+ "ambient": [
+  0.04,
+  0.035,
+  0.045
+ ],
+ "fog": {
+  "color": [
+   0.03,
+   0.02,
+   0.02
+  ],
+  "density": 0.03
+ },
+ "sky": null,
+ "wallLegend": {
+  "#": "wall.fort_stone",
+  "F": "wall.fort_stone",
+  "M": "wall.mouse_hole",
+  "G": "wall.fort_banner",
+  "N": "wall.gold_foil",
+  "X": "wall.exit_switch",
+  "J": "wall.steel_plate",
+  "K": "wall.pipes",
+  "Q": "wall.cheese_glass",
+  "A": "wall.cheddar_brick",
+  "E": "wall.wax_rind",
+  "S": "wall.fondue_fall",
+  "Y": "wall.moldy_brick",
+  "H": "wall.wood_panel",
+  "I": "wall.wood_portrait",
+  "C": "wall.blue_stone"
+ },
+ "grid": [
+  "################################",
+  "#######FFMFMGNNXNNFGMFMFF#######",
+  "#######F................F#######",
+  "#######G................G#######",
+  "#######F................F#######",
+  "#######M................M#######",
+  "#######F................F#######",
+  "#######G................G#######",
+  "#######F................F#######",
+  "#######M................FFF#####",
+  "#######F................P..F####",
+  "#######G................GFF#####",
+  "#######F................F#######",
+  "#######M................M#######",
+  "#######F................F#######",
+  "###J###F................F##N####",
+  "##J.J##M................M#N.N###",
+  "##J.J##F................F#N.N###",
+  "JJKPKJJKFFQGFGFDFGFGFQFFFAAPAAAA",
+  "J........E............A........A",
+  "J........E............A........S",
+  "K........D............D........A",
+  "J........E............A........A",
+  "J........E............A........A",
+  "JJJJJJDJJEEQEEQDEEEQEEA........S",
+  "###Y.....H............A........A",
+  "###Y.....I............A........S",
+  "YYYY.....H............A........A",
+  "Y..P.....D............D........A",
+  "YYYY.....H............A........C",
+  "###Y.....I............A........A",
+  "###YYYYYYHHHIHHHHIHHIHAASAAAASAA"
+ ],
+ "zoneGrid": [
+  "................................",
+  "................................",
+  "........aaaaaddddddaaaaa........",
+  "........aaaaaddddddaaaaa........",
+  "........aaaaaddddddaaaaa........",
+  "........aaaaaarrrraaaaaa........",
+  "........aaaaaarrrraaaaaa........",
+  "........affaaarrrraaaffa........",
+  "........affaaarrrraaaffa........",
+  "........aaaaaarrrraaaaaa........",
+  "........aaaaaarrrraaaaaa.aa.....",
+  "........aaaaaarrrraaaaaa........",
+  "........affaaarrrraaaffa........",
+  "........affaaarrrraaaffa........",
+  "........aaaaaarrrraaaaaa........",
+  "........aaaaaarrrraaaaaa........",
+  "...a....aaaaaarrrraaaaaa...u....",
+  "...a....aaaaaarrrraaaaaa...u....",
+  "................................",
+  ".aaaaaaaa.nnnnnnnnnnnn.uuuuuuuu.",
+  ".aaaaaaaa.nnnnnnnnnnnn.uuuuffuu.",
+  ".aaaaaaaa.nnnnnnnnnnnn.uuuuffuu.",
+  ".aaaaaaaa.nnnnnnnnnnnn.uuffuuuu.",
+  ".aaaaaaaa.nnnnnnnnnnnn.uuffuuuu.",
+  ".......................uuuuuuuu.",
+  "....ccccc.hhhhhhhhhhhh.uuuuuuuu.",
+  "....ccccc.hhhhhhhhhhhh.uuuuuffu.",
+  "....ccccc.hhhhhhhhhhhh.uffuuffu.",
+  ".cc.ccccc.hhhhhhhhhhhh.uffuuuuu.",
+  "....ccccc.hhhhhhhhhhhh.uuuuuuuu.",
+  "....ccccc.hhhhhhhhhhhh.uuuuuuuu.",
+  "................................"
+ ],
+ "zones": {
+  ".": {
+   "floor": "floor.stone",
+   "ceil": "ceil.stone",
+   "ceilH": 6,
+   "light": {
+    "color": [
+     1,
+     0.85,
+     0.6
+    ],
+    "energy": 0.7,
+    "range": 8
+   }
+  },
+  "c": {
+   "floor": "floor.wood",
+   "ceil": "ceil.stone",
+   "ceilH": 3.6,
+   "light": {
+    "color": [
+     1,
+     0.85,
+     0.6
+    ],
+    "energy": 0.7,
+    "range": 8
+   }
+  },
+  "a": {
+   "floor": "floor.grate",
+   "ceil": "ceil.panel",
+   "ceilH": 6,
+   "light": {
+    "color": [
+     1,
+     0.85,
+     0.6
+    ],
+    "energy": 0.7,
+    "range": 8
+   }
+  },
+  "h": {
+   "floor": "floor.carpet",
+   "ceil": "ceil.wood",
+   "ceilH": 4.8,
+   "light": {
+    "color": [
+     1,
+     0.85,
+     0.6
+    ],
+    "energy": 0.7,
+    "range": 8
+   }
+  },
+  "n": {
+   "floor": "floor.checker",
+   "ceil": "ceil.lamp_panel",
+   "ceilH": 4.8,
+   "light": {
+    "color": [
+     1,
+     0.92,
+     0.75
+    ],
+    "energy": 1.6,
+    "range": 9
+   }
+  },
+  "u": {
+   "floor": "floor.cheese_tile",
+   "ceil": "ceil.cheese",
+   "ceilH": 4.8,
+   "light": {
+    "color": [
+     1,
+     0.85,
+     0.6
+    ],
+    "energy": 0.7,
+    "range": 8
+   }
+  },
+  "f": {
+   "floor": "floor.fondue",
+   "ceil": "ceil.cheese",
+   "ceilH": 3.6,
+   "light": {
+    "color": [
+     1,
+     0.6,
+     0.15
+    ],
+    "energy": 1.4,
+    "range": 8
+   }
+  },
+  "d": {
+   "floor": "floor.gold",
+   "ceil": "ceil.stone",
+   "ceilH": 3.6,
+   "light": {
+    "color": [
+     1,
+     0.85,
+     0.4
+    ],
+    "energy": 1.2,
+    "range": 8
+   }
+  },
+  "r": {
+   "floor": "floor.carpet",
+   "ceil": "ceil.stone",
+   "ceilH": 3.6,
+   "light": {
+    "color": [
+     1,
+     0.85,
+     0.6
+    ],
+    "energy": 0.7,
+    "range": 8
+   }
+  }
+ },
+ "doors": [
+  {
+   "id": "d_15_18",
+   "x": 15,
+   "y": 18,
+   "kind": "silver",
+   "lock": "silver",
+   "passage": "ns",
+   "mat": "door.silver"
+  },
+  {
+   "id": "d_9_21",
+   "x": 9,
+   "y": 21,
+   "kind": "wood",
+   "lock": null,
+   "passage": "ew",
+   "mat": "door.wood"
+  },
+  {
+   "id": "d_22_21",
+   "x": 22,
+   "y": 21,
+   "kind": "wood",
+   "lock": null,
+   "passage": "ew",
+   "mat": "door.wood"
+  },
+  {
+   "id": "d_6_24",
+   "x": 6,
+   "y": 24,
+   "kind": "steel",
+   "lock": null,
+   "passage": "ns",
+   "mat": "door.steel"
+  },
+  {
+   "id": "d_15_24",
+   "x": 15,
+   "y": 24,
+   "kind": "steel",
+   "lock": null,
+   "passage": "ns",
+   "mat": "door.steel"
+  },
+  {
+   "id": "d_9_28",
+   "x": 9,
+   "y": 28,
+   "kind": "wood",
+   "lock": null,
+   "passage": "ew",
+   "mat": "door.wood"
+  },
+  {
+   "id": "d_22_28",
+   "x": 22,
+   "y": 28,
+   "kind": "wood",
+   "lock": null,
+   "passage": "ew",
+   "mat": "door.wood"
+  }
+ ],
+ "pushwalls": [
+  {
+   "id": "p_24_10",
+   "x": 24,
+   "y": 10,
+   "mat": "wall.fort_stone",
+   "dirs": [
+    "e",
+    "w"
+   ]
+  },
+  {
+   "id": "p_3_18",
+   "x": 3,
+   "y": 18,
+   "mat": "wall.steel_plate",
+   "dirs": [
+    "n",
+    "s"
+   ]
+  },
+  {
+   "id": "p_27_18",
+   "x": 27,
+   "y": 18,
+   "mat": "wall.gold_foil",
+   "dirs": [
+    "n",
+    "s"
+   ]
+  },
+  {
+   "id": "p_3_28",
+   "x": 3,
+   "y": 28,
+   "mat": "wall.moldy_brick",
+   "dirs": [
+    "e",
+    "w"
+   ]
+  }
+ ],
+ "things": [
+  {
+   "kind": "decor",
+   "x": 8,
+   "y": 2,
+   "id": "alarm_light",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.8,
+    0.25,
+    0.2,
+    5,
+    0.85,
+    1
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 12,
+   "y": 2,
+   "id": "flag_stand",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 13,
+   "y": 2,
+   "id": "candelabra",
+   "block": true,
+   "hang": false,
+   "light": [
+    2.2,
+    1.3,
+    0.5,
+    4.5,
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 18,
+   "y": 2,
+   "id": "candelabra",
+   "block": true,
+   "hang": false,
+   "light": [
+    2.2,
+    1.3,
+    0.5,
+    4.5,
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 19,
+   "y": 2,
+   "id": "flag_stand",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 23,
+   "y": 2,
+   "id": "alarm_light",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.8,
+    0.25,
+    0.2,
+    5,
+    0.85,
+    1
+   ]
+  },
+  {
+   "kind": "enemy",
+   "x": 10,
+   "y": 3,
+   "type": "trooper",
+   "patrol": false
+  },
+  {
+   "kind": "enemy",
+   "x": 15,
+   "y": 3,
+   "type": "boss",
+   "patrol": false
+  },
+  {
+   "kind": "enemy",
+   "x": 21,
+   "y": 3,
+   "type": "trooper",
+   "patrol": false
+  },
+  {
+   "kind": "enemy",
+   "x": 12,
+   "y": 4,
+   "type": "panzer",
+   "patrol": false
+  },
+  {
+   "kind": "enemy",
+   "x": 19,
+   "y": 4,
+   "type": "panzer",
+   "patrol": false
+  },
+  {
+   "kind": "item",
+   "x": 8,
+   "y": 5,
+   "id": "yarn_ammo",
+   "ammo": [
+    "yarn",
+    3
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 11,
+   "y": 5,
+   "id": "pillar",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 20,
+   "y": 5,
+   "id": "pillar",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "item",
+   "x": 22,
+   "y": 5,
+   "id": "yarn_ammo",
+   "ammo": [
+    "yarn",
+    3
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 14,
+   "y": 6,
+   "id": "tuna",
+   "heal": 25,
+   "max": 100
+  },
+  {
+   "kind": "decor",
+   "x": 15,
+   "y": 6,
+   "id": "chandelier",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.2,
+    1.8,
+    1.2,
+    5.5,
+    0.8,
+    0.06
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 9,
+   "y": 7,
+   "id": "ammo_box",
+   "ammo": [
+    "hair",
+    25
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 9,
+   "y": 8,
+   "id": "battery",
+   "ammo": [
+    "cell",
+    40
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 13,
+   "y": 8,
+   "id": "crate",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 18,
+   "y": 8,
+   "id": "crate",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "item",
+   "x": 22,
+   "y": 8,
+   "id": "battery",
+   "ammo": [
+    "cell",
+    40
+   ]
+  },
+  {
+   "kind": "enemy",
+   "x": 13,
+   "y": 9,
+   "type": "trooper",
+   "patrol": false
+  },
+  {
+   "kind": "decor",
+   "x": 8,
+   "y": 10,
+   "id": "pillar",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 9,
+   "y": 10,
+   "id": "glow_cheese",
+   "block": false,
+   "hang": false,
+   "light": [
+    0.5,
+    2.2,
+    0.4,
+    3.5,
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 11,
+   "y": 10,
+   "id": "pillar",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 20,
+   "y": 10,
+   "id": "pillar",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 22,
+   "y": 10,
+   "id": "glow_cheese",
+   "block": false,
+   "hang": false,
+   "light": [
+    0.5,
+    2.2,
+    0.4,
+    3.5,
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 25,
+   "y": 10,
+   "id": "catnip",
+   "heal": 60,
+   "max": 150,
+   "light": [
+    0.4,
+    1.6,
+    0.4,
+    2.5
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 26,
+   "y": 10,
+   "id": "extra_life",
+   "life": 1,
+   "light": [
+    1.6,
+    1.3,
+    0.4,
+    2.5
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 8,
+   "y": 12,
+   "id": "tuna",
+   "heal": 25,
+   "max": 100
+  },
+  {
+   "kind": "decor",
+   "x": 15,
+   "y": 12,
+   "id": "chandelier",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.2,
+    1.8,
+    1.2,
+    5.5,
+    0.8,
+    0.06
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 23,
+   "y": 12,
+   "id": "tuna",
+   "heal": 25,
+   "max": 100
+  },
+  {
+   "kind": "item",
+   "x": 9,
+   "y": 13,
+   "id": "ammo_box",
+   "ammo": [
+    "hair",
+    25
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 13,
+   "y": 13,
+   "id": "crate",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 18,
+   "y": 13,
+   "id": "crate",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "item",
+   "x": 22,
+   "y": 13,
+   "id": "ammo_box",
+   "ammo": [
+    "hair",
+    25
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 10,
+   "y": 15,
+   "id": "fish_treat",
+   "heal": 10,
+   "max": 100
+  },
+  {
+   "kind": "decor",
+   "x": 11,
+   "y": 15,
+   "id": "pillar",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "item",
+   "x": 14,
+   "y": 15,
+   "id": "ammo_clip",
+   "ammo": [
+    "hair",
+    8
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 17,
+   "y": 15,
+   "id": "fish_treat",
+   "heal": 10,
+   "max": 100
+  },
+  {
+   "kind": "decor",
+   "x": 20,
+   "y": 15,
+   "id": "pillar",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "item",
+   "x": 21,
+   "y": 15,
+   "id": "fish_treat",
+   "heal": 10,
+   "max": 100
+  },
+  {
+   "kind": "item",
+   "x": 23,
+   "y": 15,
+   "id": "battery",
+   "ammo": [
+    "cell",
+    40
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 3,
+   "y": 16,
+   "id": "extra_life",
+   "life": 1,
+   "light": [
+    1.6,
+    1.3,
+    0.4,
+    2.5
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 12,
+   "y": 16,
+   "id": "ammo_box",
+   "ammo": [
+    "hair",
+    25
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 13,
+   "y": 16,
+   "id": "floor_lamp",
+   "block": true,
+   "hang": false,
+   "light": [
+    2,
+    1.7,
+    1,
+    5,
+    0.75,
+    0.03
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 18,
+   "y": 16,
+   "id": "floor_lamp",
+   "block": true,
+   "hang": false,
+   "light": [
+    2,
+    1.7,
+    1,
+    5,
+    0.75,
+    0.03
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 19,
+   "y": 16,
+   "id": "battery",
+   "ammo": [
+    "cell",
+    40
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 27,
+   "y": 16,
+   "id": "cheese_crown",
+   "score": 1000,
+   "treasure": true,
+   "light": [
+    1.6,
+    1.3,
+    0.4,
+    2.5
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 3,
+   "y": 17,
+   "id": "ammo_box",
+   "ammo": [
+    "hair",
+    25
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 8,
+   "y": 17,
+   "id": "alarm_light",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.8,
+    0.25,
+    0.2,
+    5,
+    0.85,
+    1
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 9,
+   "y": 17,
+   "id": "ammo_box",
+   "ammo": [
+    "hair",
+    25
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 12,
+   "y": 17,
+   "id": "ammo_clip",
+   "ammo": [
+    "hair",
+    8
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 19,
+   "y": 17,
+   "id": "fish_treat",
+   "heal": 10,
+   "max": 100
+  },
+  {
+   "kind": "item",
+   "x": 22,
+   "y": 17,
+   "id": "tuna",
+   "heal": 25,
+   "max": 100
+  },
+  {
+   "kind": "decor",
+   "x": 23,
+   "y": 17,
+   "id": "alarm_light",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.8,
+    0.25,
+    0.2,
+    5,
+    0.85,
+    1
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 27,
+   "y": 17,
+   "id": "brie_wheel",
+   "score": 500,
+   "treasure": true
+  },
+  {
+   "kind": "item",
+   "x": 1,
+   "y": 19,
+   "id": "laser",
+   "ammo": [
+    "cell",
+    60
+   ],
+   "weapon": 4,
+   "light": [
+    1.4,
+    0.2,
+    0.2,
+    2
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 6,
+   "y": 19,
+   "id": "ammo_box",
+   "ammo": [
+    "hair",
+    25
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 10,
+   "y": 19,
+   "id": "catnip",
+   "heal": 60,
+   "max": 150,
+   "light": [
+    0.4,
+    1.6,
+    0.4,
+    2.5
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 23,
+   "y": 19,
+   "id": "glow_cheese",
+   "block": false,
+   "hang": false,
+   "light": [
+    0.5,
+    2.2,
+    0.4,
+    3.5,
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 30,
+   "y": 19,
+   "id": "glow_cheese",
+   "block": false,
+   "hang": false,
+   "light": [
+    0.5,
+    2.2,
+    0.4,
+    3.5,
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 2,
+   "y": 20,
+   "id": "floor_lamp",
+   "block": true,
+   "hang": false,
+   "light": [
+    2,
+    1.7,
+    1,
+    5,
+    0.75,
+    0.03
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 5,
+   "y": 20,
+   "id": "crate",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 7,
+   "y": 20,
+   "id": "floor_lamp",
+   "block": true,
+   "hang": false,
+   "light": [
+    2,
+    1.7,
+    1,
+    5,
+    0.75,
+    0.03
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 11,
+   "y": 20,
+   "id": "floor_lamp",
+   "block": true,
+   "hang": false,
+   "light": [
+    2,
+    1.7,
+    1,
+    5,
+    0.75,
+    0.03
+   ]
+  },
+  {
+   "kind": "enemy",
+   "x": 14,
+   "y": 20,
+   "type": "officer",
+   "patrol": false
+  },
+  {
+   "kind": "decor",
+   "x": 20,
+   "y": 20,
+   "id": "floor_lamp",
+   "block": true,
+   "hang": false,
+   "light": [
+    2,
+    1.7,
+    1,
+    5,
+    0.75,
+    0.03
+   ]
+  },
+  {
+   "kind": "enemy",
+   "x": 27,
+   "y": 20,
+   "type": "panzer",
+   "patrol": false
+  },
+  {
+   "kind": "item",
+   "x": 28,
+   "y": 20,
+   "id": "key_silver",
+   "key": "silver",
+   "light": [
+    0.8,
+    0.9,
+    1.2,
+    2
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 4,
+   "y": 21,
+   "id": "yarn_ammo",
+   "ammo": [
+    "yarn",
+    3
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 8,
+   "y": 21,
+   "id": "fish_treat",
+   "heal": 10,
+   "max": 100
+  },
+  {
+   "kind": "decor",
+   "x": 15,
+   "y": 21,
+   "id": "chandelier",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.2,
+    1.8,
+    1.2,
+    5.5,
+    0.8,
+    0.06
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 26,
+   "y": 21,
+   "id": "cheddar_wedge",
+   "score": 100,
+   "treasure": true
+  },
+  {
+   "kind": "item",
+   "x": 2,
+   "y": 22,
+   "id": "yarn_launcher",
+   "ammo": [
+    "yarn",
+    4
+   ],
+   "weapon": 3
+  },
+  {
+   "kind": "item",
+   "x": 7,
+   "y": 22,
+   "id": "gatling",
+   "ammo": [
+    "hair",
+    12
+   ],
+   "weapon": 2
+  },
+  {
+   "kind": "enemy",
+   "x": 12,
+   "y": 22,
+   "type": "trooper",
+   "patrol": false
+  },
+  {
+   "kind": "item",
+   "x": 16,
+   "y": 22,
+   "id": "fish_treat",
+   "heal": 10,
+   "max": 100
+  },
+  {
+   "kind": "enemy",
+   "x": 18,
+   "y": 22,
+   "type": "trooper",
+   "patrol": false
+  },
+  {
+   "kind": "decor",
+   "x": 24,
+   "y": 22,
+   "id": "cauldron",
+   "block": true,
+   "hang": false,
+   "light": [
+    2.6,
+    1.5,
+    0.3,
+    5,
+    0.5,
+    0.15
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 29,
+   "y": 22,
+   "id": "cheddar_wedge",
+   "score": 100,
+   "treasure": true
+  },
+  {
+   "kind": "decor",
+   "x": 3,
+   "y": 23,
+   "id": "crate",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "item",
+   "x": 8,
+   "y": 23,
+   "id": "battery",
+   "ammo": [
+    "cell",
+    40
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 10,
+   "y": 23,
+   "id": "glow_cheese",
+   "block": false,
+   "hang": false,
+   "light": [
+    0.5,
+    2.2,
+    0.4,
+    3.5,
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 11,
+   "y": 23,
+   "id": "pillar",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 20,
+   "y": 23,
+   "id": "pillar",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "item",
+   "x": 21,
+   "y": 23,
+   "id": "ammo_clip",
+   "ammo": [
+    "hair",
+    8
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 30,
+   "y": 23,
+   "id": "fish_treat",
+   "heal": 10,
+   "max": 100
+  },
+  {
+   "kind": "enemy",
+   "x": 24,
+   "y": 24,
+   "type": "officer",
+   "patrol": false
+  },
+  {
+   "kind": "decor",
+   "x": 29,
+   "y": 24,
+   "id": "cauldron",
+   "block": true,
+   "hang": false,
+   "light": [
+    2.6,
+    1.5,
+    0.3,
+    5,
+    0.5,
+    0.15
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 7,
+   "y": 25,
+   "id": "glow_cheese",
+   "block": false,
+   "hang": false,
+   "light": [
+    0.5,
+    2.2,
+    0.4,
+    3.5,
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 8,
+   "y": 25,
+   "id": "floor_lamp",
+   "block": true,
+   "hang": false,
+   "light": [
+    2,
+    1.7,
+    1,
+    5,
+    0.75,
+    0.03
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 16,
+   "y": 25,
+   "id": "tuna",
+   "heal": 25,
+   "max": 100
+  },
+  {
+   "kind": "enemy",
+   "x": 23,
+   "y": 25,
+   "type": "mouse",
+   "patrol": false
+  },
+  {
+   "kind": "decor",
+   "x": 26,
+   "y": 25,
+   "id": "cheese_stack",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "enemy",
+   "x": 30,
+   "y": 25,
+   "type": "mouse",
+   "patrol": true
+  },
+  {
+   "kind": "decor",
+   "x": 4,
+   "y": 26,
+   "id": "candelabra",
+   "block": true,
+   "hang": false,
+   "light": [
+    2.2,
+    1.3,
+    0.5,
+    4.5,
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "kind": "enemy",
+   "x": 7,
+   "y": 26,
+   "type": "mouse",
+   "patrol": false
+  },
+  {
+   "kind": "decor",
+   "x": 11,
+   "y": 26,
+   "id": "candelabra",
+   "block": true,
+   "hang": false,
+   "light": [
+    2.2,
+    1.3,
+    0.5,
+    4.5,
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "kind": "enemy",
+   "x": 13,
+   "y": 26,
+   "type": "trooper",
+   "patrol": false
+  },
+  {
+   "kind": "decor",
+   "x": 20,
+   "y": 26,
+   "id": "candelabra",
+   "block": true,
+   "hang": false,
+   "light": [
+    2.2,
+    1.3,
+    0.5,
+    4.5,
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 21,
+   "y": 26,
+   "id": "plant",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "light",
+   "x": 29,
+   "y": 26,
+   "color": [
+    1.8,
+    1.5,
+    1.1
+   ],
+   "range": 5,
+   "height": 0.8,
+   "flicker": 0
+  },
+  {
+   "kind": "light",
+   "x": 6,
+   "y": 27,
+   "color": [
+    1.8,
+    1.5,
+    1.1
+   ],
+   "range": 5,
+   "height": 0.8,
+   "flicker": 0
+  },
+  {
+   "kind": "decor",
+   "x": 15,
+   "y": 27,
+   "id": "chandelier",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.2,
+    1.8,
+    1.2,
+    5.5,
+    0.8,
+    0.06
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 1,
+   "y": 28,
+   "id": "brie_wheel",
+   "score": 500,
+   "treasure": true
+  },
+  {
+   "kind": "item",
+   "x": 2,
+   "y": 28,
+   "id": "tuna",
+   "heal": 25,
+   "max": 100
+  },
+  {
+   "kind": "start",
+   "x": 5,
+   "y": 28,
+   "angle": 0
+  },
+  {
+   "kind": "item",
+   "x": 8,
+   "y": 28,
+   "id": "fish_treat",
+   "heal": 10,
+   "max": 100
+  },
+  {
+   "kind": "decor",
+   "x": 12,
+   "y": 28,
+   "id": "plant",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "enemy",
+   "x": 18,
+   "y": 28,
+   "type": "trooper",
+   "patrol": true
+  },
+  {
+   "kind": "light",
+   "x": 26,
+   "y": 28,
+   "color": [
+    1.8,
+    1.5,
+    1.1
+   ],
+   "range": 5,
+   "height": 0.8,
+   "flicker": 0
+  },
+  {
+   "kind": "enemy",
+   "x": 27,
+   "y": 28,
+   "type": "trooper",
+   "patrol": false
+  },
+  {
+   "kind": "decor",
+   "x": 6,
+   "y": 29,
+   "id": "barrel",
+   "block": true,
+   "hang": false
+  },
+  {
+   "kind": "decor",
+   "x": 11,
+   "y": 29,
+   "id": "candelabra",
+   "block": true,
+   "hang": false,
+   "light": [
+    2.2,
+    1.3,
+    0.5,
+    4.5,
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 15,
+   "y": 29,
+   "id": "chandelier",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.2,
+    1.8,
+    1.2,
+    5.5,
+    0.8,
+    0.06
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 20,
+   "y": 29,
+   "id": "candelabra",
+   "block": true,
+   "hang": false,
+   "light": [
+    2.2,
+    1.3,
+    0.5,
+    4.5,
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 23,
+   "y": 29,
+   "id": "tuna",
+   "heal": 25,
+   "max": 100
+  },
+  {
+   "kind": "decor",
+   "x": 25,
+   "y": 29,
+   "id": "alarm_light",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.8,
+    0.25,
+    0.2,
+    5,
+    0.85,
+    1
+   ]
+  },
+  {
+   "kind": "decor",
+   "x": 30,
+   "y": 29,
+   "id": "alarm_light",
+   "block": false,
+   "hang": true,
+   "light": [
+    2.8,
+    0.25,
+    0.2,
+    5,
+    0.85,
+    1
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 5,
+   "y": 30,
+   "id": "ammo_clip",
+   "ammo": [
+    "hair",
+    8
+   ]
+  },
+  {
+   "kind": "enemy",
+   "x": 7,
+   "y": 30,
+   "type": "mouse",
+   "patrol": false
+  },
+  {
+   "kind": "item",
+   "x": 10,
+   "y": 30,
+   "id": "ammo_clip",
+   "ammo": [
+    "hair",
+    8
+   ]
+  },
+  {
+   "kind": "item",
+   "x": 24,
+   "y": 30,
+   "id": "ammo_box",
+   "ammo": [
+    "hair",
+    25
+   ]
+  }
+ ],
+ "start": {
+  "x": 5,
+  "y": 28,
+  "angle": 0
+ },
+ "exit": {
+  "x": 15,
+  "y": 1,
+  "facing": "s"
+ },
+ "keys": [
+  {
+   "id": "key_silver",
+   "x": 28,
+   "y": 20
+  }
+ ],
+ "stats": {
+  "enemies": 18,
+  "treasure": 5,
+  "secrets": 4,
+  "items": 49
+ }
+}

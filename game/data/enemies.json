@@ -1,0 +1,66 @@
+{
+  "_comment": "RAT OPS enemy table (owner: enemy-ai). Ported from reference/kasekrieg/defs.js ENEMIES + sim/enemies.js tuning. ref_* = reference values in cells / cells-per-second. Metres: distances x4.0 (1 cell = 4 m, same as player falloff 10 cells -> 40 m); move speeds x1.294 (same scale the player used: 3.4 cells/s -> 4.4 m/s); melee reach 0.95 cells -> 1.7 m (character scale, like player claws 1.15 -> 2.0 m).",
+  "cell": 4.0,
+  "speed_scale": 1.294,
+  "perception": {
+    "sight_range": 96.0, "fov_deg": 70.0, "feel_range": 6.0, "shout_range": 24.0, "gunfire_range": 28.0,
+    "hearing_wall_mul": 0.5, "eye_height_frac": 0.88, "lose_target_s": 6.0, "sense_interval": 0.1
+  },
+  "accuracy": {
+    "_comment": "reference hitChance(dist_cells, playerSpeed): clamp(0.95 - 0.05*d, 0.1, 0.95) * (1 - clamp(v/run,0,1.2)*0.45), clamped 0.04..0.95; then x skill multiplier.",
+    "base": 0.95, "per_cell": 0.05, "min_base": 0.1, "move_pen": 0.45, "run_speed_ref": 7.25, "min": 0.04, "max": 0.95,
+    "skill_mul": [0.7, 0.85, 1.0, 1.15]
+  },
+  "patrol_mul": 0.55,
+  "die_time": 0.6,
+  "boss_stun_mul": 0.3,
+  "boss_stun_immune": 2.0,
+  "projectiles": {
+    "cheeseball": { "speed": 14.7, "ref_speed": 5.5, "radius": 0.18, "fuse": 6.0, "dmg": [14, 28], "splash": 2.3, "ref_splash": 1.1, "light": [2.2, 1.3, 0.3, 3.5], "sfx": "cheese_splat" }
+  },
+  "kinds": {
+    "mouse": {
+      "title": "Maus Schütze", "model": "rat_mouse", "hp": 25, "ref_speed": 1.5, "speed": 1.94, "height": 1.4, "score": 100,
+      "pain_chance": 0.85, "reaction": [0.5, 1.0], "pref_dist": 20.0, "ref_pref_dist": 5, "head_frac": 0.8,
+      "attack": { "kind": "hitscan", "dmg": [3, 9], "shots": 1, "gap": 0.0, "windup": 0.4, "cooldown": [1.2, 2.0], "range": 56.0, "ref_range": 14.0 },
+      "cover": true, "drop": "ammo_clip",
+      "sfx": { "alert": "mouse_alert", "pain": "mouse_pain", "die": "mouse_die", "fire": "enemy_pistol" }
+    },
+    "trooper": {
+      "title": "Sturmratte", "model": "rat_trooper", "hp": 50, "ref_speed": 1.9, "speed": 2.46, "height": 1.7, "score": 300,
+      "pain_chance": 0.6, "reaction": [0.4, 0.8], "pref_dist": 16.0, "ref_pref_dist": 4, "head_frac": 0.82,
+      "attack": { "kind": "hitscan", "dmg": [3, 8], "shots": 3, "gap": 0.11, "windup": 0.35, "cooldown": [1.4, 2.2], "range": 64.0, "ref_range": 16.0 },
+      "cover": true, "drop": "gatling|ammo_clip",
+      "sfx": { "alert": "trooper_alert", "pain": "rat_pain", "die": "trooper_die", "fire": "enemy_smg" }
+    },
+    "officer": {
+      "title": "Ratten-Offizier", "model": "rat_officer", "hp": 40, "ref_speed": 3.0, "speed": 3.88, "height": 1.8, "score": 400,
+      "pain_chance": 0.5, "reaction": [0.2, 0.5], "pref_dist": 12.0, "ref_pref_dist": 3, "head_frac": 0.82,
+      "attack": { "kind": "hitscan", "dmg": [4, 11], "shots": 1, "gap": 0.0, "windup": 0.28, "cooldown": [0.7, 1.3], "range": 64.0, "ref_range": 16.0 },
+      "cover": true, "drop": "ammo_clip",
+      "sfx": { "alert": "officer_alert", "pain": "rat_pain", "die": "officer_die", "fire": "enemy_pistol" }
+    },
+    "sewer": {
+      "title": "Kanalratte", "model": "rat_sewer", "hp": 14, "ref_speed": 3.6, "speed": 4.66, "height": 1.5, "score": 150,
+      "pain_chance": 0.9, "reaction": [0.1, 0.3], "pref_dist": 0.0, "ref_pref_dist": 0, "head_frac": 0.78,
+      "attack": { "kind": "melee", "dmg": [3, 8], "shots": 1, "gap": 0.0, "windup": 0.18, "cooldown": [0.5, 0.8], "range": 1.7, "ref_range": 0.95 },
+      "cover": false, "drop": "",
+      "sfx": { "alert": "sewer_alert", "pain": "rat_pain", "die": "sewer_die", "fire": "sewer_bite" }
+    },
+    "panzer": {
+      "title": "Panzerratte", "model": "rat_panzer", "hp": 120, "ref_speed": 1.2, "speed": 1.55, "height": 2.2, "score": 700,
+      "pain_chance": 0.3, "reaction": [0.6, 1.0], "pref_dist": 24.0, "ref_pref_dist": 6, "head_frac": 0.84,
+      "attack": { "kind": "projectile", "projectile": "cheeseball", "shots": 1, "gap": 0.0, "windup": 0.6, "cooldown": [2.0, 3.0], "range": 72.0, "ref_range": 18.0 },
+      "cover": true, "drop": "yarn_ammo",
+      "sfx": { "alert": "panzer_alert", "pain": "rat_pain", "die": "panzer_die", "fire": "panzer_fire" }
+    },
+    "boss": {
+      "title": "Der Große Käse", "model": "rat_boss", "hp": 1100, "ref_speed": 1.7, "speed": 2.2, "height": 3.2, "radius": 0.6, "score": 10000,
+      "pain_chance": 0.08, "reaction": [0.3, 0.5], "pref_dist": 18.0, "ref_pref_dist": 4.5, "head_frac": 0.84,
+      "attack": { "kind": "hitscan", "dmg": [3, 7], "shots": 8, "gap": 0.08, "windup": 0.5, "cooldown": [1.4, 2.2], "range": 80.0, "ref_range": 20.0 },
+      "phase2": { "below": 0.5, "projectile": "cheeseball", "volley": 3, "spread_deg": 14.0, "speed_mul": 1.3, "summon": "sewer", "summon_first": 2, "summon_every": 9.0, "max_minions": 3, "pain": 0.9 },
+      "cover": false, "drop": "cheese_crown",
+      "sfx": { "alert": "boss_alert", "pain": "boss_pain", "die": "boss_die", "fire": "boss_fire" }
+    }
+  }
+}

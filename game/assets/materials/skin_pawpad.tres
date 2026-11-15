@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/skin_sss.gdshader" id="1_4vwfk"]
+
+[resource]
+resource_name = "skin_pawpad"
+render_priority = 0
+shader = ExtResource("1_4vwfk")
+shader_parameter/skin_color = Color(0.35, 0.22, 0.22, 1)
+shader_parameter/blotch_color = Color(0.2, 0.12, 0.12, 1)
+shader_parameter/blotch_amount = null
+shader_parameter/roughness = 0.65
+shader_parameter/moistness = null
+shader_parameter/pore_scale = null
+shader_parameter/pore_strength = 0.6
+shader_parameter/sss_strength = 0.5
+shader_parameter/transmission_color = null
+shader_parameter/backlight_amount = 0.2

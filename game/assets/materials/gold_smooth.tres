@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/gold_foil.gdshader" id="1_xh6ic"]
+
+[resource]
+resource_name = "gold_smooth"
+render_priority = 0
+shader = ExtResource("1_xh6ic")
+shader_parameter/foil_color = null
+shader_parameter/foil_color_2 = null
+shader_parameter/roughness = 0.12
+shader_parameter/crinkle = 0.0
+shader_parameter/crinkle_scale = null
+shader_parameter/crease_darkening = null
+shader_parameter/tarnish = null
+shader_parameter/tarnish_color = null
+shader_parameter/sparkle_emission = 0.1

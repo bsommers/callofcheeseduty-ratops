@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/cloth.gdshader" id="1_7r6ho"]
+
+[resource]
+resource_name = "cloth_officer_red"
+render_priority = 0
+shader = ExtResource("1_7r6ho")
+shader_parameter/cloth_color = Color(0.45, 0.05, 0.05, 1)
+shader_parameter/use_normal_texture = null
+shader_parameter/roughness = null
+shader_parameter/weave_scale = null
+shader_parameter/weave_pattern = 0
+shader_parameter/weave_strength = null
+shader_parameter/sheen = 0.5
+shader_parameter/sheen_tint = null
+shader_parameter/dirt_amount = null
+shader_parameter/dirt_color = null
+shader_parameter/color_variation = null

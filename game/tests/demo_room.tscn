@@ -1,0 +1,147 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7ratopsdemo01"]
+
+[sub_resource type="GDScript" id="GDScript_demo"]
+script/source = "extends Node3D
+## Lit test room proving SDFGI, SSR and volumetric fog (owner: godot-core).
+## Built in code. User arg `--demo_off=sdfgi,ssr,fog,ssao,ssil` disables features for A/B shots.
+## Default camera: inside the room looking at the sunlit window wall.
+
+func _ready() -> void:
+	var off: PackedStringArray = []
+	for a: String in OS.get_cmdline_user_args():
+		if a.begins_with(\"--demo_off=\"):
+			off = a.trim_prefix(\"--demo_off=\").split(\",\")
+	_build_env(off)
+	_build_room()
+	_build_lights()
+	_build_props()
+	var cam: Camera3D = Camera3D.new()
+	cam.fov = 70.0
+	add_child(cam)
+	cam.position = Vector3(0.0, 1.7, 5.2)
+	cam.rotation_degrees = Vector3(-6.0, 0.0, 0.0)
+	cam.make_current()
+
+
+func _build_env(off: PackedStringArray) -> void:
+	var env: Environment = Environment.new()
+	var sky: Sky = Sky.new()
+	var sm: ProceduralSkyMaterial = ProceduralSkyMaterial.new()
+	sm.sky_energy_multiplier = 1.0
+	sky.sky_material = sm
+	env.background_mode = Environment.BG_SKY
+	env.sky = sky
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
+	env.ambient_light_energy = 0.15
+	env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
+	env.tonemap_mode = Environment.TONE_MAPPER_ACES
+	env.tonemap_exposure = 1.0
+	env.sdfgi_enabled = not (\"sdfgi\" in off)
+	env.sdfgi_use_occlusion = true
+	env.sdfgi_cascades = 4
+	env.sdfgi_min_cell_size = 0.1
+	env.sdfgi_energy = 1.2
+	env.ssr_enabled = not (\"ssr\" in off)
+	env.ssr_max_steps = 96
+	env.ssao_enabled = not (\"ssao\" in off)
+	env.ssil_enabled = not (\"ssil\" in off)
+	env.volumetric_fog_enabled = not (\"fog\" in off)
+	env.volumetric_fog_density = 0.035
+	env.volumetric_fog_albedo = Color(0.9, 0.85, 0.75)
+	env.volumetric_fog_length = 40.0
+	env.volumetric_fog_gi_inject = 1.0
+	env.glow_enabled = true
+	env.glow_bloom = 0.05
+	if Settings.has_method(\"apply_to_environment\"):
+		Settings.apply_to_environment(env)
+		# keep the A/B switches authoritative over the preset
+		if \"sdfgi\" in off: env.sdfgi_enabled = false
+		if \"ssr\" in off: env.ssr_enabled = false
+		if \"fog\" in off: env.volumetric_fog_enabled = false
+	var we: WorldEnvironment = WorldEnvironment.new()
+	we.environment = env
+	add_child(we)
+
+
+func _mat(c: Color, rough: float, metal: float = 0.0) -> StandardMaterial3D:
+	var m: StandardMaterial3D = StandardMaterial3D.new()
+	m.albedo_color = c
+	m.roughness = rough
+	m.metallic = metal
+	return m
+
+
+func _box(size: Vector3, pos: Vector3, mat: Material) -> MeshInstance3D:
+	var mi: MeshInstance3D = MeshInstance3D.new()
+	var bm: BoxMesh = BoxMesh.new()
+	bm.size = size
+	mi.mesh = bm
+	mi.material_override = mat
+	mi.position = pos
+	add_child(mi)
+	return mi
+
+
+## 8 x 3.6 x 12 m room (2 x 3 reference cells). Window slot in the -Z wall lets the sun in.
+func _build_room() -> void:
+	var w: float = 8.0
+	var h: float = 3.6
+	var d: float = 12.0
+	var t: float = 0.3
+	var floor_m: StandardMaterial3D = _mat(Color(0.12, 0.12, 0.13), 0.05, 0.0)  # polished: SSR
+	var wall_m: StandardMaterial3D = _mat(Color(0.85, 0.8, 0.7), 0.85)
+	var red_m: StandardMaterial3D = _mat(Color(0.8, 0.08, 0.05), 0.8)   # colour bleed: SDFGI
+	var blue_m: StandardMaterial3D = _mat(Color(0.05, 0.15, 0.8), 0.8)
+	_box(Vector3(w, t, d), Vector3(0, -t * 0.5, 0), floor_m)
+	_box(Vector3(w, t, d), Vector3(0, h + t * 0.5, 0), wall_m)
+	_box(Vector3(t, h, d), Vector3(-w * 0.5 - t * 0.5, h * 0.5, 0), red_m)
+	_box(Vector3(t, h, d), Vector3(w * 0.5 + t * 0.5, h * 0.5, 0), blue_m)
+	_box(Vector3(w, h, t), Vector3(0, h * 0.5, d * 0.5 + t * 0.5), wall_m)
+	# -Z wall with a window slot (x -1.5..1.5, y 1.2..2.8)
+	var z: float = -d * 0.5 - t * 0.5
+	_box(Vector3(w, 1.2, t), Vector3(0, 0.6, z), wall_m)
+	_box(Vector3(w, h - 2.8, t), Vector3(0, 2.8 + (h - 2.8) * 0.5, z), wall_m)
+	_box(Vector3(2.5, 1.6, t), Vector3(-2.75, 2.0, z), wall_m)
+	_box(Vector3(2.5, 1.6, t), Vector3(2.75, 2.0, z), wall_m)
+
+
+func _build_lights() -> void:
+	var sun: DirectionalLight3D = DirectionalLight3D.new()
+	sun.light_energy = 3.0
+	sun.light_color = Color(1.0, 0.92, 0.8)
+	sun.shadow_enabled = true
+	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
+	sun.light_volumetric_fog_energy = 2.0
+	add_child(sun)
+	# shine through the -Z window, downward into the room
+	sun.look_at_from_position(Vector3(0, 6, -14), Vector3(0, 0, 0), Vector3.UP)
+	var lamp: OmniLight3D = OmniLight3D.new()
+	lamp.light_color = Color(1.0, 0.75, 0.4)
+	lamp.light_energy = 2.0
+	lamp.omni_range = 7.0
+	lamp.shadow_enabled = true
+	lamp.position = Vector3(2.5, 2.6, 3.0)
+	add_child(lamp)
+
+
+func _build_props() -> void:
+	var cheese: StandardMaterial3D = _mat(Color(1.0, 0.78, 0.2), 0.35)
+	_box(Vector3(1.2, 1.2, 1.2), Vector3(-1.8, 0.6, -1.5), cheese)
+	var chrome: StandardMaterial3D = _mat(Color(0.9, 0.9, 0.9), 0.08, 1.0)
+	var sp: MeshInstance3D = MeshInstance3D.new()
+	var sm: SphereMesh = SphereMesh.new()
+	sm.radius = 0.6
+	sm.height = 1.2
+	sp.mesh = sm
+	sp.material_override = chrome
+	sp.position = Vector3(1.6, 0.6, -0.5)
+	add_child(sp)
+	var glow: StandardMaterial3D = _mat(Color(0.2, 1.0, 0.3), 0.5)
+	glow.emission_enabled = true
+	glow.emission = Color(0.2, 1.0, 0.3)
+	glow.emission_energy_multiplier = 4.0
+	_box(Vector3(0.4, 0.4, 0.4), Vector3(0.2, 0.2, 1.5), glow)
+"
+
+[node name="DemoRoom" type="Node3D"]
+script = SubResource("GDScript_demo")

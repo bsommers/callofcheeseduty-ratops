@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/wet_metal.gdshader" id="1_nbwtm"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_grate_rusty/albedo.jpg" id="2_vj5k7"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_grate_rusty/metallic.jpg" id="3_f0w68"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_grate_rusty/normal.jpg" id="4_8u7pw"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_grate_rusty/roughness.jpg" id="5_up1ju"]
+
+[resource]
+resource_name = "wet_metal_grate_tex"
+render_priority = 0
+shader = ExtResource("1_nbwtm")
+shader_parameter/use_textures = true
+shader_parameter/albedo_texture = ExtResource("2_vj5k7")
+shader_parameter/normal_texture = ExtResource("4_8u7pw")
+shader_parameter/roughness_texture = ExtResource("5_up1ju")
+shader_parameter/metallic_texture = ExtResource("3_f0w68")
+shader_parameter/texture_scale = null
+shader_parameter/metal_color = null
+shader_parameter/metal_roughness = null
+shader_parameter/brush_strength = null
+shader_parameter/rust_color = null
+shader_parameter/rust_amount = 0.1
+shader_parameter/rust_scale = null
+shader_parameter/paint_color = null
+shader_parameter/paint_amount = null
+shader_parameter/wetness = null
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/grease_amount = null
+shader_parameter/grease_color = null

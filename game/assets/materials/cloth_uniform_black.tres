@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/cloth.gdshader" id="1_i53ep"]
+
+[resource]
+resource_name = "cloth_uniform_black"
+render_priority = 0
+shader = ExtResource("1_i53ep")
+shader_parameter/cloth_color = Color(0.06, 0.06, 0.065, 1)
+shader_parameter/use_normal_texture = null
+shader_parameter/roughness = 0.75
+shader_parameter/weave_scale = null
+shader_parameter/weave_pattern = 1
+shader_parameter/weave_strength = null
+shader_parameter/sheen = 0.6
+shader_parameter/sheen_tint = null
+shader_parameter/dirt_amount = null
+shader_parameter/dirt_color = null
+shader_parameter/color_variation = null

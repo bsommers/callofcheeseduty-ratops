@@ -1,0 +1,50 @@
+{
+  "_comment": "Port of reference/kasekrieg/defs.js WEAPONS (+PROJECTILES.yarnball). ref_* = reference numbers verbatim (cells, seconds, radians). Third-person fields (metres) are new: mag, reload, recoil, spread_move, ads_*, headshot. 1 cell = 4 m for world ranges; character-scale reach/splash use 1.5 m per cell (reference player radius 0.27 cells vs 0.4 m capsule).",
+  "headshot_multiplier": 2.5,
+  "falloff": {"start_m": 40.0, "per_m": 0.01, "min": 0.55},
+  "weapons": [
+    {
+      "id": "claws", "name": "Claws", "slot": 0, "kind": "melee",
+      "dmg": [10, 26], "ref_range_cells": 1.15, "range": 2.0, "cone_deg": 35.0,
+      "period": 0.34, "ammo": "", "use": 0, "auto": true, "loud": 0,
+      "mag": 0, "reload": 0.0, "headshot": 1.0
+    },
+    {
+      "id": "pistol", "name": "Hairball Pistol", "slot": 1, "kind": "hitscan",
+      "dmg": [9, 24], "spread": 0.012, "ref_range_cells": 24, "range": 96.0,
+      "period": 0.36, "ammo": "hair", "use": 1, "auto": false, "loud": 12,
+      "mag": 12, "reload": 1.3, "spread_move": 0.03, "spread_air": 0.08, "crouch_mult": 0.6, "ads_mult": 0.4,
+      "recoil": [[0.020, 0.000]], "recoil_recover": 6.0, "headshot": 2.5,
+      "tracer": [1.0, 0.85, 0.5], "flash": [1.0, 0.75, 0.35]
+    },
+    {
+      "id": "gatling", "name": "Purr-forator", "slot": 2, "kind": "hitscan",
+      "dmg": [8, 19], "spread": 0.045, "ref_range_cells": 24, "range": 96.0,
+      "period": 0.095, "ammo": "hair", "use": 1, "auto": true, "loud": 14,
+      "mag": 60, "reload": 2.6, "spread_move": 0.05, "spread_air": 0.12, "crouch_mult": 0.65, "ads_mult": 0.55,
+      "recoil": [[0.010, 0.000], [0.012, 0.002], [0.014, 0.003], [0.014, -0.002], [0.012, -0.006], [0.010, -0.008],
+                 [0.008, -0.004], [0.006, 0.004], [0.006, 0.009], [0.005, 0.010], [0.004, 0.006], [0.004, -0.004]],
+      "recoil_recover": 5.0, "headshot": 2.5,
+      "tracer": [1.0, 0.8, 0.45], "flash": [1.0, 0.7, 0.3]
+    },
+    {
+      "id": "yarn", "name": "Yarn Bomber", "slot": 3, "kind": "projectile", "projectile": "yarnball",
+      "period": 0.9, "ammo": "yarn", "use": 1, "auto": false, "loud": 10,
+      "mag": 0, "reload": 0.0, "recoil": [[0.05, 0.0]], "recoil_recover": 3.0, "headshot": 1.0,
+      "flash": [1.6, 0.4, 1.4]
+    },
+    {
+      "id": "laser", "name": "Der Rote Punkt", "slot": 4, "kind": "beam",
+      "dps": 55, "ref_range_cells": 16, "range": 64.0, "period": 0.0, "ammo": "cell",
+      "use_per_sec": 14, "auto": true, "loud": 3, "stun": 0.6,
+      "mag": 0, "reload": 0.0, "headshot": 1.5, "tracer": [1.4, 0.15, 0.1]
+    }
+  ],
+  "projectiles": {
+    "yarnball": {
+      "ref": {"speed": 9.0, "radius": 0.15, "bounces": 2, "fuse": 2.2, "dmg": [55, 95], "splash": 1.7},
+      "speed": 24.0, "radius": 0.18, "bounces": 2, "fuse": 2.2, "dmg": [55, 95], "splash": 3.5,
+      "gravity_scale": 0.6, "light": [1.6, 0.4, 1.4, 6.0], "self_damage": false
+    }
+  }
+}

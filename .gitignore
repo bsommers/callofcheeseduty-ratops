@@ -1,0 +1,14 @@
+.tools/
+.tracker/
+.godot/
+build/
+dist/
+out/
+assets-cache/
+*.log
+node_modules/
+
+# local orchestration state (contains machine paths; regenerable)
+docs/CHECKPOINT.md
+docs/swarm/prompts/
+docs/swarm/progress/

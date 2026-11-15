@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/triplanar_pbr.gdshader" id="1_jqj8g"]
+[ext_resource type="Texture2D" path="res://assets/textures/brick_moss_001/albedo.jpg" id="2_um63w"]
+[ext_resource type="Texture2D" path="res://assets/textures/brick_moss_001/ao.jpg" id="3_vqc0a"]
+[ext_resource type="Texture2D" path="res://assets/textures/brick_moss_001/normal.jpg" id="4_j5wt8"]
+[ext_resource type="Texture2D" path="res://assets/textures/brick_moss_001/roughness.jpg" id="5_m0rt8"]
+
+[resource]
+resource_name = "tri_brick_moss_001"
+render_priority = 0
+shader = ExtResource("1_jqj8g")
+shader_parameter/use_textures = true
+shader_parameter/albedo_texture = ExtResource("2_um63w")
+shader_parameter/normal_texture = ExtResource("4_j5wt8")
+shader_parameter/roughness_texture = ExtResource("5_m0rt8")
+shader_parameter/ao_texture = ExtResource("3_vqc0a")
+shader_parameter/texture_scale = null
+shader_parameter/blend_sharpness = null
+shader_parameter/normal_strength = null
+shader_parameter/tint = null
+shader_parameter/roughness_scale = null
+shader_parameter/metallic_scale = 0.0
+shader_parameter/ao_strength = null
+shader_parameter/macro_variation = null
+shader_parameter/grime_amount = null
+shader_parameter/placeholder_color = null
+shader_parameter/wetness = 0.2
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = null
+shader_parameter/water_tint = null

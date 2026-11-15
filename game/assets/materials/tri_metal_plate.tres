@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/triplanar_pbr.gdshader" id="1_qwbrp"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_plate/albedo.jpg" id="2_htevu"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_plate/ao.jpg" id="3_7hll6"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_plate/metallic.jpg" id="4_mst7e"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_plate/normal.jpg" id="5_3dte2"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_plate/roughness.jpg" id="6_gpnkh"]
+
+[resource]
+resource_name = "tri_metal_plate"
+render_priority = 0
+shader = ExtResource("1_qwbrp")
+shader_parameter/use_textures = true
+shader_parameter/albedo_texture = ExtResource("2_htevu")
+shader_parameter/normal_texture = ExtResource("5_3dte2")
+shader_parameter/roughness_texture = ExtResource("6_gpnkh")
+shader_parameter/ao_texture = ExtResource("3_7hll6")
+shader_parameter/metallic_texture = ExtResource("4_mst7e")
+shader_parameter/texture_scale = 0.75
+shader_parameter/blend_sharpness = null
+shader_parameter/normal_strength = null
+shader_parameter/tint = null
+shader_parameter/roughness_scale = null
+shader_parameter/metallic_scale = null
+shader_parameter/ao_strength = null
+shader_parameter/macro_variation = null
+shader_parameter/grime_amount = null
+shader_parameter/placeholder_color = null
+shader_parameter/wetness = null
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = null
+shader_parameter/water_tint = null

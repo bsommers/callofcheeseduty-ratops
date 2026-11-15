@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/triplanar_pbr.gdshader" id="1_kur7q"]
+[ext_resource type="Texture2D" path="res://assets/textures/floor_tiles_02/albedo.jpg" id="2_cx2yj"]
+[ext_resource type="Texture2D" path="res://assets/textures/floor_tiles_02/ao.jpg" id="3_u18ir"]
+[ext_resource type="Texture2D" path="res://assets/textures/floor_tiles_02/normal.jpg" id="4_pv1wl"]
+[ext_resource type="Texture2D" path="res://assets/textures/floor_tiles_02/roughness.jpg" id="5_xncpc"]
+
+[resource]
+resource_name = "tri_floor_tiles_02"
+render_priority = 0
+shader = ExtResource("1_kur7q")
+shader_parameter/use_textures = true
+shader_parameter/albedo_texture = ExtResource("2_cx2yj")
+shader_parameter/normal_texture = ExtResource("4_pv1wl")
+shader_parameter/roughness_texture = ExtResource("5_xncpc")
+shader_parameter/ao_texture = ExtResource("3_u18ir")
+shader_parameter/texture_scale = 0.5
+shader_parameter/blend_sharpness = null
+shader_parameter/normal_strength = null
+shader_parameter/tint = null
+shader_parameter/roughness_scale = null
+shader_parameter/metallic_scale = 0.0
+shader_parameter/ao_strength = null
+shader_parameter/macro_variation = null
+shader_parameter/grime_amount = null
+shader_parameter/placeholder_color = null
+shader_parameter/wetness = null
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = null
+shader_parameter/water_tint = null

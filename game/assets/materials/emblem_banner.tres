@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/emblem.gdshader" id="1_cl2r6"]
+
+[resource]
+resource_name = "emblem_banner"
+render_priority = 0
+shader = ExtResource("1_cl2r6")
+shader_parameter/field_color = null
+shader_parameter/disc_color = null
+shader_parameter/wedge_color = null
+shader_parameter/uv_scale = Vector2(1, 2)
+shader_parameter/emblem_center = Vector2(0.5, 0.6)
+shader_parameter/box_mesh_uv = null
+shader_parameter/disc_radius = null
+shader_parameter/wedge_size = null
+shader_parameter/fabric = null
+shader_parameter/weave_scale = null
+shader_parameter/roughness = null
+shader_parameter/wear = null
+shader_parameter/emission_strength = null

@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/triplanar_pbr.gdshader" id="1_5lovj"]
+[ext_resource type="Texture2D" path="res://assets/textures/damaged_plaster/albedo.jpg" id="2_v41qf"]
+[ext_resource type="Texture2D" path="res://assets/textures/damaged_plaster/ao.jpg" id="3_t3wdy"]
+[ext_resource type="Texture2D" path="res://assets/textures/damaged_plaster/normal.jpg" id="4_8152k"]
+[ext_resource type="Texture2D" path="res://assets/textures/damaged_plaster/roughness.jpg" id="5_egh26"]
+
+[resource]
+resource_name = "tri_damaged_plaster"
+render_priority = 0
+shader = ExtResource("1_5lovj")
+shader_parameter/use_textures = true
+shader_parameter/albedo_texture = ExtResource("2_v41qf")
+shader_parameter/normal_texture = ExtResource("4_8152k")
+shader_parameter/roughness_texture = ExtResource("5_egh26")
+shader_parameter/ao_texture = ExtResource("3_t3wdy")
+shader_parameter/texture_scale = null
+shader_parameter/blend_sharpness = null
+shader_parameter/normal_strength = null
+shader_parameter/tint = null
+shader_parameter/roughness_scale = null
+shader_parameter/metallic_scale = 0.0
+shader_parameter/ao_strength = null
+shader_parameter/macro_variation = null
+shader_parameter/grime_amount = null
+shader_parameter/placeholder_color = null
+shader_parameter/wetness = null
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = null
+shader_parameter/water_tint = null

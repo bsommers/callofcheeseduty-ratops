@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/wet_stone.gdshader" id="1_fmay5"]
+
+[resource]
+resource_name = "wet_stone_rain"
+render_priority = 0
+shader = ExtResource("1_fmay5")
+shader_parameter/use_textures = null
+shader_parameter/texture_scale = null
+shader_parameter/stone_color = Color(0.46, 0.44, 0.42, 1)
+shader_parameter/stone_color_2 = null
+shader_parameter/mortar_color = null
+shader_parameter/stone_scale = null
+shader_parameter/mortar_width = null
+shader_parameter/bump_strength = null
+shader_parameter/stone_roughness = null
+shader_parameter/wetness = 0.6
+shader_parameter/puddle_amount = 0.5
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = 1.0
+shader_parameter/water_tint = null
+shader_parameter/slime_amount = 0.0
+shader_parameter/slime_color = null

@@ -1,0 +1,121 @@
+{
+ "_mood": "Moonlit Hall of Mirrors: blue moonlight through open courts, glossy checker marble, warm candelabra in the halls",
+ "sky": {
+  "hdri": "res://assets/hdri/dikhololo_night_2k.hdr",
+  "energy": 0.35,
+  "background": "sky",
+  "rotation_deg": 40
+ },
+ "ambient": {
+  "source": "color",
+  "color": [
+   0.03,
+   0.035,
+   0.06
+  ],
+  "energy": 1.0
+ },
+ "tonemap": {
+  "mode": "aces",
+  "exposure": 0.9,
+  "white": 6.0
+ },
+ "sun": {
+  "enabled": true,
+  "dir": [
+   0.45,
+   0.8,
+   0.35
+  ],
+  "color": [
+   0.6,
+   0.7,
+   1.0
+  ],
+  "energy": 0.5,
+  "shadow": true,
+  "angular_deg": 0.6,
+  "fog_energy": 1.5,
+  "shadow_distance": 90
+ },
+ "fill": {
+  "enabled": true,
+  "color": [
+   0.5,
+   0.6,
+   1.0
+  ],
+  "energy": 0.05
+ },
+ "fog": {
+  "density": 0.01,
+  "albedo": [
+   0.65,
+   0.72,
+   0.95
+  ],
+  "anisotropy": 0.65,
+  "sky_affect": 0.3
+ },
+ "ssr": {
+  "fade_in": 0.1,
+  "fade_out": 3.0,
+  "depth_tolerance": 0.15
+ },
+ "lights": {
+  "color": [
+   1.0,
+   0.74,
+   0.45
+  ],
+  "energy_mul": 2.2,
+  "range_mul": 1.4,
+  "flicker": 0.06,
+  "zones": {
+   "s": {
+    "color": [
+     0.55,
+     0.65,
+     1.0
+    ],
+    "energy_mul": 0.8,
+    "flicker": 0.0
+   },
+   "b": {
+    "color": [
+     0.55,
+     0.65,
+     1.0
+    ],
+    "energy_mul": 0.8,
+    "flicker": 0.0
+   }
+  }
+ },
+ "grade": {
+  "contrast": 1.08,
+  "saturation": 0.92,
+  "shadow_tint": [
+   -0.01,
+   0.0,
+   0.03
+  ],
+  "highlight_tint": [
+   0.03,
+   0.01,
+   -0.02
+  ]
+ },
+ "post": {
+  "grain": 0.03,
+  "vignette": 0.38
+ },
+ "materials": {
+  "floor.checker": {
+   "lib": "tri_marble_tiles",
+   "params": {
+    "roughness_scale": 0.35
+   }
+  }
+ }
+}

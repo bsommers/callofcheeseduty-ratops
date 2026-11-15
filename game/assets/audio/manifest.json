@@ -1,0 +1,623 @@
+{
+ "amb/amb_cellar": {
+  "dur": 12.0,
+  "loop_edge": 0.0021,
+  "peak_db": -9.0,
+  "rms_db": -25.88
+ },
+ "amb/amb_hall": {
+  "dur": 12.0,
+  "loop_edge": 0.0022,
+  "peak_db": -9.0,
+  "rms_db": -19.69
+ },
+ "amb/amb_sewer": {
+  "dur": 12.0,
+  "loop_edge": 0.0171,
+  "peak_db": -9.0,
+  "rms_db": -23.48
+ },
+ "music/music_boss": {
+  "dur": 12.0,
+  "loop_edge": 0.0436,
+  "lufs_approx": -14.3,
+  "peak_db": -4.33,
+  "rms_db": -14.0
+ },
+ "music/music_cellar": {
+  "dur": 15.0,
+  "loop_edge": 0.0016,
+  "lufs_approx": -20.1,
+  "peak_db": -6.9,
+  "rms_db": -17.0
+ },
+ "music/music_cellar_combat": {
+  "dur": 15.0,
+  "loop_edge": 0.075,
+  "lufs_approx": -15.6,
+  "peak_db": -3.9,
+  "rms_db": -14.0
+ },
+ "music/music_hall": {
+  "dur": 12.8,
+  "loop_edge": 0.0093,
+  "lufs_approx": -18.7,
+  "peak_db": -6.23,
+  "rms_db": -17.0
+ },
+ "music/music_hall_combat": {
+  "dur": 12.8,
+  "loop_edge": 0.0027,
+  "lufs_approx": -14.6,
+  "peak_db": -3.95,
+  "rms_db": -14.0
+ },
+ "music/music_sewer": {
+  "dur": 13.714,
+  "loop_edge": 0.017,
+  "lufs_approx": -17.7,
+  "peak_db": -5.05,
+  "rms_db": -17.0
+ },
+ "music/music_sewer_combat": {
+  "dur": 13.714,
+  "loop_edge": 0.1143,
+  "lufs_approx": -14.4,
+  "peak_db": -4.22,
+  "rms_db": -14.0
+ },
+ "music/music_title": {
+  "dur": 13.913,
+  "loop_edge": 0.0685,
+  "lufs_approx": -14.8,
+  "peak_db": -4.1,
+  "rms_db": -14.0
+ },
+ "music/music_victory": {
+  "dur": 13.151,
+  "loop_edge": 0.0318,
+  "lufs_approx": -14.6,
+  "peak_db": -3.97,
+  "rms_db": -14.0
+ },
+ "sfx/bark_boss": {
+  "dur": 1.145,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -20.03
+ },
+ "sfx/bark_mouse": {
+  "dur": 0.72,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -20.66
+ },
+ "sfx/bark_officer": {
+  "dur": 1.029,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -19.67
+ },
+ "sfx/bark_panzer": {
+  "dur": 0.945,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -20.28
+ },
+ "sfx/bark_sewer": {
+  "dur": 0.83,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -20.47
+ },
+ "sfx/bark_trooper": {
+  "dur": 0.764,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -20.49
+ },
+ "sfx/cat_growl": {
+  "dur": 0.6,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -14.83
+ },
+ "sfx/cat_meow_1": {
+  "dur": 0.38,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -10.58
+ },
+ "sfx/cat_meow_2": {
+  "dur": 0.55,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -12.37
+ },
+ "sfx/cat_meow_3": {
+  "dur": 0.28,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -12.17
+ },
+ "sfx/cat_purr": {
+  "dur": 0.9,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -24.43
+ },
+ "sfx/claw_hit": {
+  "dur": 0.2,
+  "loop_edge": null,
+  "peak_db": -4.0,
+  "rms_db": -15.72
+ },
+ "sfx/claw_swipe": {
+  "dur": 0.3,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -21.57
+ },
+ "sfx/claws": {
+  "dur": 0.3,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -21.57
+ },
+ "sfx/death_boss": {
+  "dur": 1.66,
+  "loop_edge": null,
+  "peak_db": -4.0,
+  "rms_db": -18.85
+ },
+ "sfx/death_mouse": {
+  "dur": 0.96,
+  "loop_edge": null,
+  "peak_db": -4.0,
+  "rms_db": -16.79
+ },
+ "sfx/death_officer": {
+  "dur": 1.092,
+  "loop_edge": null,
+  "peak_db": -4.0,
+  "rms_db": -16.93
+ },
+ "sfx/death_panzer": {
+  "dur": 1.32,
+  "loop_edge": null,
+  "peak_db": -4.0,
+  "rms_db": -18.47
+ },
+ "sfx/death_sewer": {
+  "dur": 1.18,
+  "loop_edge": null,
+  "peak_db": -4.0,
+  "rms_db": -17.69
+ },
+ "sfx/death_trooper": {
+  "dur": 1.048,
+  "loop_edge": null,
+  "peak_db": -4.0,
+  "rms_db": -16.63
+ },
+ "sfx/door_close": {
+  "dur": 0.8,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -25.86
+ },
+ "sfx/door_locked": {
+  "dur": 0.5,
+  "loop_edge": null,
+  "peak_db": -7.0,
+  "rms_db": -25.13
+ },
+ "sfx/door_open": {
+  "dur": 1.0,
+  "loop_edge": null,
+  "peak_db": -7.0,
+  "rms_db": -17.39
+ },
+ "sfx/dry_fire": {
+  "dur": 0.08,
+  "loop_edge": null,
+  "peak_db": -10.0,
+  "rms_db": -25.44
+ },
+ "sfx/exit_switch": {
+  "dur": 0.9,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -18.88
+ },
+ "sfx/explosion": {
+  "dur": 1.95,
+  "loop_edge": null,
+  "peak_db": -1.0,
+  "rms_db": -13.19
+ },
+ "sfx/extra_life": {
+  "dur": 1.44,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -21.21
+ },
+ "sfx/gatling": {
+  "dur": 0.22,
+  "loop_edge": null,
+  "peak_db": -4.0,
+  "rms_db": -13.19
+ },
+ "sfx/headshot": {
+  "dur": 0.3,
+  "loop_edge": null,
+  "peak_db": -3.0,
+  "rms_db": -20.18
+ },
+ "sfx/hit_flesh": {
+  "dur": 0.2,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -17.47
+ },
+ "sfx/hurt_boss": {
+  "dur": 0.79,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -17.45
+ },
+ "sfx/hurt_mouse": {
+  "dur": 0.45,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -16.24
+ },
+ "sfx/hurt_officer": {
+  "dur": 0.51,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -16.72
+ },
+ "sfx/hurt_panzer": {
+  "dur": 0.63,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -17.47
+ },
+ "sfx/hurt_sewer": {
+  "dur": 0.55,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -17.12
+ },
+ "sfx/hurt_trooper": {
+  "dur": 0.49,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -16.39
+ },
+ "sfx/impact_metal": {
+  "dur": 0.25,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -24.44
+ },
+ "sfx/impact_stone": {
+  "dur": 0.25,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -23.7
+ },
+ "sfx/jump": {
+  "dur": 0.2,
+  "loop_edge": null,
+  "peak_db": -14.0,
+  "rms_db": -27.01
+ },
+ "sfx/land": {
+  "dur": 0.25,
+  "loop_edge": null,
+  "peak_db": -10.0,
+  "rms_db": -22.77
+ },
+ "sfx/laser": {
+  "dur": 0.9,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -16.5
+ },
+ "sfx/level_complete": {
+  "dur": 2.04,
+  "loop_edge": null,
+  "peak_db": -7.0,
+  "rms_db": -19.95
+ },
+ "sfx/pickup_ammo": {
+  "dur": 0.25,
+  "loop_edge": null,
+  "peak_db": -9.0,
+  "rms_db": -28.63
+ },
+ "sfx/pickup_catnip": {
+  "dur": 0.75,
+  "loop_edge": null,
+  "peak_db": -9.0,
+  "rms_db": -23.3
+ },
+ "sfx/pickup_extra_life": {
+  "dur": 1.44,
+  "loop_edge": null,
+  "peak_db": -9.0,
+  "rms_db": -22.21
+ },
+ "sfx/pickup_health": {
+  "dur": 0.66,
+  "loop_edge": null,
+  "peak_db": -9.0,
+  "rms_db": -22.79
+ },
+ "sfx/pickup_key": {
+  "dur": 1.25,
+  "loop_edge": null,
+  "peak_db": -9.0,
+  "rms_db": -23.01
+ },
+ "sfx/pickup_treasure": {
+  "dur": 0.99,
+  "loop_edge": null,
+  "peak_db": -9.0,
+  "rms_db": -23.79
+ },
+ "sfx/pickup_weapon": {
+  "dur": 0.84,
+  "loop_edge": null,
+  "peak_db": -9.0,
+  "rms_db": -21.57
+ },
+ "sfx/pistol": {
+  "dur": 0.65,
+  "loop_edge": null,
+  "peak_db": -2.0,
+  "rms_db": -14.21
+ },
+ "sfx/player_die": {
+  "dur": 1.4,
+  "loop_edge": null,
+  "peak_db": -4.0,
+  "rms_db": -14.22
+ },
+ "sfx/player_hurt": {
+  "dur": 0.4,
+  "loop_edge": null,
+  "peak_db": -5.0,
+  "rms_db": -12.73
+ },
+ "sfx/pushwall": {
+  "dur": 1.5,
+  "loop_edge": null,
+  "peak_db": -7.0,
+  "rms_db": -14.61
+ },
+ "sfx/reload_gatling": {
+  "dur": 1.3,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -32.57
+ },
+ "sfx/reload_laser": {
+  "dur": 1.3,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -30.05
+ },
+ "sfx/reload_pistol": {
+  "dur": 1.3,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -32.92
+ },
+ "sfx/reload_yarn": {
+  "dur": 1.3,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -27.63
+ },
+ "sfx/ricochet": {
+  "dur": 0.5,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -25.41
+ },
+ "sfx/ricochet_1": {
+  "dur": 0.5,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -25.37
+ },
+ "sfx/ricochet_2": {
+  "dur": 0.5,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -25.41
+ },
+ "sfx/ricochet_3": {
+  "dur": 0.5,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -24.37
+ },
+ "sfx/secret": {
+  "dur": 1.3,
+  "loop_edge": null,
+  "peak_db": -9.0,
+  "rms_db": -23.69
+ },
+ "sfx/step_metal_1": {
+  "dur": 0.35,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -29.69
+ },
+ "sfx/step_metal_2": {
+  "dur": 0.35,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -29.59
+ },
+ "sfx/step_metal_3": {
+  "dur": 0.35,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -29.62
+ },
+ "sfx/step_metal_4": {
+  "dur": 0.35,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -28.55
+ },
+ "sfx/step_stone_1": {
+  "dur": 0.18,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -30.76
+ },
+ "sfx/step_stone_2": {
+  "dur": 0.18,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -28.01
+ },
+ "sfx/step_stone_3": {
+  "dur": 0.18,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -28.79
+ },
+ "sfx/step_stone_4": {
+  "dur": 0.18,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -28.49
+ },
+ "sfx/step_wet_1": {
+  "dur": 0.3,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -26.91
+ },
+ "sfx/step_wet_2": {
+  "dur": 0.3,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -29.86
+ },
+ "sfx/step_wet_3": {
+  "dur": 0.3,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -28.85
+ },
+ "sfx/step_wet_4": {
+  "dur": 0.3,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -28.47
+ },
+ "sfx/step_wood_1": {
+  "dur": 0.2,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -25.64
+ },
+ "sfx/step_wood_2": {
+  "dur": 0.2,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -27.22
+ },
+ "sfx/step_wood_3": {
+  "dur": 0.2,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -25.96
+ },
+ "sfx/step_wood_4": {
+  "dur": 0.2,
+  "loop_edge": null,
+  "peak_db": -12.0,
+  "rms_db": -25.57
+ },
+ "sfx/taunt_boss": {
+  "dur": 1.09,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -20.91
+ },
+ "sfx/taunt_mouse": {
+  "dur": 0.96,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -21.77
+ },
+ "sfx/taunt_officer": {
+  "dur": 0.96,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -21.56
+ },
+ "sfx/taunt_panzer": {
+  "dur": 1.32,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -20.89
+ },
+ "sfx/taunt_sewer": {
+  "dur": 0.96,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -21.89
+ },
+ "sfx/taunt_trooper": {
+  "dur": 0.96,
+  "loop_edge": null,
+  "peak_db": -6.0,
+  "rms_db": -21.54
+ },
+ "sfx/ui_click": {
+  "dur": 0.06,
+  "loop_edge": null,
+  "peak_db": -8.0,
+  "rms_db": -23.69
+ },
+ "sfx/ui_hover": {
+  "dur": 0.05,
+  "loop_edge": null,
+  "peak_db": -16.0,
+  "rms_db": -28.66
+ },
+ "sfx/use_nothing": {
+  "dur": 0.1,
+  "loop_edge": null,
+  "peak_db": -14.0,
+  "rms_db": -29.29
+ },
+ "sfx/weapon_switch": {
+  "dur": 0.3,
+  "loop_edge": null,
+  "peak_db": -10.0,
+  "rms_db": -28.66
+ },
+ "sfx/yarn": {
+  "dur": 0.5,
+  "loop_edge": null,
+  "peak_db": -3.0,
+  "rms_db": -18.09
+ },
+ "sfx/yarn_launch": {
+  "dur": 0.5,
+  "loop_edge": null,
+  "peak_db": -3.0,
+  "rms_db": -18.09
+ }
+}

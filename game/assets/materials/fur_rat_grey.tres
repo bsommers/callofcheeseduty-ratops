@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/fur.gdshader" id="1_hygj4"]
+
+[resource]
+resource_name = "fur_rat_grey"
+render_priority = 0
+shader = ExtResource("1_hygj4")
+shader_parameter/shell_index = null
+shader_parameter/shell_count = null
+shader_parameter/fur_length = 0.03
+shader_parameter/density = 320.0
+shader_parameter/thickness = null
+shader_parameter/length_variation = null
+shader_parameter/clump = 0.5
+shader_parameter/clump_scale = null
+shader_parameter/gravity = null
+shader_parameter/gravity_strength = 0.35
+shader_parameter/wind_direction = null
+shader_parameter/wind_strength = null
+shader_parameter/wind_speed = null
+shader_parameter/root_color = Color(0.34, 0.32, 0.3, 1)
+shader_parameter/tip_color = Color(0.74, 0.71, 0.68, 1)
+shader_parameter/stripe_color = null
+shader_parameter/stripe_amount = null
+shader_parameter/stripe_frequency = null
+shader_parameter/stripe_axis = null
+shader_parameter/color_variation = 0.3
+shader_parameter/self_shadow = null
+shader_parameter/roughness = 0.55
+shader_parameter/rim_strength = null
+shader_parameter/rim_tint = null
+shader_parameter/backlight_amount = null
+shader_parameter/sss_strength = null

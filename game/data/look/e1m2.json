@@ -1,0 +1,95 @@
+{
+ "_mood": "Rat Barracks: cold institutional bulbs, grey-green concrete, harsh contrast, stale air",
+ "sky": {
+  "hdri": "res://assets/hdri/dikhololo_night_2k.hdr",
+  "energy": 0.2,
+  "bg_color": [
+   0.004,
+   0.006,
+   0.006
+  ]
+ },
+ "ambient": {
+  "color": [
+   0.035,
+   0.045,
+   0.042
+  ],
+  "energy": 1.0
+ },
+ "tonemap": {
+  "mode": "aces",
+  "exposure": 1.0,
+  "white": 4.5
+ },
+ "fog": {
+  "density": 0.008,
+  "albedo": [
+   0.7,
+   0.8,
+   0.78
+  ]
+ },
+ "lights": {
+  "color": [
+   0.86,
+   0.95,
+   1.0
+  ],
+  "energy_mul": 1.8,
+  "range_mul": 1.4,
+  "flicker": 0.025,
+  "flicker_speed": 9.0,
+  "size": 0.3,
+  "zones": {
+   "r": {
+    "color": [
+     1.0,
+     0.85,
+     0.55
+    ],
+    "flicker": 0.0
+   },
+   "l": {
+    "color": [
+     1.0,
+     0.78,
+     0.5
+    ],
+    "flicker": 0.0,
+    "energy_mul": 2.0
+   },
+   "s": {
+    "color": [
+     1.0,
+     0.85,
+     0.5
+    ],
+    "flicker": 0.0
+   }
+  }
+ },
+ "grade": {
+  "contrast": 1.18,
+  "saturation": 0.78,
+  "shadow_tint": [
+   -0.01,
+   0.012,
+   0.005
+  ],
+  "highlight_tint": [
+   0.0,
+   0.01,
+   0.01
+  ],
+  "gain": [
+   0.98,
+   1.0,
+   1.0
+  ]
+ },
+ "post": {
+  "grain": 0.04,
+  "vignette": 0.4
+ }
+}

@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/triplanar_pbr.gdshader" id="1_7wy5j"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_grate_rusty/albedo.jpg" id="2_8w6wn"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_grate_rusty/ao.jpg" id="3_lcbk8"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_grate_rusty/metallic.jpg" id="4_uq07n"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_grate_rusty/normal.jpg" id="5_eeeem"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal_grate_rusty/roughness.jpg" id="6_ea6ya"]
+
+[resource]
+resource_name = "tri_metal_grate_rusty"
+render_priority = 0
+shader = ExtResource("1_7wy5j")
+shader_parameter/use_textures = true
+shader_parameter/albedo_texture = ExtResource("2_8w6wn")
+shader_parameter/normal_texture = ExtResource("5_eeeem")
+shader_parameter/roughness_texture = ExtResource("6_ea6ya")
+shader_parameter/ao_texture = ExtResource("3_lcbk8")
+shader_parameter/metallic_texture = ExtResource("4_uq07n")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = null
+shader_parameter/normal_strength = null
+shader_parameter/tint = null
+shader_parameter/roughness_scale = null
+shader_parameter/metallic_scale = null
+shader_parameter/ao_strength = null
+shader_parameter/macro_variation = null
+shader_parameter/grime_amount = null
+shader_parameter/placeholder_color = null
+shader_parameter/wetness = null
+shader_parameter/puddle_amount = null
+shader_parameter/puddle_level = null
+shader_parameter/puddle_scale = null
+shader_parameter/rain_ripples = null
+shader_parameter/water_tint = null
