@@ -598,6 +598,7 @@ func _apply_quality() -> void:
 		env.fog_enabled = true
 		env.fog_light_color = _c(fog.get("albedo", [0.5, 0.5, 0.5])) * float(fog.get("fallback_light", 0.15))
 		env.fog_density = float(fog.get("density", 0.02)) * float(fog.get("fallback_density_mul", 0.6))
+		env.fog_sky_affect = float(fog.get("fallback_sky_affect", 0.1))
 	elif not bool(_d("depth_fog").get("enabled", false)):
 		env.fog_enabled = false
 	env.ssao_intensity = float(_d("ssao").get("intensity", 2.0)) * float(t.get("ssao_mul", 1.0))
