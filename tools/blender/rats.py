@@ -221,8 +221,8 @@ def kind_materials(kind, k):
     }[kind]
     wet = kind == 'sewer'
     M = {}
-    M['fur'] = make_material('fur', 'fur', fur, 0.0, 0.82 if wet else 1.0, kind=kind)
-    M['skin'] = make_material('skin', 'skin', k['skin'], 0.0, 0.6 if wet else 1.0, kind=kind)
+    M['fur'] = make_material('fur', 'fur', fur, 0.0, 1.0, kind=kind)
+    M['skin'] = make_material('skin', 'skin', k['skin'], 0.0, 0.85 if wet else 1.0, kind=kind)
     M['eye'] = make_material('eye', 'eye', k['eye'], 0.0, 1.0, emission=k['eye'] if kind in ('sewer',) else None)
     M['teeth'] = make_material('teeth', 'plain', (0.85, 0.55, 0.18))
     M['whisker'] = make_material('whisker', 'plain', (0.85, 0.83, 0.78) if kind != 'sewer' else (0.1, 0.09, 0.08))
@@ -1474,7 +1474,7 @@ def stance(kind, k, aim=0.0):
             p['upper_arm_' + sd] = (L(40, 62), 0, L(-6, -10)); p['lower_arm_' + sd] = (L(48, 30), 0, 0); p['hand_' + sd] = (L(10, -10), 0, 0)
     elif wt == 'cannon':
         p['upper_arm_R'] = (L(32, 40), 0, L(2, 4)); p['lower_arm_R'] = (L(105, 112), 0, 0)
-        p['upper_arm_L'] = (L(42, 55), 0, L(-26, -30)); p['lower_arm_L'] = (L(80, 70), 0, 0)
+        p['upper_arm_L'] = (L(30, 40), 0, L(-40, -48)); p['lower_arm_L'] = (L(35, 30), 0, 0); p['hand_L'] = (0, 0, 0)
         p['chest'] = (0, L(0, 5), 0); p['head'] = (L(0, 4), 0, 0)
     elif wt == 'gatling2':
         for sd in ('L', 'R'):

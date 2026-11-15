@@ -125,11 +125,11 @@ for side, s in SIDES:
     K = WR + d0 * 0.085
     J[side + "Hand"] = (WR, K, side + "LowerArm")
     HAND[side] = dict(d0=d0, n0=n0, a=a, K=K, W=WR, curl=d0.cross(n0).normalized())
-    for fname, off, sc in (("Index", 0.022, 0.95), ("Middle", 0.0075, 1.0), ("Ring", -0.0075, 0.95), ("Little", -0.022, 0.85)):
+    for fname, off, sc in (("Index", 0.039, 0.95), ("Middle", 0.013, 1.0), ("Ring", -0.013, 0.95), ("Little", -0.039, 0.85)):
         p = K + a * off - d0 * (0.006 if fname in ("Index", "Little") else 0.0)
         dirv = d0.copy()
         parent = side + "Hand"
-        for seg, ln in (("Proximal", 0.028), ("Intermediate", 0.021), ("Distal", 0.018)):
+        for seg, ln in (("Proximal", 0.031), ("Intermediate", 0.024), ("Distal", 0.020)):
             dirv = (Quaternion(HAND[side]["curl"], math.radians(12)) @ dirv).normalized()
             q = p + dirv * ln * sc
             nm = side + fname + seg
@@ -145,7 +145,7 @@ for side, s in SIDES:
         parent = nm; p = q
         t0 = (Quaternion(nrm(t0.cross(n0)), math.radians(10)) @ t0).normalized()
     HAND[side]["t0"] = nrm(J[side + "ThumbMetacarpal"][1] - J[side + "ThumbMetacarpal"][0])
-    HIP, KNEE, HOCK, BALL, TOE = (V((s * 0.13, 0, 0.95)), V((s * 0.13, 0.08, 0.56)), V((s * 0.13, -0.09, 0.17)),
+    HIP, KNEE, HOCK, BALL, TOE = (V((s * 0.13, 0, 0.95)), V((s * 0.152, 0.08, 0.56)), V((s * 0.13, -0.09, 0.17)),
                                   V((s * 0.13, 0.09, 0.035)), V((s * 0.13, 0.165, 0.02)))
     J[side + "UpperLeg"] = (HIP, KNEE, "Hips")
     J[side + "LowerLeg"] = (KNEE, HOCK, side + "UpperLeg")
@@ -251,10 +251,10 @@ for side, s in SIDES:
     h = HAND[side]
     fr = basis(h["d0"], h["n0"])  # cols: d0, n0, d0 x n0  -> ellipsoid axes (x=len, y=thick, z=width)
     q = fr.to_quaternion()
-    ellip(h["W"] + h["d0"] * 0.045, 0.048, 0.024, 0.042, rot=q)       # palm
-    ellip(h["W"] + h["d0"] * 0.045 + h["n0"] * 0.012, 0.024, 0.012, 0.03, rot=q)  # palm pad
+    ellip(h["W"] + h["d0"] * 0.040, 0.047, 0.026, 0.047, rot=q)       # palm
+    ellip(h["W"] + h["d0"] * 0.040 + h["n0"] * 0.012, 0.024, 0.012, 0.032, rot=q)  # palm pad
     for f in ("Index", "Middle", "Ring", "Little"):
-        for seg, ra, rb in (("Proximal", 0.0145, 0.0135), ("Intermediate", 0.0135, 0.0125), ("Distal", 0.0125, 0.0105)):
+        for seg, ra, rb in (("Proximal", 0.0082, 0.0076), ("Intermediate", 0.0076, 0.0070), ("Distal", 0.0070, 0.0058)):
             a_, b_, _ = J[side + f + seg]
             sweep(a_, b_, ra, rb, step=0.5)
     for seg, ra, rb in (("Metacarpal", 0.016, 0.013), ("Proximal", 0.013, 0.012), ("Distal", 0.012, 0.010)):
@@ -262,9 +262,9 @@ for side, s in SIDES:
         sweep(a_, b_, ra, rb, step=0.5)
     # legs (digitigrade-ish: raised hock, long foot)
     sweep(J[side + "UpperLeg"][0], J[side + "UpperLeg"][1], 0.115, 0.072)
-    ellip((s * 0.14, -0.01, 0.80), 0.10, 0.11, 0.15, stiff=1.6)  # thigh muscle
+    ellip((s * 0.145, -0.01, 0.80), 0.09, 0.105, 0.15, stiff=1.6)  # thigh muscle
     sweep(J[side + "LowerLeg"][0], J[side + "LowerLeg"][1], 0.062, 0.038)
-    ball((s * 0.13, 0.03, 0.47), 0.058)                   # calf
+    ball((s * 0.145, 0.03, 0.47), 0.056)                   # calf
     sweep(J[side + "Foot"][0], J[side + "Foot"][1], 0.038, 0.04)
     ellip((s * 0.13, 0.10, 0.03), 0.05, 0.06, 0.03)       # foot pad
     for k, xo in enumerate((-0.033, -0.011, 0.011, 0.033)):

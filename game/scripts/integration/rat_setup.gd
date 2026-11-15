@@ -4,7 +4,7 @@ extends RefCounted
 ## fur shells / skin / cheese materials by slot name, LOD1 at distance, muzzle flash on the muzzle bones,
 ## loop flags (idempotent, enemy.gd does it too).
 
-const LOOPING: PackedStringArray = ["idle", "walk", "run", "aim_idle", "charge", "take_cover"]
+const LOOPING: PackedStringArray = RatEnemy.LOOP_CLIPS  # single source of truth (enemy.gd)
 const LOD_DIST: float = 16.0
 const FUR_BY_KIND: Dictionary = {
 	"mouse": "fur_mouse", "trooper": "fur_rat_grey", "officer": "fur_rat_grey",
@@ -34,11 +34,19 @@ static func apply(enemy: RatEnemy, model: Node3D) -> void:
 	set_loops(model)
 	var fur_name: String = FUR_BY_KIND.get(kind, "fur_rat_grey")
 	var base: ShaderMaterial = RatMaterials.get_material(fur_name) as ShaderMaterial
+	if base != null and kind == "sewer":
+		# Sewer rats read as matte, grimy fur: raise roughness, cut the specular sheen.
+		base = base.duplicate() as ShaderMaterial
+		base.set_shader_parameter("roughness", 0.95)
+		base.set_shader_parameter("spec_strength", 0.3)
 	var shells: Material = null
 	var lod_mat: Material = null
 	if base != null:
 		shells = RatMaterials.build_fur(base, mini(RatMaterials.fur_shell_count(), 10))
 		lod_mat = RatMaterials.make_fur_lod(base)
+		if kind == "sewer":
+			(lod_mat as ShaderMaterial).set_shader_parameter("roughness", 0.95)
+			(lod_mat as ShaderMaterial).set_shader_parameter("spec_strength", 0.3)
 	for node: Node in model.find_children("*", "MeshInstance3D", true, false):
 		var mi: MeshInstance3D = node as MeshInstance3D
 		if mi.mesh == null:

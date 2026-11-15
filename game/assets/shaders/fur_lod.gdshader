@@ -15,6 +15,7 @@ uniform float stripe_frequency = 9.0;
 uniform vec3 stripe_axis = vec3(0.0, 0.0, 1.0);
 uniform float color_variation : hint_range(0.0, 1.0) = 0.25;
 uniform sampler2D color_map : source_color, hint_default_white;
+uniform float spec_strength : hint_range(0.0, 1.0) = 1.0;
 uniform float roughness : hint_range(0.0, 1.0) = 0.7;
 uniform float rim_strength : hint_range(0.0, 1.0) = 0.6;
 uniform float rim_tint : hint_range(0.0, 1.0) = 0.6;
@@ -43,7 +44,7 @@ void fragment() {
 	col *= texture(color_map, UV).rgb;
 	ALBEDO = col;
 	ROUGHNESS = roughness;
-	SPECULAR = 0.4;
+	SPECULAR = 0.4 * spec_strength;
 	AO = mix(0.6, 1.0, strand);
 	NORMAL_MAP = normalize(vec3(0.5 + (n1 - 0.5) * strand_bump, 0.5 + (n2 - 0.5) * strand_bump * 0.3, 1.0));
 	RIM = rim_strength;

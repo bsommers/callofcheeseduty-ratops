@@ -210,6 +210,8 @@ func _physics_process(delta: float) -> void:
 	if god and _player.health < 40:
 		_player.health = 100
 		_god_heals += 1
+	if god and _player.weapons != null and _physics_frame % 60 == 0 and _player.weapons.best_weapon() == 0 and not _player.weapons.reloading:
+		_player.weapons.add_ammo("hair", 30)  # god mode also restocks the sidearm, so boss arenas are not fought with claws
 	_player.cmd_aim = false
 	_player.cmd_sprint = false
 	_player.cmd_crouch = false
@@ -611,7 +613,32 @@ func _nav_path(from: Vector3, to: Vector3) -> PackedVector3Array:
 	var map: RID = _nav_map()
 	if not map.is_valid():
 		return PackedVector3Array()
-	return NavigationServer3D.map_get_path(map, Vector3(from.x, 0.0, from.z), Vector3(to.x, 0.0, to.z), true)
+	var raw: PackedVector3Array = NavigationServer3D.map_get_path(map, Vector3(from.x, 0.0, from.z), Vector3(to.x, 0.0, to.z), true)
+	return _clear_corners(raw)
+
+
+## The funnel path hugs wall corners (zero-radius agent); the capsule then snags on them. Push intermediate
+## waypoints that sit on a cell-grid vertex away from the blocked cells around that vertex.
+func _clear_corners(p: PackedVector3Array) -> PackedVector3Array:
+	if p.size() < 3:
+		return p
+	var cs: float = float(_level.get("cell"))
+	var out: PackedVector3Array = p.duplicate()
+	for i: int in range(1, p.size() - 1):
+		var gx: float = roundf(p[i].x / cs)
+		var gy: float = roundf(p[i].z / cs)
+		if absf(p[i].x - gx * cs) > 0.05 or absf(p[i].z - gy * cs) > 0.05:
+			continue
+		var push: Vector2 = Vector2.ZERO
+		for dx: int in [-1, 0]:
+			for dy: int in [-1, 0]:
+				var cx: int = int(gx) + dx
+				var cy: int = int(gy) + dy
+				if cx < 0 or cy < 0 or not bool(_level.call("_is_walkable", cx, cy)):
+					push += Vector2(-2 * dx - 1, -2 * dy - 1)
+		if push != Vector2.ZERO:
+			out[i] = Vector3(p[i].x + signf(push.x) * 0.9, p[i].y, p[i].z + signf(push.y) * 0.9)
+	return out
 
 
 func _path_len(p: PackedVector3Array) -> float:
@@ -667,7 +694,8 @@ func _pick_goal_if_needed() -> void:
 		var node3: Node3D = n as Node3D
 		var straight: float = node3.global_position.distance_to(pos)
 		var is_key: bool = it.has("key")
-		var detour: float = PICKUP_DETOUR * (4.0 if it.has("weapon") else 1.0)
+		var dry: bool = it.has("ammo") and _player.weapons != null and _player.weapons.best_weapon() == 0  # claws only: restock
+		var detour: float = PICKUP_DETOUR * (4.0 if (it.has("weapon") or dry) else 1.0)
 		if not is_key and straight > detour:
 			continue
 		var p: PackedVector3Array = _reachable(node3.global_position)

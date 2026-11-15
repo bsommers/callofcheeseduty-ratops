@@ -41,6 +41,7 @@ uniform float self_shadow : hint_range(0.0, 1.0) = 0.7;
 
 group_uniforms lighting;
 uniform float roughness : hint_range(0.0, 1.0) = 0.62;
+uniform float spec_strength : hint_range(0.0, 1.0) = 1.0;
 uniform float rim_strength : hint_range(0.0, 1.0) = 0.55;
 uniform float rim_tint : hint_range(0.0, 1.0) = 0.6;
 uniform float backlight_amount : hint_range(0.0, 1.0) = 0.25;
@@ -108,7 +109,7 @@ void fragment() {
 
 	ALBEDO = col * occl;
 	ROUGHNESS = roughness;
-	SPECULAR = 0.35 + 0.25 * h;
+	SPECULAR = (0.35 + 0.25 * h) * spec_strength;
 	AO = occl;
 	AO_LIGHT_AFFECT = 0.5;
 	RIM = rim_strength * h;

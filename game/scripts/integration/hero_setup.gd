@@ -27,7 +27,7 @@ static func set_loops(model: Node) -> int:
 	if ap == null:
 		return 0
 	for a: String in ap.get_animation_list():
-		var short: String = a.get_slice("/", a.get_slice_count("/") - 1).get_slice("|", a.get_slice_count("|") - 1)
+		var short: String = a.get_slice("|", a.get_slice_count("|") - 1).get_slice("/", a.get_slice_count("/") - 1).to_lower()
 		var anim: Animation = ap.get_animation(a)
 		if anim != null and LOOPING.has(short):
 			anim.loop_mode = Animation.LOOP_LINEAR

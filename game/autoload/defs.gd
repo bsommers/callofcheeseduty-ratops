@@ -124,7 +124,7 @@ const DECOR: Dictionary = {
 	"puddle_milk": {}, "crate": {"block": true},
 	"cauldron": {"block": true, "light": [2.6, 1.5, 0.3, 5.0, 0.5, 0.15]},
 	"scratch_post": {"block": true}, "bunk": {"block": true}, "radio_desk": {"block": true}, "hanging_cheese": {"hang": true},
-	"glow_cheese": {"light": [0.5, 2.2, 0.4, 3.5, 0.2, 0.2]},
+	"glow_cheese": {"light": [2.2, 1.7, 0.4, 3.5, 0.2, 0.2]},
 	"alarm_light": {"hang": true, "light": [2.8, 0.25, 0.2, 5.0, 0.85, 1.0]},
 }
 
