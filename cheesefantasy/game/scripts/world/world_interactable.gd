@@ -22,5 +22,5 @@ func face_toward(target: Vector3, instant: bool = true, delta: float = 0.0) -> v
 	d.y = 0.0
 	if d.length() < 0.01:
 		return
-	var want := atan2(d.x, d.z)
+	var want := atan2(d.x, d.z) + PI  # glb models face -Z
 	rotation.y = want if instant else lerp_angle(rotation.y, want, clampf(delta * 8.0, 0.0, 1.0))

@@ -152,7 +152,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3.ZERO
 	var moving := Vector2(velocity.x, velocity.z).length() > 0.4
 	if moving:
-		_facing = lerp_angle(_facing, atan2(velocity.x, velocity.z), clampf(delta * 12.0, 0.0, 1.0))
+		_facing = lerp_angle(_facing, atan2(velocity.x, velocity.z) + PI, clampf(delta * 12.0, 0.0, 1.0))
 		model.rotation.y = _facing
 		_steps += Vector2(velocity.x, velocity.z).length() * delta
 	var want_anim := "idle"

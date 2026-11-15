@@ -86,7 +86,7 @@ func _process(delta: float) -> void:
 		if dist < aggro_radius:
 			chasing = true
 			position += dv.normalized() * chase_speed * delta
-			rotation.y = lerp_angle(rotation.y, atan2(dv.x, dv.z), clampf(delta * 8.0, 0.0, 1.0))
+			rotation.y = lerp_angle(rotation.y, atan2(dv.x, dv.z) + PI, clampf(delta * 8.0, 0.0, 1.0))
 			_play("run")
 			if dist < touch_radius:
 				_fired = true
@@ -112,5 +112,5 @@ func _patrol(delta: float) -> void:
 		_wait = randf_range(1.0, 3.5)
 		return
 	position += to.normalized() * patrol_speed * delta
-	rotation.y = lerp_angle(rotation.y, atan2(to.x, to.z), clampf(delta * 6.0, 0.0, 1.0))
+	rotation.y = lerp_angle(rotation.y, atan2(to.x, to.z) + PI, clampf(delta * 6.0, 0.0, 1.0))
 	_play("walk")

@@ -84,7 +84,7 @@ func _process(delta: float) -> void:
 	var step := to.normalized() * speed * delta
 	position += step
 	snap_to_ground()
-	rotation.y = lerp_angle(rotation.y, atan2(to.x, to.z), clampf(delta * 6.0, 0.0, 1.0))
+	rotation.y = lerp_angle(rotation.y, atan2(to.x, to.z) + PI, clampf(delta * 6.0, 0.0, 1.0))
 	_play("walk")
 
 func _pick_target() -> void:
